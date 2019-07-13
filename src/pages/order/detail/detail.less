@@ -1,0 +1,238 @@
+@import "../../../assets/css/global";
+
+#order-detail{
+  .order-header{
+    background-color: #ffffff;
+    .shop{
+      .item{
+        color:#4A4A4A;
+        font-size: 12px;
+        line-height: 16px;
+        span{
+          color:#9B9B9B;
+          display: inline-block;
+          padding-right: 5px;
+          font-size: 12px;
+        }
+      }
+    }
+    .order-item{
+      padding:12px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .order-num{
+      font-size: 12px;
+      line-height: 16px;
+      .txt{
+        color:#4A4A4A ;
+      }
+      .status{
+        color: #EA4448;
+      }
+    }
+    .good-info{
+      .photo{
+        width: 60px;
+        height: 60px;
+        image{
+          width:100%;
+          height: 100%;
+        }
+      }
+      .name{
+        flex: 1;
+        padding-left: 13px;
+        .good-name{
+          color: #000000;
+          font-size: 14px;
+          line-height: 20px;
+          padding-bottom: 2px;
+        }
+        .taste{
+          color:#9B9B9B ;
+          font-size: 12px;
+          line-height: 16px;
+        }
+      }
+      .money{
+        color:#9B9B9B ;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: right;
+        .number{
+          padding-bottom: 3px;
+        }
+      }
+    }
+    .star{
+      .star-box{
+        .ui-star{
+          width: 16px;
+          height: 16px;
+        }
+      }
+      .go-comment{
+        font-size: 12px;
+        line-height: 16px;
+        color:#9B9B9B ;
+        .iconfont{
+          font-size: 10px;
+        }
+      }
+    }
+    .total{
+      font-size: 12px;
+      line-height: 16px;
+      .title{
+        color:#9B9B9B ;
+      }
+      .txt{
+        color: @globalColor;
+      }
+    }
+  }
+  .informa{
+    margin-top: 10px;
+    background-color: #ffffff;
+    .topic{
+      padding: 11px 15px;
+      color: #000000;
+      font-size: 14px;
+      line-height: 18px;
+    }
+    .content{
+      padding:6px 15px;
+      color: #9B9B9B;
+      font-size:12px;
+      line-height: 24px;
+      span{
+        display: inline-block;
+        padding-right: 13px;
+      }
+    }
+  }
+  .order-bill{
+    .bill-content{
+      padding:20px 15px 15px 25px;
+      .list{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color:#9B9B9B ;
+        font-size: 12px;
+        line-height: 24px;
+      }
+    }
+    .paid{
+      padding: 15px;
+      text-align: right;
+      color: #4A4A4A;
+      font-size: 12px;
+      line-height: 24px;
+      span{
+        font-size: 14px;
+        color: @globalColor;
+        font-weight: bold;
+      }
+    }
+  }
+  .guess-like{
+    padding:15px 15px 20px 15px;
+    background-color:#F3F3F3;
+    .like-title{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding:10px 0;
+      .arrow{
+        font-size: 5px;
+        color: #909090;
+      }
+      .txt{
+        color:#909090;
+        font-size: 12px;
+        line-height: 16px;
+        padding:0 6px;
+      }
+    }
+    .like-content{
+      swiper{
+        swiper-item{
+          image{
+            width: 100%;
+          }
+        }
+      }
+
+    }
+  }
+  .shop-item{
+    background: #ffffff;
+    padding: 10px 0 0 0;
+    margin-bottom: 10px;
+    overflow: hidden;
+    .shop-item-title {
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      padding: 0 15px 10px 0;
+      margin-left: 15px;
+
+      .text {
+        flex: 1;
+      }
+      .iconfont {
+        font-size: 14px;
+        color: #9B9B9B;
+      }
+      .shop-name {
+        font-size: 14px;
+        color: @globalColor;
+        margin-right: 5px;
+      }
+    }
+    .tab-content{
+      padding:10px 0 0 0px;
+      margin-left: 13px;
+      background-color:#ffffff;
+      .item{
+        display: inline-block;
+        width: 30%;
+        margin-right:8px;
+        image{
+          width: 100%;
+          height: 111px;
+        }
+        .menu-name{
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-top: 5px;
+          color: @globalColor;
+          font-size: 13px;
+          line-height: 18px;
+        }
+        .floor{
+          padding:2px 0 10px 0px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          .price{
+            font-size: 12px;
+            color: @globalColor;
+            line-height: 16px;
+          }
+          .txt{
+            font-size:12px;
+            line-height: 16px;
+            color: #9B9B9B;
+          }
+
+        }
+      }
+    }
+  }
+
+}

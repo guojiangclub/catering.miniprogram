@@ -1,0 +1,76 @@
+<view id="collar">
+    <view class="collar-banner">
+        <view class="banner-l">
+            <view class="co-item-top">
+                <view class="avatar">
+                    <image src="{{avatar}}"></image>
+                </view>
+                <view class="my-point">我的积分：<view>{{info.point}}</view>分</view>
+            </view>
+            <view class="co-item-bottom">
+                <progress backgroundColor="rgba(0,0,0,.2)" activeColor="#F5A623" percent="{{(info.sign.days-1)*(16.6+0.4)}}">
+                    <!--这里的percent值要加0.4%-->
+                </progress>
+                <view class="info {{info.sign.days > 1 ? 'already' : ''}}" style="left:-0.4%;">1</view>
+                <view class="info {{info.sign.days > 2 ? 'already' : ''}}" style="left:16.6%">2</view>
+                <view class="info {{info.sign.days > 3 ? 'already' : ''}}" style="left:33.2%">3</view>
+                <view class="info {{info.sign.days > 4 ? 'already' : ''}}" style="left:49.8%">4</view>
+                <view class="info {{info.sign.days > 5 ? 'already' : ''}}" style="left:66.4%">5</view>
+                <view class="info {{info.sign.days > 6 ? 'already' : ''}}" style="left:83%">6</view>
+                <view class="info {{info.sign.days > 7 ? 'already' : ''}}" style="left:99.6%">7</view>
+                <view class="current-dot" style="left: {{(info.sign.days - 1) * 16.6}}%" wx:if="{{info.sign.days}}">
+                    <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/cur.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="banner-r">
+            <view class="content-text" wx:if="{{!info.is_sign}}" bindtap="getSign">
+                签到领积分
+            </view>
+            <view class="sign-day" wx:if="{{info.is_sign}}">
+                已连续签到
+                <view>{{info.sign.days}}<text>天</text></view>
+            </view>
+        </view>
+    </view>
+    <view class="collar-prize" wx:if="{{sortReward.length}}">
+        <view class="prize-item {{index == 4 ? 'times-text' : ''}}" wx:for="{{sortReward}}" wx:key="is">
+            <image class="money" src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/money.png" wx:if="{{item.type == 'coupon'}}"></image>
+            <image class="point" src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/point.png"  wx:if="{{item.type == 'point'}}"></image>
+            <image class="emoji" src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/emoji.png"  wx:if="{{item.type == 'luck'}}"></image>
+            <view>{{item.label}}</view>
+            <view>{{item.text}}</view>
+            <view class="checked" wx:if="{{item.status}}">
+                <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/checked.png"></image>
+            </view>
+                <view class="get" wx:if="{{index != 4 && !info.sign.get_reward}}" bindtap="changes" data-index="{{index}}" data-id="{{item.id}}">
+                    <view class="get-small">点我领取</view>
+                </view>
+        </view>
+    </view>
+    <view class="collar-strategy">
+        <image src="{{item.image}}" mode="widthFix" wx:for="{{info.banner}}" wx:if="{{info.banner.length != 0}}" bindtap="jumpImg" data-scr="{{item.link}}" wx:key="{{adv}}"></image>
+    </view>
+    <view class="call-goods" wx:if="{{info.sign.recommend_goods && info.sign.recommend_goods.length}}">
+        <view class="title mx-1px-bottom">
+            相关推荐
+        </view>
+        <view class="content">
+            <view class="like_list">
+                <view class="like_box" data-type="{{item.redeem_point}}" data-id="{{item.id}}" wx:for="{{info.sign.recommend_goods}}" bindtap="jumpdetail" wx:key="good">
+                    <view>
+                        <view class="like_image">
+                            <image mode="widthFix" class="responsive" src="{{item.img}}" alt="" />
+                        </view>
+                        <view class="like_name">
+                            {{item.name}}
+                        </view>
+                        <view class="like_money">
+                            ￥{{item.sell_price}}
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

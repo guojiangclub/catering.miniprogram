@@ -1,0 +1,39 @@
+<view id="news-list">
+    <view class="list-item">
+        <view class="title">
+            优惠券到账提醒
+        </view>
+        <view class="time">13:20
+        </view>
+        <view class="news-detail">
+            <view class="iconfont icon-youhuiquan"></view>
+            <view class="new">您昨日新到一张优惠券，快去看看吧！</view>
+            <view class="iconfont icon-jiantou"></view>
+        </view>
+    </view>
+    <view class="list-item">
+        <view class="title">
+            签到提醒
+        </view>
+        <view class="time">昨天 12:20
+        </view>
+        <view class="news-detail">
+            <view class="double">双签礼包送给能坚持的你，快来领取吧~</view>
+            <view class="iconfont icon-jiantou"></view>
+        </view>
+    </view>
+    <view class="list-item">
+        <view class="title">
+            购物车商品降价通知
+        </view>
+        <view class="time">星期五 13:20
+        </view>
+        <view class="news-detail">
+            <view class="news-img">
+                <image src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528803763711&di=e05799916f06a366568c70c9b13feb23&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201607%2F19%2F20160719122634_smz3U.jpeg"></image>
+            </view>
+            <view class="new">您购物车中的【米尔夏季小黄人定制款短袖 米黄色 47658】降价7.0元，手慢无哦！</view>
+            <view class="iconfont icon-jiantou"></view>
+        </view>
+    </view>
+</view>

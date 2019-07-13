@@ -1,0 +1,91 @@
+<view id="on-detail" wx:if="{{init}}">
+    <view class="coupon">
+        <view class="coupon-left {{is_coupon != 1 ? 'discount' : ''}}" style="background: {{config.mainColor}}">
+            <view class="text-wrap">
+                <view class="text-box">
+                    <view class="text">
+                        <text class="money" wx:if="{{detail.action_type.type == 'cash'}}">￥</text>
+                        <sapn>{{ detail.action_type.value }}</sapn>
+
+                        <text class="money" wx:if="{{detail.action_type.type == 'discount'}}">折</text>
+                    </view>
+                    <text class="label text">{{ detail.label }}</text>
+                </view>
+            </view>
+            <view class="dot-wrap">
+                <view class="dot-item">
+
+                </view>
+                <view class="dot-item">
+
+                </view>
+                <view class="dot-item">
+
+                </view>
+                <view class="dot-item">
+
+                </view>
+                <view class="dot-item">
+
+                </view>
+                <view class="dot-item">
+
+                </view>
+            </view>
+        </view>
+        <view class="coupon-right">
+            <view class="top">
+                <span class="type">
+                    <span wx:if="{{detail.channel == 'ec'}}">商城</span>
+                    <span wx:else>门店</span>
+                </span>
+                <text class="info">{{detail.title}}</text>
+            </view>
+            <view class="bottom">
+                <view class="bottom-use">
+                    <view class="tiem-box">
+                        <text>{{detail.use_start_time}}至{{detail.use_end_time}}</text>
+                    </view>
+                    <!--<view wx:if="{{is_coupon == 1}}">
+                        <view class="btn use" style="background: {{config.mainColor}}"  wx:if="{{!detail.has_get}}" catchtap="getCoupon">
+                            点击领取
+                        </view>
+                        <view class="btn already" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}" wx:else  catchtap="jumpList">
+                            去使用
+                        </view>
+                    </view>-->
+
+
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="detail-item user-info" wx:if="{{detail.intro}}">
+        <view class="title">
+            使用说明
+        </view>
+        <view class="info mx-1px-top">
+           {{detail.intro}}
+        </view>
+    </view>
+
+    <view class="detail-item user-info" wx:if="{{detail.coupon_info.code && detail.chargeOff}}">
+        <view class="title">
+            核销券码
+        </view>
+        <view class="info mx-1px-top">
+            {{detail.coupon_info.code}}
+        </view>
+    </view>
+    <view class="qr_code" wx:if="{{detail.coupon_info.coupon_use_code && detail.chargeOff}}">
+        <image src="{{detail.coupon_info.coupon_use_code}}"></image>
+    </view>
+    <!--<view class="button-box" wx:if="{{is_coupon == 1}}">
+        <view class="btn" style="background: {{config.mainColor}}" wx:if="{{!detail.has_get}}" catchtap="getCoupon">
+            点击领取
+        </view>
+        <view class="btn" style="background: {{config.mainColor}}" wx:else catchtap="jumpList">
+            去使用
+        </view>
+    </view>-->
+</view>

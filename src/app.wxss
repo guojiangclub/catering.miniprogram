@@ -1,0 +1,37 @@
+@import "assets/css/reset.wxss";
+@import "assets/css/1px.wxss";
+@import "assets/css/font.wxss";
+@import "component/birthday/birthday.wxss";
+
+.globalColor{
+    color: #EA4448;
+}
+.globalBgcolor{
+    background: #EA4448;
+}
+.globalBodercolor{
+    border-color: #EA4448;
+}
+.bgcolor{
+    background: #1aad19;
+}
+.ibrand-author {
+    text-align: center;
+    color: #9b9b9b;
+    font-size: 12px;
+    margin: 10px 0;
+}
+.author image {
+    display: block;
+    width: 90px;
+    margin: 10px auto;
+}
+
+view{
+    box-sizing: border-box;
+ }
+pages {
+    position: relative;
+    z-index: 9999998;
+    background: #fff;
+}

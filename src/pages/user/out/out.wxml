@@ -1,0 +1,27 @@
+<view id="out">
+    <view class="person" bindtap="jump">
+        <view class="text">个人资料</view>
+        <view class="img">
+            <i class="iconfont icon-Chevron"></i>
+        </view>
+    </view>
+    <view class="logout" bindtap="logout">
+        <button type="primary">退出当前账户</button>
+    </view>
+
+
+    <!--<checkbox-group bindchange="checkboxChange" id="box">
+        <view wx:for="{{items}}">
+            <checkbox  id="{{index}}" color="#fff" value="{{item.name}}" class="checkbox" checked="{{item.checked}}"/>
+
+            <label class="lebel" for="{{index}}">
+                {{item.value}}
+            </label>
+        </view>
+
+    </checkbox-group>-->
+
+
+</view>
+<!--<import src="../../../component/birthday/birthday.wxml" />-->
+<!--<template is="birthdayToast" data="{{...birthdayToast}}"></template>-->

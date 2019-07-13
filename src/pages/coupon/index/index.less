@@ -1,0 +1,462 @@
+@import "../../../assets/css/global";
+#coupon-index{
+  /*.coupon-box{
+    padding: 12px;
+
+    .convert-box{
+      display: flex;
+      padding-bottom: 10px;
+
+      input{
+        flex: 1;
+        display: block;
+        width: 100%;
+        height: 44px;
+        line-height: normal;
+        font-size: 16px;
+        background: #e3e3e3;
+        padding-left: 17px;
+      }
+      .button{
+        width: 90px;
+        height: 44px;
+        line-height: 44px;
+        background: #ff0000;
+        text-align: center;
+        font-size: 18px;
+        color: #ffffff;
+        margin-left: 20px;
+      }
+    }
+    .coupon-list {
+      .coupon-item{
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        .left{
+          width: 110px;
+          height: 110px;
+          background: url("https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/coupon-bg.png") no-repeat;
+          background-size: 100% 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &.off{
+            background: url("http://ovef29y3v.bkt.clouddn.com/off-coupon-bg.png") no-repeat;
+            background-size: 100% 100%;
+          }
+
+          .label{
+            color: #FFFFFF;
+            padding: 0 10px;
+          }
+        }
+        .right{
+          position: relative;
+          height: 110px;
+          flex: 1;
+          overflow: hidden;
+          background: #FFFFFF;
+          padding: 0 10px;
+          font-size: 14px;
+
+          .coupon-name{
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            .type{
+              color: #FFFFFF;
+              background: #fc5e3a;
+              border-radius: 10px;
+              padding: 1px 8px;
+              margin-right: 5px;
+
+              &.off-type{
+                background: #1aad19;
+              }
+            }
+
+            .name{
+              flex: 1;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
+            }
+          }
+          .coupon-tiem{
+            font-size: 12px;
+            color: #b5b5b5;
+          }
+        }
+      }
+      .loadingbox{
+        margin-top: 10px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size:14px;
+      }
+    }
+    .examine{
+      width: 100%;
+      height: 44px;
+      line-height: 44px;
+      text-align: center;
+      font-size: 18px;
+      background: #FFFFFF;
+      color: #848484;
+    }
+  }*/
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    z-index: 20;
+    height: 50px;
+    line-height: 50px;
+    background: #FFFFFF;
+    font-size: 14px;
+    color: #9B9B9B;
+
+    .navbar-item {
+      flex: 1;
+      width: 0%;
+      text-align: center;
+
+      &.activity {
+        color:@globalColor;
+      }
+    }
+    .navbar-slider {
+
+      position: absolute;
+      content: " ";
+      left: 0;
+      bottom: 0;
+      width: 4em;
+      height: 3px;
+      background-color: @globalColor;
+      transition: transform .3s;
+    }
+  }
+  .tab-panel{
+    padding: 10px 15px 50px 15px;
+
+    .tab-content{
+
+      .coupon {
+        display: flex;
+        margin-bottom: 10px;
+        &.shasow {
+          box-shadow: 0px 7px 10px 0px rgba(6, 0, 0, 0.2);
+        }
+
+        .coupon-left {
+          width: 110px;
+          height: 80px;
+          color: #ffffff;
+          background-size: cover;
+          background: @globalColor;
+          position: relative;
+          &.discount {
+            background: #F8B62D;
+          }
+
+          .text-wrap {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 12px;
+            .text-box {
+              text-align: center;
+              width: 100%;
+              .text{
+                display: block;
+                padding: 0 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                font-size: 20px;
+                font-weight: 600;
+                &.label{
+                  font-size: 12px;
+                  font-weight: 100;
+                }
+                .money{
+                  font-size: 14px;
+                  font-weight: 100;
+                }
+              }
+
+              .money-num {
+                font-size: 25px;
+                font-weight: bold;
+              }
+            }
+          }
+          .dot-wrap {
+            position: absolute;
+            top: -12px;
+            .dot-item {
+              width: 5px;
+              height: 5px;
+              background: #F3F3F3;
+              border-radius: 50%;
+              margin: 11px 0 9px -2px;
+
+              &:last-child {
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+        .coupon-right {
+          flex: 1;
+          background: #fff;
+          padding: 0px 15px;
+          font-size: 12px;
+          overflow: hidden;
+
+          .top {
+            font-size: 12px;
+            display: -webkit-box;
+            color: #333333;
+            height: 40px;
+            line-height: 20px;
+            padding-top: 8px;
+            box-sizing: border-box;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            .type {
+              color: #333333;
+              border: 1px solid #333333;
+              padding: 2px 5px;
+              border-radius: 3px;
+              line-height: 20px;
+              margin-right: 5px;
+            }
+          }
+
+          .bottom {
+            .bottom-use {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              font-size: 12px;
+              margin: 7px 0;
+              .tiem-box {
+                color: #9E9E9F;
+                flex: 1;
+                font-size: 9px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                margin-top: 5px;
+              }
+              .btn {
+                text-align: center;
+                border-radius: 3px;
+                padding: 3px 12px;
+              }
+              .use {
+                color: #fff;
+                border: 1px solid @globalColor;
+                background: @globalColor;
+              }
+              .already {
+                color: @globalColor;
+                background: #fff;
+                border: 1px solid @globalColor;
+
+              }
+            }
+          }
+        }
+      }
+
+      .no-list{
+        text-align: center;
+        font-size: 14px;
+        color: #888888;
+        margin-top: 10px;
+        i{
+          font-size: 80px;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+  .see-over{
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: #DCDCDC;
+    padding: 12px 0;
+    font-size: 12px;
+    color: #4A4A4A;
+  }
+}
+
+
+#transfer{
+  /*.panel{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    //background-color: rgba(0,0,0,.7);
+    .panel-body{
+      position: absolute;
+      width: 80%;
+      height: 71%;
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      .content{
+        .agreement{
+          text-align: center;
+          padding: 35px 42px 11px 42px;
+          color:#9B9B9B ;
+          font-size: 11px;
+          line-height: 15px;
+          span{
+            color:@globalColor ;
+          }
+        }
+      }
+      .foot-btn{
+        padding:0 40px 0 40px;
+        button{
+          background-color:#FFFFFF ;
+          border-radius: 26px;
+          height: 40px;
+          line-height: 40px;
+          background-color:@globalColor;
+          color: #FFFFFF;
+          box-shadow:0px 4px 8px 0px rgba(178,75,75,0.58);
+          font-size:16px;
+        }
+        button::after{
+          border:  none;
+        }
+      }
+    }
+  }*/
+
+  .coupon-box {
+    .mask {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.7);
+    }
+    .coupon-body {
+      position: fixed;
+      width: 90%;
+      /*height: 71%;*/
+      border-radius: 5px;
+      background-color: @globalColor;
+      top: 50%;
+      left: 50%;
+      padding: 0 25px;
+      transform: translate(-50%,-50%);
+      box-sizing: border-box;
+      z-index: 99;
+      .title {
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 22px;
+        margin-top: 25px;
+      }
+      .tips {
+        margin-top: 35px;
+        line-height: 20px;
+        color: #FFFFFF;
+        font-size: 13px;
+      }
+      .coupon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 15px 0;
+        padding: 0 15px;
+        width: 100%;
+        height: 60px;
+        background: url("http://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/18-11-19/7512419.jpg") no-repeat;
+        background-size: 100% 100%;
+        box-sizing: border-box;
+
+        .left {
+          display: flex;
+          overflow: hidden;
+          flex: 1;
+          .icon {
+            background: @globalColor;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 100%;
+
+            i {
+              color: #FFFFFF;
+              font-size: 25px;
+            }
+          }
+          .text-box {
+            margin-left: 10px;
+            overflow: hidden;
+            flex: 1;
+            .title {
+              text-align: left;
+              font-size: 16px;
+              color: #202020;
+              margin-top: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              /*margin-bottom: 10px;*/
+            }
+            .info {
+              font-size: 10px;
+              color: #909090;
+            }
+          }
+        }
+        .right {
+          color: @globalColor;
+          font-size:20px;
+          font-weight:600;
+          .money {
+            font-size: 14px;
+            font-weight: 100;
+          }
+        }
+      }
+      .user-tips {
+        color: #ffffff;
+        font-size: 10px;
+      }
+      .btn {
+        margin: 40px 0 35px 0;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        box-shadow:0px 4px 8px 2px rgba(0,0,0,0.2);
+        border-radius:4px;
+        background: #FFFFFF;
+        color: #B24B4B;
+        text-align: center;
+      }
+    }
+  }
+}

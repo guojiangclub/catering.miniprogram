@@ -1,0 +1,12 @@
+<view id="gidList">
+    <view class="gidItem mx-1px-bottom" wx:for="{{list}}">
+        <view class="wap">
+            <span class="title">群名称：</span>
+            <open-data type="groupName" open-gid="{{item.group_id}}"></open-data>
+        </view>
+        <view class="wap">
+            <span class="title">群 I D：</span>
+            <span class="name">{{item.group_id}}</span>
+        </view>
+    </view>
+</view>

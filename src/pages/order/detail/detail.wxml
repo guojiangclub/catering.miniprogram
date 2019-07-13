@@ -1,0 +1,57 @@
+<view id="order-detail">
+    <view class="order-header mx-1px-top">
+        <view class="order-num mx-1px-bottom order-item">
+            <view class="txt">订单编号:{{orderDetail.order_no}}</view>
+            <view class="status">
+                <block wx:if="{{orderDetail.status == 2}}">
+                    已完成
+                </block>
+                <block wx:if="{{orderDetail.status == 7}}">
+                    已退款
+                </block>
+            </view>
+        </view>
+    </view>
+    <view class="order-informa informa">
+        <view class="topic mx-1px-bottom">订单信息</view>
+        <view class="content">
+            <view class="list">
+                <span>订单编号：</span>{{orderDetail.order_no}}
+            </view>
+            <view class="list">
+                <span>支付方式：</span>{{orderDetail.payment_text}}
+            </view>
+            <view class="list">
+                <span>订单时间：</span>{{orderDetail.pay_time}}
+            </view>
+        </view>
+    </view>
+    <view class="order-remarks informa">
+        <view class="topic mx-1px-bottom">备注</view>
+        <view class="content" wx:if="{{orderDetail.note}}">{{orderDetail.note}}</view>
+        <view class="content" wx:else>暂无备注</view>
+    </view>
+    <view class="order-bill">
+        <view class="bill-content mx-1px-bottom">
+            <view class="list">
+                <span>商品金额：</span>
+                <span>¥ {{orderDetail.items_total_yuan}}</span>
+            </view>
+             <div class="list">
+                 <span> 积分抵扣：</span>
+                 <span>{{orderDetail.used_point_amount}}</span>
+             </div>
+            <view class="list">
+                <span>优惠抵扣：</span>
+                <span>{{orderDetail.used_adjustments_amount}}</span>
+            </view>
+            <view class="list">
+                <span>余额抵扣：</span>
+                <span>{{orderDetail.used_balance_amount}}</span>
+            </view>
+        </view>
+        <view class="paid">
+            已付：<span>¥ {{orderDetail.paid_amount}}</span>
+        </view>
+    </view>
+</view>

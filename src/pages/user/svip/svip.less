@@ -1,0 +1,158 @@
+#svip {
+  padding: 15px;
+
+  .svip-card {
+    position: relative;
+    width: 100%;
+    height: 195px;
+    background: url("https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E8%83%8C%E6%99%AF_%E7%94%BB%E6%9D%BF%201535353.png") no-repeat;
+    background-size: cover;
+    padding: 25px 0;
+    text-align: center;
+    border-radius: 4px;
+    image {
+      width: 80px;
+      height: 80px;
+      border-radius: 100%;
+      display: block;
+      margin: 0 auto;
+    }
+    .name {
+      color: #E1CB9C;
+      font-size: 13px;
+      margin: 15px 0;
+    }
+    .lv {
+      color: #C3BDB1;
+      font-size: 12px;
+    }
+    .svip-plan {
+      position: absolute;
+      top: 25px;
+      left: 15px;
+      font-size: 15px;
+      color: #E1CB9C;
+    }
+  }
+
+  .look {
+    text-align: center;
+    margin: 15px 0;
+    color: #B20004;
+    font-size: 13px;
+  }
+  .vip-wrap{
+    background: #FFFFFF;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 4px;
+
+    .item{
+      flex: 1;
+      width: 0%;
+      padding: 15px 5px;
+
+      .title{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666666;
+
+        i{
+          color: #666666;
+          margin-right: 5px;
+
+          &.money{
+            font-size: 14px;
+          }
+        }
+      }
+      .num{
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        text{
+          font-size: 14px;
+          font-weight: normal;
+        }
+      }
+      .operation{
+        //padding-top: 15px;
+
+        &.money{
+          color:#B20004;
+        }
+        &.point{
+          color:#B20004;
+        }
+        &.coupon{
+          color:#B20004;
+        }
+        text{
+          padding-top: 5px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .vip-equity {
+    .item {
+      background: #FFFFFF;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      .title {
+        font-size: 14px;
+        color: #333333;
+        font-weight: bold;
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        .text {
+          font-size: 12px;
+          color: #999999;
+          flex: 1;
+          margin-right: 20px;
+        }
+
+        .btn {
+          background:linear-gradient(180deg,rgba(228,212,168,1) 0%,rgba(219,182,126,1) 100%);
+          border-radius:4px;
+          font-size: 12px;
+          color: #333333;
+          padding: 6px 20px;
+
+          &.dis{
+            background: #424040;
+            color: #E1CB9C;
+          }
+        }
+      }
+    }
+  }
+  .right-svip {
+    position: fixed;
+    right: 0;
+    bottom: 80px;
+    background: #4B8AF2;
+    color: #FFFFFF;
+    font-size: 10px;
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5);
+    text-align: center;
+
+    i {
+      color: #FFFFFF;
+      font-size: 20px;
+    }
+  }
+}

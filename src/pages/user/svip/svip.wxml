@@ -1,0 +1,105 @@
+<view id="svip">
+    <view class="svip-card">
+        <image src="{{info.user.avatar}}"></image>
+        <view class="name">
+            {{info.user.nick_name}}
+        </view>
+        <view class="lv">
+            <block wx:if="{{info.plan.plan.level == 1}}">
+                当前会员等级VIP享受折扣9.5折
+            </block>
+            <block wx:if="{{info.plan.plan.level == 2}}">
+                当前会员等级SVIP享受折扣8.8折
+            </block>
+            <block wx:if="{{info.plan.plan.level == 3}}">
+                当前会员等级SVIP+享受折扣8.5折
+            </block>
+
+        </view>
+
+
+        <view class="svip-plan">
+            <block wx:if="{{info.plan.plan.level == 1}}">
+                VIP
+            </block>
+            <block wx:if="{{info.plan.plan.level == 2}}">
+                SVIP
+            </block>
+            <block wx:if="{{info.plan.plan.level == 3}}">
+                SVIP+
+            </block>
+        </view>
+    </view>
+
+    <view class="look" bindtap="jumpRights">
+        查看所有会员权益  》
+    </view>
+
+    <view class="vip-wrap">
+        <view class="item">
+            <view class="title">
+                <i class="iconfont icon-yue money"></i>
+                <view>余额</view>
+            </view>
+            <view class="num">
+                {{info.balance || 0.00}}
+                <text>元</text>
+            </view>
+            <view class="operation money">
+                <text class="mx-1px-top" bindtap="jumpRecharge"> 去充值 ></text>
+            </view>
+        </view>
+        <view class="item mx-1px-left" >
+            <view class="title">
+                <i class="iconfont icon-jifendikou point"></i>
+                <view>积分</view>
+            </view>
+            <view class="num">
+                {{info.point || 0.00}}
+            </view>
+            <view class="operation point">
+                <text class="mx-1px-top" bindtap="jumpPoint"> 去兑换 ></text>
+            </view>
+        </view>
+        <view class="item mx-1px-left" >
+            <view class="title">
+                <i class="iconfont icon-youhuiquan1 coupon"></i>
+                <view>优惠券</view>
+            </view>
+            <view class="num">
+                {{info.coupon || 0}}
+                <text>张</text>
+            </view>
+            <view class="operation coupon">
+                <text class="mx-1px-top" bindtap="jumpStore"> 去使用 ></text>
+            </view>
+        </view>
+    </view>
+
+    <view class="vip-equity" wx:if="{{info.privileges && info.privileges.length}}">
+        <view class="item" wx:for="{{info.privileges}}" wx:if="{{item.key != 'vip_agent'}}">
+            <view class="title">
+                {{item.name}}
+            </view>
+            <view class="box">
+                <view class="text">
+                    {{item.detail}}
+                </view>
+                <view class="btn-box" bindtap="jumpPath"  data-key="{{item.key}}" data-type="{{item.type}}" data-link="{{item.link}}">
+                    <view class="btn" wx:if="{{item.status == 1}}">
+                        去使用 >
+                    </view>
+                    <view class="btn dis" wx:if="{{item.status == 0}}">
+                        去升级 >
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <view class="right-svip" wx:for="{{info.privileges}}" wx:if="{{item.key == 'vip_agent'}}" bindtap="jumpPath" data-link="{{item.link}}" data-type="{{item.type}}">
+        <i class="iconfont icon-dianzhuquanxian"></i>
+        <view>{{item.name}}</view>
+    </view>
+</view>

@@ -1,0 +1,3 @@
+#web-view .content image {
+  width: 100% !important;
+}

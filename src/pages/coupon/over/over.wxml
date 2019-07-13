@@ -1,0 +1,82 @@
+<view id="coupon-over">
+
+
+    <view class="no-list" wx:if="{{!list[0].length && init}}">
+        <i class="iconfont icon-youhuiquan"></i>
+        <view>报告主人，您暂无优惠券~</view>
+    </view>
+
+    <view wx:for="{{list}}" wx:for-index="idx" wx:for-item="items">
+        <view class="coupon" wx:for="{{list[idx]}}">
+            <view class="coupon-left">
+                <view class="text-wrap">
+                    <view class="text-box">
+                        <view class="text">
+                            <text class="money" wx:if="{{item.discount.action_type.type == 'cash'}}">￥</text>
+                            <sapn>{{ item.discount.action_type.value }}</sapn>
+
+                            <text class="money" wx:if="{{item.discount.action_type.type == 'discount'}}">折</text>
+                        </view>
+                        <text class="label text">{{ item.discount.label }}</text>
+                    </view>
+
+                </view>
+                <view class="dot-wrap">
+                    <view class="dot-item">
+
+                    </view>
+                    <view class="dot-item">
+
+                    </view>
+                    <view class="dot-item">
+
+                    </view>
+                    <view class="dot-item">
+
+                    </view>
+                    <view class="dot-item">
+
+                    </view>
+                    <view class="dot-item">
+
+                    </view>
+                </view>
+            </view>
+            <view class="coupon-right">
+                <view class="top">
+                                <span class="type">
+                                    <span wx:if="{{item.discount.channel == 'ec'}}">商城</span>
+                                    <span wx:else>门店</span>
+                                </span>
+                    <text class="info">{{item.discount.title}}</text>
+                </view>
+                <view class="bottom">
+                    <view class="bottom-use">
+                        <view class="tiem-box">
+                            <text>{{item.discount.use_start_time}}至{{item.discount.use_end_time}}</text>
+                        </view>
+                        <view wx:if="{{is_coupon == 1}}">
+                            <!-- <view class="btn use" data-code="{{item.discount.code}}" data-index="{{idx}}" data-findex="{{index}}" wx:if="{{!item.discount.has_get}}" catchtap="getCoupon">
+                                 点击领取
+                             </view>-->
+                            <!--<view class="btn already"  data-id="{{item.id}}"  catchtap="jumpList">
+                                去使用
+                            </view>-->
+                        </view>
+
+
+                    </view>
+                </view>
+            </view>
+            <view class="cover">
+                <view class="big-circle">
+                    <view class="small-circle">
+                        <view animation="{{animationData}}" wx:if="{{item.used_at}}">已使用</view>
+                        <view animation="{{animationData}}" wx:else>已过期</view>
+
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

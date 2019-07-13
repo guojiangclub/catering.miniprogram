@@ -1,0 +1,16 @@
+<view id="phone">
+    <view class="phone__warning">
+        <i class="iconfont icon-anquanjinggao"></i>
+    </view>
+    <view class="phone__text">
+        为确保您账户的安全及正常使用，依《网络安全法》相关要求，6月1日起会员账户需绑定手机。如您还未绑定，请尽快完成，感谢您的理解及支持！
+    </view>
+    <button class="wechat-phoneBtn phone__btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <i class="iconfont icon-hudong"></i>
+        <view class="btn__text">使用注册微信手机号码</view>
+    </button>
+    <view class="again-phoneBtn phone__btn" bindtap="jumpPhone">
+        <i class="iconfont icon-hudong"></i>
+        <view class="btn__text">重新绑定新手机号码</view>
+    </view>
+</view>

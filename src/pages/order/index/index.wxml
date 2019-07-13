@@ -1,0 +1,39 @@
+<view id="order-index">
+    <view class="never" wx:if="{{orderList.length == 0 && init}}">暂无数据</view>
+    <view class="list-content" wx:if="{{orderList.length != 0 && init}}">
+        <view class="list-item" wx:for="{{orderList}}" wx:key="{{index}}" data-order="{{item.order_no}}" bindtap="jumpDetail">
+            <view class="title mx-1px-bottom">
+                <view class='order-no'>订单编号:{{item.order_no}}</view>
+                <view class="status-txt">
+                    <block wx:if="{{item.status == 2}}">
+                        已完成
+                    </block>
+                    <block wx:if="{{item.status == 7}}">
+                        已退款
+                    </block>
+                </view>
+            </view>
+            <view class="content">
+                <view class="shop-logo">
+                    <image src="../../../assets/image/logo.png"></image>
+                </view>
+                <view class="order-info">
+                    <view class="info">
+                        <span class="iconfont icon-weizhi"></span>
+                        仕堂川味老火锅
+                    </view>
+                    <view class="info time">
+                        <span class="iconfont icon-fujinjishi"></span>
+                        仕堂餐饮
+                    </view>
+                    <view class="info">
+                        {{item.pay_time}}
+                    </view>
+                    <view class="amount">
+                        ¥ {{item.paid_amount || 0}}
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

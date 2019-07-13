@@ -1,0 +1,12 @@
+<view class="rater">
+    <view class="rater-outer"
+          wx:for="{{max}}"
+          data-index="{{item}}"
+          bindtap="onClick">
+        {{star}}
+
+        <view class="rater-inner">
+            {{star}}
+        </view>
+    </view>
+</view>

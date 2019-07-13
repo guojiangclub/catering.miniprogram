@@ -1,0 +1,177 @@
+<view id="pay-bill">
+    <view class="header">
+        <view class="item">
+            <image src="{{userInfo.avatar}}"></image>
+            <view class="nick-name">{{userInfo.nick_name}}</view>
+        </view>
+        <view class="item">
+            <span class="iconfont icon-weizhi1"></span>
+            <view class="txt">仕堂火锅总店</view>
+        </view>
+    </view>
+    <view class="pay-content">
+        <view class="item mx-1px-bottom">
+            <div class="title">订单金额(元)</div>
+            <input type="digit" placeholder="请询问服务员后输入" value="{{amount}}" placeholder-class="input-placeholder"  bindinput="tatolInput"/>
+        </view>
+        <view class="item mx-1px-bottom recharge item-input" wx:if="{{balance == 0}}" bindtap="changeRecharge">
+            <view class="title">可用余额0抵扣0元</view>
+            <view class="vip-more">
+                <view class="txt">充值买单更优惠</view>
+                <span class="iconfont icon-jiantou"></span>
+            </view>
+        </view>
+        <view class="item mx-1px-bottom" wx:else>
+            <view class="title">可用{{form.balance.value / 100}}余额抵扣{{form.balance.money / 100}}元</view>
+            <switch checked="{{form.balance.status}}" color="#F02A4B" bindchange="balanceSwitch"></switch>
+        </view>
+        <view class="item mx-1px-bottom">
+            <view class="title">可用{{form.point.value}}积分抵扣{{form.point.money / 100}}元</view>
+            <switch checked="{{form.point.status}}" color="#F02A4B" bindchange="pointSwitch"></switch>
+        </view>
+        <view class="item item-input" bindtap="showDis">
+            <view class="title">优惠券</view>
+            <view class="vip-more">
+                <view class="txt" wx:if="{{select_coupon == ''}}">{{discountList.length}}张优惠券可用</view>
+                <view class="txt" wx:else>-￥{{form.coupon.money / 100}}</view>
+                <span class="iconfont icon-jiantou"></span>
+            </view>
+        </view>
+    </view>
+
+    <view class="recharge-box" wx:if="{{schemes}}">
+        <view class="recharge-title">
+            请选择充值金额
+        </view>
+        <view class="recharge-item-box">
+            <view class="item" wx:for="{{schemes}}" wx:key="{{index}}" data-item="{{item}}" bindtap="afterRecharge">
+                <view class="box">
+                    <view class="num nowrap">
+                        {{item.payment_amount / 100}}元
+                    </view>
+                    <view class="text nowrap">
+                        赠送<span>{{(item.amount - item.payment_amount) / 100}}</span>元
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!--<view class="remarks" hidden="{{!show_cover}}">
+        <span class="iconfont icon-xiepinglun"></span>
+        <textarea name="" id="" bindinput="note" placeholder="可填写备注"></textarea>
+    </view>-->
+
+    <!--<cover-view class="btn-box" wx:if="{{show_cover}}">
+        <cover-view class="item">
+            ￥{{pay_amount / 100 || 0}}
+        </cover-view>
+        <cover-view class="item btn" bindtap="submitOrder">
+            确认支付
+        </cover-view>
+    </cover-view>-->
+    <form bindsubmit="submitOrder" report-submit="{{report}}">
+        <view  class="btn-box" >
+            <view class="item">
+                ￥{{pay_amount / 100 || 0}}
+            </view>
+            <button class="item btn" form-type="submit">
+                确认支付
+            </button>
+        </view>
+    </form>
+
+    <!--点击会员优惠弹出-->
+    <view class="maks {{show_dis ? 'cur' : ''}}" bindtap="changedis"></view>
+    <view class="usable-box {{show_dis ? 'cur' : ''}}">
+        <view class="title mx-1px-bottom">
+            <view class="txt">可用优惠</view>
+            <view class="sure" bindtap="clearDis">确定</view>
+        </view>
+        <view class="content">
+            <radio-group class="radio-group" bindchange="disRadioChange">
+                <label class="radio mx-1px-bottom" wx:for="{{discountList}}" wx:key="{{index}}">
+                    <view class="txt">
+                        <view>{{item.discount.title}}</view>
+                        <view class="info">{{item.discount.label}}</view>
+                    </view>
+                    <radio color="#F02A4B" checked="{{item.isCheck}}" value="{{item.id}}"/>
+                </label>
+                <label class="radio mx-1px-bottom mar-b">
+                    <view class="txt">
+                        <view>不参与优惠</view>
+                    </view>
+                    <radio color="#F02A4B" value="-1"/>
+                </label>
+            </radio-group>
+        </view>
+    </view>
+
+    <!--点击会员充值方案-->
+    <view class="maks {{show_recharge ? 'cur' : ''}}" bindtap="changeRecharge"></view>
+    <view class="usable-box {{show_recharge ? 'cur' : ''}}">
+        <view class="title mx-1px-bottom">
+            <view bindtap="changeRecharge">
+                取消
+            </view>
+            <view class="txt">充值金额</view>
+            <view class="sure" data-type="radio" bindtap="rechargeSure">确定</view>
+        </view>
+        <view class="content">
+            <radio-group class="radio-group" bindchange="recharRadioChange">
+                <label class="radio mx-1px-bottom" wx:for="{{schemes}}" wx:key="{{index}}">
+                    <view class="txt">
+                        <view>{{item.title}}元</view>
+                    </view>
+                    <radio color="#F02A4B" checked="{{item.isCheck}}" value="{{index}}"/>
+                </label>
+                <!--<label class="radio mx-1px-bottom mar-b">
+                    <view class="txt">
+                        <view>暂不充值</view>
+                    </view>
+                    <radio color="#F02A4B" value="-1"/>
+                </label>-->
+            </radio-group>
+        </view>
+    </view>
+
+
+    <!--会员充值确认-->
+    <view class="maks {{show_sure ? 'cur' : ''}}"></view>
+    <form class="sure-box {{show_sure ? 'cur' : ''}}" bindsubmit="submitRecharge" report-submit="{{report}}">
+        <view class="title mx-1px-bottom">
+            确认充值
+        </view>
+        <view class="body">
+            <view class="type mx-1px-bottom">
+                <i class="iconfont icon-check-circle"></i>
+                {{rechargeItem.title}}
+            </view>
+            <view class="tips">
+                <view>
+                    储值须知
+                </view>
+                <view>
+                    1.电子储值卡的有效期为永久有效
+                </view>
+                <view>
+                    2.您可以在仕堂火锅店购买任意商品时使用
+                </view>
+                <view>
+                    3.电子储值卡可以多次使用，不可兑换现金，不找零
+                </view>
+                <view>
+                    4.充值电子储值卡按实际支付金额积分，赠送部分不积分
+                </view>
+            </view>
+        </view>
+        <view class="sure-btn-box mx-1px-top">
+            <view class="item" bindtap="clearSure">
+                取消
+            </view>
+            <button class="item sure" form-type="submit">
+                确认
+            </button>
+        </view>
+    </form>
+</view>

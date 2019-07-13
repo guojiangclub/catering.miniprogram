@@ -1,0 +1,78 @@
+@import "../../../assets/css/global";
+
+#recharge-balance{
+  .no-data {
+    text-align: center;
+  }
+  .content{
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    .balance-top{
+      color: #FFFFFF;
+      padding: 20px 15px;
+      background: @globalColor;
+
+      .title{
+        font-size: 12px;
+      }
+      .recharge-box{
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        font-size: 14px;
+
+        .money{
+          flex: 1;
+          font-size: 30px;
+        }
+
+      }
+    }
+    .tab-panel{
+      background-color: #FFFFFF;
+      margin-top: 10px;
+      display: flex;
+      box-sizing: border-box;
+      .tab-title{
+        height: 44px;
+        width: 50%;
+        line-height: 44px;
+        text-align: center;
+        box-sizing: border-box;
+        &.active{
+          color:@globalColor;
+          border-bottom: 2px solid @globalColor;
+        }
+      }
+    }
+    .tab-content{
+      margin-top: 10px;
+      //background-color: #FFFFFF;
+      .tab-item-content{
+        box-sizing: border-box;
+        padding-left: 12px;
+        padding-right: 12px;
+         display: flex;
+        line-height: 60px;
+        height: 60px;
+        background: #ffffff;
+        justify-content: space-between;
+        .num{
+          color: @globalColor;
+        }
+        .text{
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          line-height: 30px;
+          flex: 1;
+        }
+      }
+    }
+  }
+  .loadingbox {
+    text-align: center;
+    padding: 5px 0;
+  }
+}

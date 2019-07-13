@@ -1,0 +1,18 @@
+<view id="recharge-success">
+
+    <view class="contents" wx:if="{{init}}">
+        <view class="is-ok" wx:if="{{isOK}}">
+            <view class="text">
+               支付成功
+            </view>
+        </view>
+        <view class="is-ok" wx:if="{{!isOK}}">
+            <view class="no-text">
+                支付失败
+            </view>
+        </view>
+        <view class="button-box" bindtap="jump">
+            返回首页
+        </view>
+    </view>
+</view>

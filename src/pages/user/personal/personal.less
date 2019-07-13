@@ -1,0 +1,411 @@
+@import "../../../assets/css/global";
+#personalCenter{
+  .pc-banner{
+    //height:150px;
+    background: @mainColor;
+
+    &.uto-banner {
+      background: none;
+      .bg {
+        background-image: url("https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E8%83%8C%E6%99%AF_%E7%94%BB%E6%9D%BF%201535353.png");
+      }
+    }
+    .bg {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-image: url("https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/22%20copy.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 170px;
+      padding-left: 22px;
+
+      //padding:0 0 35px 17px;
+      .ban-item-l{
+        display: flex;
+        align-items: center;
+        .user-avatar{
+          width: 78px;
+          height: 78px;
+          border-radius: 50%;
+          margin-right: 15px;
+          image{
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+        .user-text{
+          font-size: 0px;
+          .nick-name{
+            font-size: 16px;
+            color: #ffffff;
+            padding-bottom: 8px;
+          }
+          .vip-text{
+            display: flex;
+            align-items: center;
+            .vip-grade{
+              color:#333;
+              width: 16px;
+              height: 16px;
+              text-align: center;
+              line-height: 16px;
+              border-radius: 50%;
+              background-color: #ffffff;
+              font-size: 10px;
+              font-weight: bold;
+            }
+            .vip-name{
+              color:#008CEE;
+              font-size: 10px;
+              width: 32px;
+              height: 17px;
+              line-height: 17px;
+              text-align: center;
+              background-color: #ffffff;
+              border-radius: 8px;
+              margin-left: 6px;
+
+              &.svip{
+                color: #E1CB9C;
+                background: #424040;
+              }
+            }
+          }
+        }
+      }
+      .ban-item-r{
+        text-align: right;
+        .private-letter{
+          opacity: 0;
+          position: relative;
+          padding:16px 16px 26px 0;
+          display: inline-block;
+          .iconfont{
+            color: #ffffff;
+            font-size:22px;
+          }
+          .dot{
+            position:absolute;
+            top: 20px;
+            right: 16px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: #ffffff;
+          }
+        }
+        .up-grade{
+          display: flex;
+          align-items: center;
+          background-color:#424040;
+          border-radius: 100px 0px 0px 100px;
+          color:#E1CB9C;
+          padding:6px 6px 6px 6px;
+          .icon-img{
+            width:27px;
+            height: 27px;
+            background-color:rgba(255,255,255,.15);
+            padding: 5px;
+            border-radius: 50%;
+            image{
+              width: 100%;
+              height: 100%;
+            }
+          }
+          .vip-copy{
+            font-size: 12px;
+            padding-left: 6px;
+
+            .pretty{
+              font-size: 14px;
+              font-weight: bold;
+              text-align: left;
+            }
+            .up{
+              font-size: 10px;
+              line-height: 14px;
+            }
+          }
+        }
+      }
+      .unlogin{
+        margin: 0 auto;
+        text-align: center;
+        height:125px;
+        line-height: 125px;
+        color: #ffffff;
+        font-size: 24px;
+      }
+
+      .setting {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        color: #FFFFFF;
+        font-size: 20px;
+      }
+    }
+
+  }
+
+
+  //绑定手机号
+  .binding__phone{
+    padding: 10px 15px;
+    background: #FBF6DC;
+    color: #FC6A00;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    .phone-text{
+      flex: 1;
+      margin-left: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &.binding__user{
+      text-align: left;
+      border-radius: 0;
+      line-height: normal;
+
+      &:after {
+        border: none;
+      }
+    }
+  }
+  //新的优惠券盒子样式
+  .new-coupons-box{
+    margin: 0 15px;
+    background-color: #251F2A;
+    position: relative;
+    top:-30px;
+    margin-bottom: -13px;
+    box-shadow:0px 3px 6px 1px rgba(0,0,0,0.15);
+    .top-item{
+      display: flex;
+      align-items: center;
+      justify-content:center;
+      padding:16px 0 0 0;
+      .info{
+        flex: 1;
+        text-align: center;
+        overflow: hidden;
+        .balance{
+          color: #fff;
+          font-size: 14px;
+          font-weight: 500;
+          padding-bottom: 5px;
+          line-height: 20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space:nowrap;
+        }
+
+        .txt{
+          color: #ffffff;
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+    .bottom-item{
+      padding: 18px 0;
+      .bg-img{
+        margin: 0 auto;
+        width: 70%;
+        display: flex;
+        align-items: center;
+        background: url("https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E4%BC%98%E6%83%A0%E5%88%B8665656.png") no-repeat;
+        background-size: 100% 100%;
+        .title{
+          flex: 5;
+          text-align: center;
+          color: #ffffff;
+          font-size:26px;
+          line-height: 37px;
+          margin: 9px 0 13px 0;
+        }
+        .number{
+          color:#ffffff;
+          flex:2;
+          text-align: center;
+          font-size:26px;
+          line-height: 37px;
+          margin: 9px 0 13px 0;
+        }
+      }
+
+    }
+  }
+  .all-orders{
+    background-color: #ffffff;
+    margin-bottom: 12px;
+    .order-header{
+      display: flex;
+      align-items: center;
+      justify-content:space-between ;
+      padding: 11px 15px 9px 15px;
+      .order-text{
+        font-size: 14px;
+        color: #000000;
+        line-height: 20px;
+        font-weight: bold;
+      }
+      .iconfont{
+        font-size: 12px;
+        color: #B3B3B3;
+      }
+    }
+    .order-content{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 0 10px 0;
+      .item{
+        flex: 1;
+        text-align: center;
+        font-size:12px;
+        color:#6A6A6A ;
+        position: relative;
+        .iconfont{
+          font-size: 20px;
+          color:#6A6A6A;
+        }
+        .position-num{
+          position: absolute;
+          top: 0;
+          right: 8px;
+          width:16px;
+          height: 16px;
+          line-height: 16px;
+          text-align: center;
+          background-color: #ffffff;
+          border: 1px solid @mainColor;
+          color: @mainColor;
+          font-size:10px;
+          border-radius: 50%;
+          overflow: hidden;
+          white-space: nowrap;
+          //text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  .info-detail{
+    display: flex;
+    padding: 15px 0px;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    margin-bottom: 12px;
+    .item{
+      flex: 1;
+      text-align: center;
+      font-size:12px;
+      color:#6A6A6A ;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      .number{
+        font-size: 16px;
+        color: #333;
+        line-height: 15px;
+        padding-bottom:7px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .section-serve{
+    background-color: #ffffff;
+    margin-bottom: 12px;
+    .title{
+      padding: 11px 15px 9px 15px;
+      font-size: 14px;
+      color: #000000;
+      line-height: 20px;
+      font-weight: bold;
+    }
+    .server-box{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      flex-wrap: wrap;
+      .item{
+        width:25%;
+        text-align: center;
+        padding:19px 0;
+        font-size: 12px;
+        color:#6A6A6A;
+        .iconfont{
+          font-size: 20px;
+          color: #ffffff;
+        }
+        .info{
+          display: inline-block;
+          width: 44px;
+          height: 44px;
+          line-height: 44px;
+          text-align: center;
+          background-color: #F25E62;
+          margin-bottom: 12px;
+          border-radius: 50%;
+        }
+        .mall{
+          background-color:#F8AB2C ;
+        }
+        .mi{
+          background-color:#5787ED;
+        }
+        .custom{
+          background-color: #37CEAC;
+        }
+        .center{
+          background-color:#5787ED ;
+        }
+        .team{
+          background-color:#D06D3C;
+        }
+      }
+    }
+  }
+  .section-activity{
+    background-color: #ffffff;
+    margin-bottom: 30px;
+    .title{
+      padding: 11px 15px 9px 15px;
+      font-size: 14px;
+      color: #000000;
+      line-height: 20px;
+      font-weight: bold;
+    }
+    .activity-box{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 0 15px 0;
+      .item{
+        flex: 1;
+        color:#6A6A6A ;
+        font-size: 12px;
+        text-align: center;
+        .iconfont{
+          color:#008CEE ;
+          font-size: 17px;
+          padding-bottom:10px;
+        }
+      }
+    }
+  }
+}

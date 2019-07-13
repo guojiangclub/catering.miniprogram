@@ -1,0 +1,14 @@
+<view id="agentlogin">
+    <view class="box">
+        <image mode="widthFix" src="https://cdn.ibrand.cc/agentlogin.png"></image>
+        <view class="btn-box">
+            <view class="text">
+                为了完整体小程序，我们需要您的授权信息（授权信息包含用户的昵称和头像）
+            </view>
+            <button class="btn" open-type="getUserInfo" bindgetuserinfo="bindgetuserinfo">
+                确认授权
+            </button>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,209 @@
+<view id="coupon-index">
+    <!--<view class="navbar mx-1px-top">
+        <block wx:for="{{tabList}}" wx:key="*this">
+            <view id="{{index}}" class="navbar-item activity" hidden="{{activeIndex != index}}" style="color: {{config.mainColor}}" bindtap="tabClick">
+                <view class="navbar-title">{{item.title}}</view>
+            </view>
+
+            <view id="{{index}}" hidden="{{activeIndex == index}}" class="navbar-item" bindtap="tabClick">
+                <view class="navbar-title">{{item.title}}</view>
+            </view>
+        </block>
+        <view class="navbar-slider" style="width: {{width}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px); background: {{config.mainColor}}"></view>
+    </view>-->
+    <view class="tab-panel" wx:if="{{token}}">
+        <view class="tab-content" hidden="{{activeIndex != 0}}">
+            <view class="no-list" wx:if="{{!dataList[0][0].length && tabList[0].init}}">
+                <i class="iconfont icon-youhuiquan"></i>
+                <view>报告主人，您暂无<sapn wx:if="{{is_coupon == 1}}">优惠券~</sapn><sapn wx:else>促销活动</sapn></view>
+            </view>
+            <view wx:for="{{dataList[0]}}" wx:for-index="idx" wx:for-item="items" wx:key="{{idx}}">
+                <view class="coupon" data-id="{{item.discount.id}}" bindtap="jumpDetailOn" wx:for="{{dataList[0][idx]}}"  wx:key="{{index}}">
+                    <view class="coupon-left {{is_coupon != 1 ? 'discount' : ''}}" style="background: {{config.mainColor}}">
+                        <view class="text-wrap">
+                            <view class="text-box">
+                                <view class="text">
+                                    <text class="money" wx:if="{{item.discount.action_type.type == 'cash'}}">￥</text>
+                                    <sapn>{{ item.discount.action_type.value }}</sapn>
+
+                                    <text class="money" wx:if="{{item.discount.action_type.type == 'discount'}}">折</text>
+                                </view>
+                                <text class="label text">{{ item.discount.label }}</text>
+                            </view>
+
+                        </view>
+                        <view class="dot-wrap">
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                        </view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="top">
+                                <span class="type">
+                                    <span wx:if="{{item.discount.channel == 'ec'}}">商城</span>
+                                    <span wx:else>门店</span>
+                                </span>
+                            <text class="info">{{item.discount.title}}</text>
+                        </view>
+                        <view class="bottom">
+                            <view class="bottom-use">
+                                <view class="tiem-box">
+                                    <text>{{item.discount.use_start_time}}至{{item.discount.use_end_time}}</text>
+                                </view>
+                                <view wx:if="{{is_coupon == 1}}">
+                                   <!-- <view class="btn use" data-code="{{item.discount.code}}" data-index="{{idx}}" data-findex="{{index}}" wx:if="{{!item.discount.has_get}}" catchtap="getCoupon">
+                                        点击领取
+                                    </view>-->
+                                    <!--<view class="btn already" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}"  data-id="{{item.id}}"  catchtap="jumpList">
+                                        去使用
+                                    </view>-->
+                                </view>
+
+
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <!--<view class="tab-content" hidden="{{activeIndex != 1}}">
+            <view class="no-list" wx:if="{{!dataList[1][0].length && tabList[1].init}}">
+                <i class="iconfont icon-youhuiquan"></i>
+                <view>报告主人，您暂无<sapn wx:if="{{is_coupon == 1}}">优惠券~</sapn><sapn wx:else>促销活动</sapn></view>
+            </view>
+            <view wx:for="{{dataList[1]}}" wx:for-index="idx" wx:for-item="items">
+                <view class="coupon" data-id="{{item.discount.id}}" data-coupon="{{item.id}}" bindtap="jumpDetail" wx:for="{{dataList[1][idx]}}">
+                    <view class="coupon-left  {{is_coupon != 1 ? 'discount' : ''}}" style="background: {{config.mainColor}}">
+                        <view class="text-wrap">
+                            <view class="text-box">
+                                <view class="text">
+                                    <text class="money" wx:if="{{item.discount.action_type.type == 'cash'}}">￥</text>
+                                    <sapn>{{ item.discount.action_type.value }}</sapn>
+
+                                    <text class="money" wx:if="{{item.discount.action_type.type == 'discount'}}">折</text>
+                                </view>
+                                <text class="label text">{{ item.discount.label }}</text>
+                            </view>
+
+                        </view>
+                        <view class="dot-wrap">
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                            <view class="dot-item">
+
+                            </view>
+                        </view>
+                    </view>
+                    <view class="coupon-right">
+                        <view class="top">
+                                <span class="type">
+                                    <span wx:if="{{item.discount.channel == 'ec'}}">商城</span>
+                                    <span wx:else>门店</span>
+                                </span>
+                            <text class="info">{{item.discount.title}}</text>
+                        </view>
+                        <view class="bottom">
+                            <view class="bottom-use">
+                                <view class="tiem-box">
+                                    <text>{{item.discount.use_start_time}}至{{item.discount.use_end_time}}</text>
+                                </view>
+                                <view wx:if="{{is_coupon == 1}}">
+                                    &lt;!&ndash;<view class="btn use" data-code="{{item.discount.code}}" data-index="{{idx}}" data-findex="{{index}}" wx:if="{{!item.discount.has_get}}" catchtap="getCoupon">
+                                        点击领取
+                                    </view>&ndash;&gt;
+                                    <view class="btn already" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}"  data-id="{{item.discount.id}}" data-coupon="{{item.id}}"  catchtap="jumpDetail">
+                                        去使用
+                                    </view>
+                                </view>
+
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>-->
+    </view>
+    <view class="see-over" bindtap="toast" wx:if="{{token}}">
+        查看已失效优惠券
+    </view>
+</view>
+
+
+<view id="transfer">
+    <view class="coupon-box" wx:if="{{coupon && coupon.dialog}}">
+        <view class="mask">
+
+        </view>
+        <view class="coupon-body">
+            <view class="title">
+                新人礼
+            </view>
+            <view class="tips">
+                <view>
+                    Hi，亲爱的会员
+                </view>
+                <view>
+                    这是我送给你的优惠券，快领取吧！
+                </view>
+            </view>
+
+            <view class="coupon" wx:for="{{coupon.coupons}}" wx:key="{{index}}">
+                <view class="left">
+                    <view class="icon">
+                        <i class="iconfont icon-gift"></i>
+                    </view>
+                    <view class="text-box">
+                        <view class="title nowarp">
+                            {{item.title}}
+                        </view>
+                        <view class="info">
+                            仅支持仕堂火锅使用
+                        </view>
+                    </view>
+                </view>
+                <view class="right">
+                    <text class="money" wx:if="{{item.action_type.type == 'cash'}}">￥</text>
+                    <sapn>{{ item.action_type.value }}</sapn>
+
+                    <text class="money" wx:if="{{item.action_type.type == 'discount'}}">折</text>
+                </view>
+            </view>
+            <view class="user-tips">
+                优惠券请到“我的优惠券”查看
+            </view>
+
+            <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                领取新人礼
+            </button>
+        </view>
+    </view>
+</view>

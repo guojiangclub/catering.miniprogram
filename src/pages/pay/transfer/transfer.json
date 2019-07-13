@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "仕堂火锅",
+  "usingComponents": {
+    "coupon": "../../../component/coupon/main"
+  }
+}

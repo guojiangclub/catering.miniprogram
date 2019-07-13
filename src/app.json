@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index/index",
+    "pages/address/add/add",
+    "pages/address/list/list",
+    "pages/pointStore/index/index",
+    "pages/pointStore/record/record",
+    "pages/pointStore/detail/detail",
+    "pages/pointStore/order/order",
+    "pages/pointStore/success/success",
+    "pages/pointStore/orderdetail/orderdetail",
+    "pages/user/personal/personal",
+    "pages/user/phone/phone",
+    "pages/user/svip/svip",
+    "pages/user/bindingphone/bindingphone",
+    "pages/user/register/register",
+    "pages/user/loginType/loginType",
+    "pages/user/gidList/gidList",
+    "pages/user/usersetting/usersetting",
+    "pages/point/index/index",
+    "pages/pay/payBill/payBill",
+    "pages/pay/transfer/transfer",
+    "pages/pay/recharge/recharge",
+    "pages/pay/success/success",
+    "pages/coupon/index/index",
+    "pages/coupon/over/over",
+    "pages/coupon/onDetail/onDetail",
+    "pages/recharge/index/index",
+    "pages/order/index/index",
+    "pages/order/detail/detail"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "为了提高服务质量，请允许我们获取您的位置信息"
+    }
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "商城首页",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F3F3F3"
+  },
+  "plugins": {
+    "wxparserPlugin": {
+      "version": "0.2.1",
+      "provider": "wx9d4d4ffa781ff3ac"
+    }
+  }
+}

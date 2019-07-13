@@ -1,0 +1,18 @@
+<view id="messagePage">
+    <view class="content">
+        <view class="item mx-1px-bottom" wx:for="{{list}}" wx:key="{{index}}" bindtap="jump" data-link="{{item.link}}">
+            <view class="left-info" style="background-color: {{item.icon_bg_color}}">
+                <span class="{{item.icon}}"></span>
+            </view>
+            <view class="middle-info">
+                {{item.title}}
+            </view>
+            <view class="right-info">
+                <span>{{item.count}}</span>
+                <view class="iconfont icon--xiangyoujiantou"></view>
+            </view>
+        </view>
+    </view>
+
+
+</view>

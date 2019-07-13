@@ -1,0 +1,239 @@
+<view id="personalCenter" wx:if="{{accountInfoInit}}">
+
+
+    <!--uto不用-->
+    <view class="pc-banner" style="background: {{config.mainColor}}" bindtap="jumpImg" wx:if="{{accountInfo.miniProgram.appId != 'wx53d4c6e7b2c13a13'}}">
+        <view class="bg">
+            <view class="ban-item-l" wx:if="{{token}}">
+                <view class="user-avatar">
+                    <image src="{{detail.avatar}}"></image>
+                </view>
+                <view class="user-text">
+                    <view class="nick-name">{{detail.nick_name}}</view>
+                    <view class="vip-text">
+                        <view class="vip-grade">V{{detail.grade}}</view>
+                        <view class="vip-name" wx:if="{{detail.is_agent}}">{{detail.agent_name}}</view>
+                        <view class="vip-name svip" wx:if="{{detail.vip}}">
+                            <block wx:if="{{detail.vip.plan.level == 1}}">
+                                VIP
+                            </block>
+                            <block wx:if="{{detail.vip.plan.level == 2}}">
+                                SVIP
+                            </block>
+                            <block wx:if="{{detail.vip.plan.level == 3}}">
+                                SVIP+
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="ban-item-r" wx:if="{{token}}">
+                <!--<view class="private-letter">
+                    <view class="iconfont icon&#45;&#45;xiaoxi"></view>
+                    <view class="dot"></view>
+                </view>-->
+                <view class="up-grade" catchtap="jumpVip">
+                    <view class="icon-img">
+                        <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E4%BC%9A%E5%91%98.png"></image>
+                    </view>
+                    <view class="vip-copy">
+                        <view class="pretty">VIP</view>
+                        <view class="up">升级领特权</view>
+                    </view>
+                </view>
+            </view>
+
+
+            <view class="iconfont icon-shezhi setting">
+
+            </view>
+            <view class="unlogin" wx:if="{{!token}}">
+                登录/注册
+            </view>
+        </view>
+
+    </view >
+
+
+    <!--uto专用-->
+    <view class="pc-banner uto-banner" bindtap="jumpImg" wx:if="{{accountInfo.miniProgram.appId == 'wx53d4c6e7b2c13a13'}}">
+        <view class="bg">
+            <view class="ban-item-l" wx:if="{{token}}">
+                <view class="user-avatar">
+                    <image src="{{detail.avatar}}"></image>
+                </view>
+                <view class="user-text">
+                    <view class="nick-name">{{detail.nick_name}}</view>
+                    <view class="vip-text">
+                        <view class="vip-grade">V{{detail.grade}}</view>
+                        <view class="vip-name" wx:if="{{detail.is_agent}}">{{detail.agent_name}}</view>
+                        <view class="vip-name svip" wx:if="{{detail.vip}}">
+                            <block wx:if="{{detail.vip.plan.level == 1}}">
+                                VIP
+                            </block>
+                            <block wx:if="{{detail.vip.plan.level == 2}}">
+                                SVIP
+                            </block>
+                            <block wx:if="{{detail.vip.plan.level == 3}}">
+                                SVIP+
+                            </block>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="ban-item-r" wx:if="{{token}}">
+                <!--<view class="private-letter">
+                    <view class="iconfont icon&#45;&#45;xiaoxi"></view>
+                    <view class="dot"></view>
+                </view>-->
+                <view class="up-grade" catchtap="jumpVip">
+                    <view class="icon-img">
+                        <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/%E4%BC%9A%E5%91%98.png"></image>
+                    </view>
+                    <view class="vip-copy">
+                        <view class="pretty">VIP</view>
+                        <view class="up">升级领特权</view>
+                    </view>
+                </view>
+            </view>
+
+
+            <view class="iconfont icon-shezhi setting">
+
+            </view>
+            <view class="unlogin" wx:if="{{!token}}">
+                登录/注册
+            </view>
+        </view>
+
+    </view >
+
+
+
+    <view class="binding__phone" bindtap="jumpPhone" wx:if="{{!detail.mobile && token && init}}">
+        <i class="iconfont icon-warning"></i>
+        <view class="phone-text">应国家监管要求，会员账户需绑定手机号码。</view>
+        <i class="iconfont icon-Chevron"></i>
+    </view>
+    <button class="binding__phone binding__user" open-type="getUserInfo" bindgetuserinfo="bindUserInfo" wx:if="{{!detail.user_info_fill && token && init}}">
+        <i class="iconfont icon-warning"></i>
+        <view class="phone-text">请完善个人信息</view>
+        <!--<i class="iconfont icon-Chevron"></i>-->
+    </button>
+    <!--优惠券UTO专用-->
+    <view class="new-coupons-box" style="top: {{top}}; margin-bottom: {{bottom}};" wx:if="{{accountInfo.miniProgram.appId == 'wx53d4c6e7b2c13a13'}}">
+        <view class="top-item">
+            <view class="info mx-1px-right" bindtap="jumpBalance">
+                <view class="balance">{{newdetail.balance || 0}}</view>
+                <view class="txt">余额</view>
+            </view>
+            <view class="info" data-url="/pages/point/index/index" bindtap="jumpItem">
+                <view class="balance">{{newdetail.point || 0}}</view>
+                <view class="txt">可用积分</view>
+            </view>
+        </view>
+        <view class="bottom-item">
+            <view class="bg-img" data-url="/pages/coupon/index/index" bindtap="jumpItem">
+                <view class="title">
+                    优惠券
+                </view>
+                <view class="number">
+                    X {{newdetail.coupon || 0}}
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="all-orders">
+        <view class="order-header mx-1px-bottom" data-status="0" bindtap="jump">
+            <view class="order-text">全部订单</view>
+            <view class="iconfont icon-Chevron"></view>
+        </view>
+        <view class="order-content">
+            <view class="item" data-status="1" bindtap="jump">
+                <view class="iconfont icon--daifukuan"></view>
+                <view>待付款</view>
+                <view class="position-num" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}" wx:if="{{newdetail.newCount}}">{{newdetail.newCount}}</view>
+            </view>
+            <view class="item"  data-status="2" bindtap="jump">
+                <view class="iconfont icon--daifahuo"></view>
+                <view>待发货</view>
+                <view class="position-num" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}" wx:if="{{newdetail.paidCount}}">{{newdetail.paidCount}}</view>
+            </view>
+            <view class="item"  data-status="3" bindtap="jump">
+                <view class="iconfont icon--daishouhuo"></view>
+                <view>待收货</view>
+                <view class="position-num" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}" wx:if="{{newdetail.deliveredCount}}">{{newdetail.deliveredCount}}</view>
+            </view>
+            <!--uto不用-->
+
+            <view class="item" bindtap="jumpComment"  wx:if="{{accountInfo.miniProgram.appId != 'wx53d4c6e7b2c13a13'}}">
+                <view class="iconfont icon--daipingjia"></view>
+                <view>待评价</view>
+                <view class="position-num" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}" wx:if="{{newdetail.receiveCount}}">{{newdetail.receiveCount}}</view>
+            </view>
+            <view class="item"  bindtap="jumpAfterSales">
+                <view class="iconfont icon-shouhou"></view>
+                <view>售后</view>
+            </view>
+        </view>
+    </view>
+    <!--uto不用-->
+    <view class="info-detail" wx:if="{{accountInfo.miniProgram.appId != 'wx53d4c6e7b2c13a13'}}">
+        <view class="item"  bindtap="jumpFavor">
+            <view class="number"><text>{{newdetail.favCount || 0}}</text></view>
+            <view>收藏</view>
+        </view>
+        <view class="item"  bindtap="jumpAddress">
+            <view class="number"><text>{{newdetail.addressCount || 0}}</text></view>
+            <view>地址</view>
+        </view>
+        <view class="item" bindtap="jumpBalance">
+            <view class="number"><text>{{newdetail.balance || 0}}</text></view>
+            <view>余额</view>
+        </view>
+        <view class="item" data-url="/pages/point/index/index" bindtap="jumpItem">
+            <view class="number"><text>{{newdetail.point || 0}}</text></view>
+            <view>积分</view>
+        </view>
+        <view class="item" data-url="/pages/coupon/index/index" bindtap="jumpItem">
+            <view class="number"><text>{{newdetail.coupon || 0}}</text></view>
+            <view>优惠券</view>
+        </view>
+    </view>
+    <view class="section-serve" wx:if="{{initInfo.need_sign_in || initInfo.point_mall_status || initInfo.built_sns_status || detail.distribution_status}}">
+        <view class="title mx-1px-bottom">我的服务</view>
+        <view class="server-box mx-1px-bottom">
+            <!--uto不用-->
+            <view class="item"  bindtap="jumpCollar" wx:if="{{initInfo.need_sign_in}}" wx:if="{{accountInfo.miniProgram.appId != 'wx53d4c6e7b2c13a13'}}">
+                <view class="iconfont icon-daqiaqiandao info"></view>
+                <view>打卡签到</view>
+            </view>
+            <view class="item" bindtap="jumpPoint" wx:if="{{initInfo.point_mall_status}}">
+                <view class="iconfont icon--jifen info mall"></view>
+                <view>积分商城</view>
+            </view>
+            <view class="item" bindtap="jumpTravel" wx:if="{{initInfo.built_sns_status}}">
+                <view class="iconfont icon-mifenquan info mi"></view>
+                <view>我的{{initInfo.built_sns_title}}</view>
+            </view>
+            <view class="item" wx:if="{{detail.distribution_status == 1 && detail.is_agent == 1}}" data-url="/pages/distribution/distributionCenter/distributionCenter" bindtap="jumpItem">
+                <view class="iconfont icon--fenxiaozhongxin info"></view>
+                <view>分销中心</view>
+            </view>
+            <view class="item" wx:if="{{detail.distribution_status == 1 && detail.distribution_recruit_status == 1 && detail.is_agent == 0}}" data-url="/pages/distribution/applyDistribution/applyDistribution" bindtap="jumpItem">
+                <view class="iconfont icon--fenxiaozhongxin info"></view>
+                <view>加入分销</view>
+            </view>
+            <view class="item" wx:if="{{detail.wecaht_group}}" data-url="/pages/user/gidList/gidList" bindtap="jumpItem">
+                <view class="iconfont icon--weixin info mi"></view>
+                <view>群列表</view>
+            </view>
+        </view>
+    </view>
+    <view class="ibrand-author" wx:if="{{author}}" bindtap="jumpAuthor">
+        <i class="iconfont icon-dibu"></i>
+    </view>
+</view>
+
+<import src="../../../component/birthday/birthday.wxml" />
+<template is="birthdayToast" data="{{...birthdayToast}}"></template>

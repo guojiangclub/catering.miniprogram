@@ -1,0 +1,49 @@
+<view id="transfer">
+    <view class="coupon-box" wx:if="{{coupon && coupon.dialog}}">
+        <view class="mask">
+
+        </view>
+        <view class="coupon-body">
+            <view class="title">
+                新人礼
+            </view>
+            <view class="tips">
+                <view>
+                    Hi，亲爱的会员
+                </view>
+                <view>
+                    这是我送给你的优惠券，快领取吧！
+                </view>
+            </view>
+
+            <view class="coupon" wx:for="{{coupon.coupons}}" wx:key="{{index}}">
+                <view class="left">
+                    <view class="icon">
+                        <i class="iconfont icon-gift"></i>
+                    </view>
+                    <view class="text-box">
+                        <view class="title nowarp">
+                            {{item.title}}
+                        </view>
+                        <view class="info">
+                            仅支持仕堂火锅使用
+                        </view>
+                    </view>
+                </view>
+                <view class="right">
+                    <text class="money" wx:if="{{item.action_type.type == 'cash'}}">￥</text>
+                    <sapn>{{ item.action_type.value }}</sapn>
+
+                    <text class="money" wx:if="{{item.action_type.type == 'discount'}}">折</text>
+                </view>
+            </view>
+            <view class="user-tips">
+                优惠券请到“我的优惠券”查看
+            </view>
+
+            <button class="btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+                领取新人礼
+            </button>
+        </view>
+    </view>
+</view>

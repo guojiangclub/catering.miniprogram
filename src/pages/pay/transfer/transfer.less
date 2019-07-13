@@ -1,0 +1,158 @@
+@import "../../../assets/css/global";
+
+#transfer{
+  /*.panel{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    //background-color: rgba(0,0,0,.7);
+    .panel-body{
+      position: absolute;
+      width: 80%;
+      height: 71%;
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      .content{
+        .agreement{
+          text-align: center;
+          padding: 35px 42px 11px 42px;
+          color:#9B9B9B ;
+          font-size: 11px;
+          line-height: 15px;
+          span{
+            color:@globalColor ;
+          }
+        }
+      }
+      .foot-btn{
+        padding:0 40px 0 40px;
+        button{
+          background-color:#FFFFFF ;
+          border-radius: 26px;
+          height: 40px;
+          line-height: 40px;
+          background-color:@globalColor;
+          color: #FFFFFF;
+          box-shadow:0px 4px 8px 0px rgba(178,75,75,0.58);
+          font-size:16px;
+        }
+        button::after{
+          border:  none;
+        }
+      }
+    }
+  }*/
+
+  .coupon-box {
+    .mask {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.7);
+    }
+    .coupon-body {
+      position: fixed;
+      width: 90%;
+      /*height: 71%;*/
+      border-radius: 5px;
+      background-color: @globalColor;
+      top: 50%;
+      left: 50%;
+      padding: 0 25px;
+      transform: translate(-50%,-50%);
+      box-sizing: border-box;
+      z-index: 99;
+      .title {
+        text-align: center;
+        color: #FFFFFF;
+        font-size: 22px;
+        margin-top: 25px;
+      }
+      .tips {
+        margin-top: 35px;
+        line-height: 20px;
+        color: #FFFFFF;
+        font-size: 13px;
+      }
+      .coupon {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 15px 0;
+        padding: 0 15px;
+        width: 100%;
+        height: 60px;
+        background: url("http://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/18-11-19/7512419.jpg") no-repeat;
+        background-size: 100% 100%;
+        box-sizing: border-box;
+
+        .left {
+          display: flex;
+          overflow: hidden;
+          flex: 1;
+          .icon {
+            background: @globalColor;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 100%;
+
+            i {
+              color: #FFFFFF;
+              font-size: 25px;
+            }
+          }
+          .text-box {
+            margin-left: 10px;
+            overflow: hidden;
+            flex: 1;
+            .title {
+              text-align: left;
+              font-size: 16px;
+              color: #202020;
+              margin-top: 0;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              /*margin-bottom: 10px;*/
+            }
+            .info {
+              font-size: 10px;
+              color: #909090;
+            }
+          }
+        }
+        .right {
+          color: @globalColor;
+          font-size:20px;
+          font-weight:600;
+          .money {
+            font-size: 14px;
+            font-weight: 100;
+          }
+        }
+      }
+      .user-tips {
+        color: #ffffff;
+        font-size: 10px;
+      }
+      .btn {
+        margin: 40px 0 35px 0;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        box-shadow:0px 4px 8px 2px rgba(0,0,0,0.2);
+        border-radius:4px;
+        background: #FFFFFF;
+        color: #B24B4B;
+        text-align: center;
+      }
+    }
+  }
+}
