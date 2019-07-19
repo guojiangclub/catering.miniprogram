@@ -31,23 +31,6 @@ Page({
    },
    onLoad(e){
 
-        // 第三方平台配置颜色
-       var bgConfig = cookieStorage.get('globalConfig') || '';
-       this.setData({
-           config: bgConfig
-       })
-       // var status=0,page=1;
-       // this.queryBalanceList(token);
-       var status=e.type?e.type:0;
-       var page=this.data.tabList[status].page;
-       pageLogin(getUrl(),(token)=>{
-           this.setData({
-               'token':token
-           });
-           this.queryBalanceList(token,status,page);
-           this.queryUserSum(token);
-       });
-
    },
     jump() {
 	    wx.navigateTo({
@@ -69,24 +52,6 @@ Page({
            this.queryBalanceList(this.data.token,status,page);
        }
    },
-    onReachBottom(e){
-       // console.log(e);
-        var status =this.data.activeIndex;
-        var page = this.data.tabList[status].page + 1;
-        var tabList = `tabList[${status}]`;
-        if(this.data.tabList[status].more){
-            this.setData({
-                [`${tabList}.show`]: true
-            });
-            var token=this.data.token;
-            this.queryBalanceList(token,status,page);
-        }else{
-            wx.showToast({
-                icon: 'none',
-                title: '再拉也没有啦'
-            });
-        }
-    },
     result(res,status){
        if(res.status){
            var list;

@@ -1,868 +1,220 @@
-<!--微页面-->
-<view id="microData">
-    <block wx:if="{{microData && microData.pages && microData.pages.length}}">
-        <view wx:for="{{microData.pages}}" wx:key="{{index}}">
-            <view wx:if="{{item.name == 'micro_page_componet_search'}}">
-                <!--搜索按钮-->
-                <view class="banner">
-                    <view class="search">
-                        <div class="menu-box" bindtap="jumpMenu">
-                            <i class="iconfont icon-fenzu">
+<View id="index">
+    <image mode="widthFix" class="index-bg" src="https://cdn.ibrand.cc/shitang949394.png">
 
-                            </i>
-                        </div>
-                        <view class="search_box">
-                            <input type="text" value="" bindinput="search" disabled confirm-type="search" bindtap="jumpToSearch"/>
-                            <icon type="search" size="20"/>
+    </image>
 
-                        </view>
+    <view class="content">
+        <view class="card-box">
+            <view class="user-info">
+                <image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg">
+
+                </image>
+                <view class="name-box">
+                    <view class="tag">
+                        仕堂黄金会员
+                    </view>
+                    <view class="num">
+                        1003833203984
                     </view>
                 </view>
+                <image src="https://cdn.ibrand.cc/user-0718.png" class="ticket-box">
+
+                </image>
             </view>
-            <!--轮播图组件-->
-            <view wx:if="{{item.name == 'micro_page_componet_slide' && item.value && item.value.length}}">
-                <indexBanner banner-data="{{item.value}}" screen-width="{{screenWidth}}"></indexBanner>
-            </view>
-            <!--优惠券组件-->
-            <view wx:if="{{item.name == 'micro_page_componet_coupon' && item.value && item.value.length}}">
-                <indexCoupon index-coupon="{{item.value}}" config="{{config}}" bindmyGetCoupon="getCoupon"></indexCoupon>
-            </view>
-            <!--套餐-->
-            <view wx:if="{{item.name == 'micro_page_componet_suit' && item.value && item.value.length}}">
-                <indexSuit suit-data="{{item.value}}" index-data="{{indexData}}"></indexSuit>
-            </view>
-            <!--拼团-->
-            <view wx:if="{{item.name == 'micro_page_componet_groupon' && item.value && item.value.length}}">
-                <indexGroupon index-data="{{item.value}}" config="{{config}}" server="{{microData.server_time}}" typename="拼团"></indexGroupon>
-            </view>
-            <!--秒杀-->
-            <view wx:if="{{item.name == 'micro_page_componet_seckill' && item.value && item.value.length}}">
-                <indexSeckill index-data="{{item.value}}" config="{{config}}" server="{{microData.server_time}}" big-index="{{index}}" bind:startevent="isStarts" bind:endevent="isEnd"></indexSeckill>
-            </view>
-            <!--打call indexCall-->
-            <view wx:if="{{item.name == 'micro_page_componet_free_event' && item.value && item.value.length}}">
-                <indexCall call-data="{{item.value}}" config="{{config}}" is-login="{{isLogin}}" server="{{microData.server_time}}"></indexCall>
-            </view>
-            <!--快捷导航-->
-            <view wx:if="{{item.name == 'micro_page_componet_nav' && item.value && item.value.length}}">
-                <indexNav nav-data="{{item.value}}"></indexNav>
-            </view>
-            <!--图片魔方-->
-            <view  wx:if="{{item.name == 'micro_page_componet_cube' && item.value && item.value.length}}">
-                <indexCube cube-data="{{item.value}}" show-type="{{item.type}}" cube-title="{{item.title}}"></indexCube>
-            </view>
-            <!--分类商品-->
-            <view  wx:if="{{item.name == 'micro_page_componet_category' && item.value && item.value.length}}">
-                <indexCategory category-data="{{item.value}}"></indexCategory>
-            </view>
-            <!--商品分组-->
-            <view  wx:if="{{item.name == 'micro_page_componet_goods_group' && item.value && item.value.length}}">
-                <indexGrouping grouping-data="{{item.value}}"></indexGrouping>
+            <view class="num-box">
+                <view class="num-item">
+                    <view class="num">
+                        999
+                    </view>
+                    <view class="name">
+                        余额
+                    </view>
+                </view>
+                <view class="num-item point">
+                    <view class="num">
+                        999
+                    </view>
+                    <view class="name">
+                        积分
+                    </view>
+                </view>
+                <view class="num-item">
+                    <view class="num">
+                        9 张
+                    </view>
+                    <view class="name">
+                        优惠券
+                    </view>
+                </view>
             </view>
         </view>
-    </block>
+        <view class="privilege-box ">
+            <view class="title-box">
+                <view class="title-line">
 
-    <view class="ibrand-author" wx:if="{{author}}" bindtap="jumpAuthor">
-        <i class="iconfont icon-dibu"></i>
-    </view>
-
-<!--    <view class="author" wx:if="{{author}}">
-        <image mode="widthFix" src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/mier.png"></image>
-        <view>
-            湘ICP备17006292号
-        </view>
-        <view>
-            ©️ 湖南米尔版权所有
-        </view>
-        &lt;!&ndash;iBrand社交新零售 · 提供技术支持&ndash;&gt;
-    </view>-->
-    <!--新人礼小图标-->
-    <view class="new-gift" bindtap="showModal" wx:if="{{!isLogin && noLoginGift}}">
-        <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/new-gift.png" />
-    </view>
-
-    <view class="index-gift-box" wx:if="{{showNoGift}}">
-        <view class="mask">
-
-        </view>
-        <view class="box">
-            <view class="title">
-                <!--这是优惠券头头-->
-                <view class="title-info">
-                    <!--领取成功状态-->
-                    <view class="new-success">
-                        <view class="text">
-                            {{noLoginGift.title}}
-                        </view>
-                        <div class="tips">
-                            数量有限，先到先得
-                        </div>
-                    </view>
                 </view>
-                <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/X.png" bindtap="close"/>
-                <!--<i class="iconfont icon-cha-"></i>-->
-            </view>
-            <view class="coupon-list">
-                <!--积分-->
-                <view class="item point" wx:if="{{noLoginGift.point}}">
-                    <view class="left">
-                        <view class="lable">
-                            赠送积分
-                        </view>
-                    </view>
-                    <view class="right">
-                        {{noLoginGift.point}}
-                    </view>
-                </view>
-
-                <!--优惠券-->
-                <view class="item" wx:for="{{noLoginGift.gift}}">
-                    <view class="left">
-                        <view class="lable">
-                            {{item.coupon.title}}
-                        </view>
-                        <view class="time">
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </view>
-                    </view>
-                    <view class="right">
-                        {{item.coupon.label}}
-                    </view>
+                <view class="title">
+                    我的特权
                 </view>
             </view>
-            <!--@click="login"-->
-            <view class="buttom" bindtap="login">
-                <span>立即领取</span>
+            <view class="img-box">
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
+                <view class="img-item">
+                    <image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg"></image>
+                    <view>会员价</view>
+                </view>
             </view>
         </view>
-    </view>
-
-    <view class="index-gift-box" wx:if="{{showGift}}">
-        <view class="mask">
-
-        </view>
-        <view class="box">
-            <view class="title">
-                <!--这是优惠券头头-->
-                <view class="title-info">
-                    <!--老用户-->
-                    <!--v-if="!loginGift.activity.is_new_user"-->
-                    <view class="new-success" wx:if="{{!loginGift.activity.is_new_user}}">
-                        <view class="text">
-                            仅限新人领取
-                        </view>
-                        <view class="tips">
-                            你可是老朋友哦
-                        </view>
-                    </view>
-
-                    <!--抢光了-->
-                    <!--v-if="loginGift.activity.is_new_user && !loginGift.activity.receive_coupon_num && !loginGift.activity.point_status"-->
-                    <view class="new-success" wx:if="{{(loginGift.activity.is_new_user)&&(!loginGift.activity.receive_coupon_num)&&(!loginGift.activity.point_status)}}">
-                        <view class="text">
-                            抢光了
-                        </view>
-                        <view class="tips">
-                            祝你下次好运，加油哦
-                        </view>
-                    </view>
-
-
-                    <!--领取成功-->
-                    <!--v-if="(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)"-->
-                    <view class="new-success" wx:if="{{(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)}}" >
-                        <view class="text">
-                            领取成功
-                        </view>
-                        <view class="tips">
-                            <!--已放入你的账户-->
-                            已放入你的账户 {{loginGift.user.mobile}}
-                        </view>
-                    </view>
-
-                </view>
-                <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/X.png" bindtap="closeGift"/>
-                <!--@click="closeGift"-->
-                <!--<i class="iconfont icon-cha-" ></i>-->
-            </view>
-
-            <!--老用户-->
-            <!--v-if="!loginGift.activity.is_new_user"-->
-            <view class="coupon-list" wx:if="{{!loginGift.activity.is_new_user}}">
-
-                <!--积分-->
-                <!--v-if="loginGift.activity.point_status"-->
-                <view class="item old point" wx:if="{{loginGift.activity.point_status}}">
-                    <view class="left">
-                        <view class="lable">
-                            <!--赠送积分-->
-                            赠送 {{loginGift.activity.point}} 积分
-                        </view>
-                    </view>
-                    <view class="right">
-
-                    </view>
-                </view>
-
-                <!--优惠券-->
-                <!--v-for="item in loginGift.activity.gift"-->
-                <view class="item old" wx:for="{{loginGift.activity.gift}}">
-                    <div class="left">
-                        <div class="lable">
-                            <!--111-->
-                            {{item.coupon.title}}
-                        </div>
-                        <view class="time">
-                            <!--222-->
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </view>
-                    </div>
-                    <div class="right">
-                        <!--333-->
-                        {{item.coupon.label}}
-                    </div>
-                </view>
-            </view>
-
-            <!--抢光了-->
-            <!--v-if="loginGift.activity.is_new_user && !loginGift.activity.receive_coupon_num && !loginGift.activity.point_status"-->
-            <view class="coupon-list" wx:if="{{(loginGift.activity.is_new_user) && (!loginGift.activity.receive_coupon_num) && (!loginGift.activity.point_status)}}">
-                <!--积分-->
-                <!--v-if="loginGift.activity.point_status"-->
-                <view class="item point old" wx:if="{{loginGift.activity.point_status}}">
-                    <view class="left">
-                        <view class="lable">
-                            <!--赠送积分-->
-                            赠送 {{loginGift.activity.point}} 积分
-                        </view>
-                    </view>
-                    <view class="right">
-
-                    </view>
-                </view>
-
-                <!--优惠券-->
-                <!--v-for="item in loginGift.activity.gift"-->
-                <view class="item old" wx:for="{{loginGift.activity.gift}}">
-                    <view class="left">
-                        <view class="lable">
-                            <!--111-->
-                            {{item.coupon.title}}
-                        </view>
-                        <div class="time">
-                            <!--222-->
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </div>
-                    </view>
-                    <div class="right">
-                        <!--333-->
-                        {{item.coupon.label}}
-                    </div>
-                </view>
-            </view>
-
-            <!--领取成功-->
-            <!--v-if="(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)"-->
-            <view class="coupon-list" wx:if="{{(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)}}">
-
-                <!--积分-->
-                <!--v-if="loginGift.activity.point_status"-->
-                <view class="item point" wx:if="{{loginGift.activity.point_status}}">
-                    <view class="left">
-                        <view class="lable">
-                            <!--2331-->
-                            赠送 {{loginGift.activity.point}} 积分
-                        </view>
-                    </view>
-                    <view class="right">
-
-                    </view>
-                </view>
-
-                <!--优惠券-->
-                <!--v-for="item in loginGift.activity.gift" v-show="item.is_receive_coupon"-->
-                <view class="item" wx:for="{{loginGift.activity.gift}}" wx:if="{{item.is_receive_coupon}}">
-                    <view class="left">
-                        <view class="lable">
-                            <!--222-->
-                            {{item.coupon.title}}
-                        </view>
-
-                        <view class="time">
-                            <!--333-->
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </view>
-                    </view>
-                    <view class="right">
-                        <!--444-->
-                        {{item.coupon.label}}
-                    </view>
-                </view>
-            </view>
-            <!--@click="closeGift" -->
-            <view class="buttom" bindtap="closeGift">
-                <span>我知道了</span>
-            </view>
-        </view>
-    </view>
-
-    <!--商品组合弹窗-->
-    <preview show="{{isShow}}" list="{{goodsList}}" bind:clone="isClone"></preview>
-
-</view>
-
-<!--旧首页-->
-<!--<view id="index">
-    &lt;!&ndash;轮播图&ndash;&gt;
-    <view class="banner">
-        <view class="search">
-            <div class="menu-box" bindtap="jumpMenu">
-                <i class="iconfont icon-fenzu">
-
-                </i>
-            </div>
-            <view class="search_box">
-                <input type="text" value="" bindinput="search" disabled confirm-type="search" bindtap="jumpToSearch"/>
-                <icon type="search" size="20"/>
-
-            </view>
-        </view>
-
-        <view class="top-image" wx:if="{{banner && banner.length}}">
-            <swiper style="height: {{imgHeight}}px;" indicator-dots="true" autoplay="true" circular="true">
-                <swiper-item wx:for="{{banner}}">
-                    <image mode="widthFix" src="{{item.image}}"  data-src="{{item.link}}" class="slide-image" bindload="imgLoad" bindtap="jumpImg"/>
+        <view class="swiper-box">
+            <swiper indicator-dots="true" indicator-color="#C4C4C4" autoplay="true" circular="true">
+                <swiper-item>
+                    <button open-type="share">
+                        <image mode="widthFix" src="https://cdn.ibrand.cc/35353uu.png"  class="slide-image"/>
+                    </button>
+                </swiper-item>
+                <swiper-item>
+                    <image mode="widthFix" src="https://cdn.ibrand.cc/5355y.png"  class="slide-image"/>
                 </swiper-item>
             </swiper>
         </view>
-        &lt;!&ndash;<image src="{{banner[0].image}}"  data-id="{{banner[0].goods_id}}" ></image>&ndash;&gt;
-    </view>
+        <view class="recharge-box">
+            <view class="title-box">
+                <view class="title-line">
 
-    &lt;!&ndash;优惠券&ndash;&gt;
-    <view class="coupon-warp-box" wx:if="{{indexData.Mini_coupons && indexData.Mini_coupons.length}}">
-        <view class="coupon-item-box" style="background: {{config.mainColor}}" wx:for="{{indexData.Mini_coupons}}">
-            <view class="coupon-item">
-                <view class="left">
-                    <block wx:if="{{item.action_type.type == 'cash'}}">
-                        <span class="money">
-                        ￥
-                    </span>
-                        <span class="num">
-                       {{ item.action_type.value }}
-                    </span>
-                    </block>
-
-                    <block wx:if="{{item.action_type.type == 'discount'}}">
-                        <span class="num">
-                        {{ item.action_type.value }}
-                    </span>
-                        <span class="money">
-                        折
-                    </span>
-                    </block>
                 </view>
-                <view class="right">
-                    <view class="label">
-                        {{item.title}}
-                    </view>
-                    <view class="btn" style="color: {{config.mainColor}}" data-code="{{item.code}}" data-index="{{index}}" wx:if="{{!item.has_get}}" bindtap="getCoupon">
-                        点击领取
-                    </view>
-                    <view class="btn" data-id="{{item.coupon_id}}" wx:else catchtap="jumpList">
-                        去使用
-                    </view>
+                <view class="title">
+                    充值奖励
                 </view>
             </view>
-        </view>
-    </view>
-
-    &lt;!&ndash;广告图&ndash;&gt;
-    <view class="tn-box" wx:if="{{indexData.Mini_TH_banner && indexData.Mini_TH_banner.length}}">
-        <view class="img-box" wx:for="{{indexData.Mini_TH_banner}}" data-src="{{item.link}}" bindtap="jumpImg">
-            <image mode="widthFix" src="{{item.image}}"></image>
-        </view>
-    </view>
-
-    &lt;!&ndash;TAB&ndash;&gt;
-    <view class="g-main" wx:if="{{indexData.Mini_H5TabData && indexData.Mini_H5TabData.length}}">
-        <view class="m-lead">
-            <ul>
-                <li bindtap="changeItem" data-index="{{index}}"  wx:for="{{indexData.Mini_H5TabData}}"><span class="{{tapIndex == index ? 'hover' : ''}}">{{item.name}}</span></li>
-            </ul>
-        </view>
-        <view class="m-content">
-            <view class="m-main" wx:if="{{goods_arr.type && goods_arr.type == 'goods'}}">
-                <view class="goods_box" data-id="{{item.goods_id}}" bindtap="jumpToDetail" wx:for="{{goods_arr.items}}">
-                    <view class="goods_image">
-                        <image src="{{item.image}}"></image>
-                    </view>
-                    <view class="title">{{item.name}}</view>
-                    <view class="price">￥ {{item.goods_sell_price}}</view>
-                </view>
-            </view>
-
-            <view class="m-main" wx:else>
-                <view class="img-box" data-src="{{item.link}}"  wx:for="{{goods_arr.items}}" bindtap="jumpImg">
-                    <image mode="widthFix" src="{{item.image}}" />
-                    <view class="description" wx:if="{{item.name}}">{{item.name}}</view>
-                </view>
+            <view class="img-box">
+                <image  src="https://cdn.ibrand.cc/35353uu.png"  class="slide-image"/>
+                <image  src="https://cdn.ibrand.cc/35353uu.png"  class="slide-image"/>
+                <image  src="https://cdn.ibrand.cc/35353uu.png"  class="slide-image"/>
             </view>
         </view>
-    </view>
+        <view class="point-goods-box">
+            <view class="title-box">
+                <view class="title-line">
 
-    &lt;!&ndash;套餐&ndash;&gt;
-    <view class="module-box" wx:if="{{suit.length}}">
-        <view class="module-title mx-1px-bottom" data-src="/pages/store/mealList/mealList" bindtap="jumpImg">
-            <text>推荐套餐</text>
-            <text>更多></text>
-        </view>
-        <view class="module-content">
-            &lt;!&ndash;<block wx:for="{{suit}}" >&ndash;&gt;
-            &lt;!&ndash;<view class="meal" bindtap="jumpToDetail" data-id="{{item.goods.id}}">&ndash;&gt;
-            &lt;!&ndash;<view class="goods_image">&ndash;&gt;
-            &lt;!&ndash;<image src="{{item.goods.img}}"></image>&ndash;&gt;
-            &lt;!&ndash;</view>&ndash;&gt;
-            &lt;!&ndash;<view class="goods_title">&ndash;&gt;
-            &lt;!&ndash;{{item.goods.name}}&ndash;&gt;
-            &lt;!&ndash;</view>&ndash;&gt;
-            &lt;!&ndash;</view>&ndash;&gt;
-            &lt;!&ndash;<view class="add">&ndash;&gt;
-            &lt;!&ndash;<view class="t"></view>&ndash;&gt;
-            &lt;!&ndash;<view class="l"></view>&ndash;&gt;
-            &lt;!&ndash;</view>&ndash;&gt;
-            &lt;!&ndash;</block>&ndash;&gt;
-            <view class="meal_list">
-                <view class="store_list" wx:for="{{suit}}">
-                    <view bindtap="jumpToDetail" data-id="{{item.goods.id}}">
-                        <image class="slide-image" src="{{item.goods.img}}"></image>
-                        <view class="description">{{item.goods.name}}</view>
-                        &lt;!&ndash;<view>1</view>&ndash;&gt;
-                    </view>
+                </view>
+                <view class="title">
+                    积分商城
                 </view>
             </view>
-        </view>
-        <view class="meal-price" data-suitid="{{indexData.suit.id}}" bindtap="jumpMeal">
-            搭配套餐价=<text>￥{{indexData.suit.total}}</text>/<text>￥{{indexData.suit.origin_total}}</text>
-        </view>
-    </view>
-
-    &lt;!&ndash;拼团&ndash;&gt;
-    <view class="groupon-item-box" wx:if="{{indexData.groupon}}">
-        <view class="title mx-1px-bottom" data-src="/pages/store/groups/groups" bindtap="jumpImg">
-            <text>超值拼团</text>
-            <text>更多></text>
-        </view>
-        <view class="item" data-id="{{indexData.groupon.goods.id}}"  bindtap="jumpToDetail">
-            <view class="left">
-                <image mode="widthFix" src="{{indexData.groupon.goods.img}}" alt="" />
-                <view style="background: {{config.mainColor}}; color: {{config.countColor}}" class="num">
-                    {{indexData.groupon.number}}人团
-                </view>
-            </view>
-            <view class="right">
-                <view class="name">
-                    {{indexData.groupon.goods.name}}
-                </view>
-                <view class="price-box">
-                    <view>
-                        <seckill end="{{indexData.groupon.ends_at}}" starts="{{indexData.groupon.starts_at}}" server="{{indexData.groupon.server_time}}" typename="拼团"></seckill>
-                    </view>
-                    <view class="meal-price">
-                        <view class="price">
-                            ￥{{indexData.groupon.price}} <span class="old-price">￥{{indexData.groupon.goods.sell_price}}</span>
+            <view class="commodity-bottom">
+                <view class="commodity-out">
+                    <view class="commodity-box">
+                        <view class="commodity-img">
+                            <image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
                         </view>
-                        <view class="btn" style="background: {{config.mainColor}}">
-                            <span>去拼团 <i class="iconfont icon-Chevron"></i></span>
+                        <view class="commodity-name">
+                            66666
+                        </view>
+                        <view class="commodity-money">
+                            <view class="point">
+                                <image src="https://cdn.ibrand.cc/point-58353.png"></image>
+                                555
+                            </view>
+                            <view class="money">
+                                原价￥77
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <view class="commodity-out">
+                    <view class="commodity-box">
+                        <view class="commodity-img">
+                            <image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
+                        </view>
+                        <view class="commodity-name">
+                            66666
+                        </view>
+                        <view class="commodity-money">
+                            <view class="point">
+                                <image src="https://cdn.ibrand.cc/point-58353.png"></image>
+                                555
+                            </view>
+                            <view class="money">
+                                原价￥77
+                            </view>
                         </view>
                     </view>
                 </view>
             </view>
         </view>
-    </view>
+        <view class="birthday-box">
+            <view class="title-box">
+                <view class="title-line">
 
-
-    &lt;!&ndash;秒杀&ndash;&gt;
-    <view class="seckill-box" wx:if="{{indexData.seckill}}">
-        <view class="title mx-1px-bottom" data-src="/pages/store/seckill/seckill" bindtap="jumpImg">
-            <text>限时秒杀</text>
-            <text>更多></text>
-        </view>
-        <view class="seckill-info" data-id="{{indexData.seckill.goods.id}}" bindtap="jumpToDetail">
-            <view class="left">
-                <image src="{{indexData.seckill.goods.img}}"></image>
-            </view>
-            <view class="right">
-                <view class="goods-name">
-                    {{indexData.seckill.goods.name}}
                 </view>
-                <view class="price-box">
-                    <text>￥{{indexData.seckill.seckill_price}}</text>
-                    <text class="old">￥{{indexData.seckill.goods.sell_price}}</text>
-                </view>
-                <view class="seckill-time">
-                    <view>
-                        <seckill end="{{indexData.seckill.ends_at}}" starts="{{indexData.seckill.starts_at}}" server="{{indexData.seckill.server_time}}" mold="index" bind:starts="isStarts" bind:end="isEnd"></seckill>
-                    </view>
-                    <view style="background: {{config.mainColor}}" class="buy">
-                        去抢购
-                    </view>
+                <view class="title">
+                    生日礼物
                 </view>
             </view>
-        </view>
-    </view>
-
-    &lt;!&ndash;打Call&ndash;&gt;
-    <view class="seckill-box" wx:if="{{indexData.FreeEvent}}">
-        <view class="title mx-1px-bottom" data-src="/pages/store/callList/callList" bindtap="jumpImg">
-            <text>打Call免费领</text>
-            <text>更多></text>
-        </view>
-        <view class="seckill-info" data-goods="{{indexData.FreeEvent.goods.id}}" data-id="{{indexData.FreeEvent.id}}" bindtap="jumpCall">
-            <view class="left">
-                <image src="{{indexData.FreeEvent.img}}"></image>
-            </view>
-            <view class="right">
-                <view class="goods-name">
-                    {{indexData.FreeEvent.label}}
-                </view>
-                <view class="price-box free-money">
-                    <view class="money">
-                        <text class="new">￥{{indexData.FreeEvent.goods.sell_price}}</text>
-                        <text class="old">￥{{indexData.FreeEvent.goods.market_price}}</text>
-                    </view>
-                    <view class="nun">
-                        限量{{indexData.FreeEvent.limit}}件
-                    </view>
-                </view>
-                <view class="seckill-time">
-                    <view wx:if="{{indexData.FreeEvent.free.activity_status == 'NoBegin'}}">
-                        <seckill end="{{indexData.FreeEvent.ends_at}}" typename="集call" starts="{{indexData.FreeEvent.starts_at}}" server="{{indexData.FreeEvent.server_time}}" mold="index" bind:starts="isFreeStarts" bind:end="isFreeEnd"></seckill>
-                    </view>
-                    <view class="free" wx:else>
-                        集满{{indexData.FreeEvent.per_count}}个Call即可免费领
-                    </view>
-                    <view style="background: {{config.mainColor}}" class="buy">
-                        去打Call
-                    </view>
-                </view>
+            <view class="img-box">
+                <image mode="widthFix"  src="https://cdn.ibrand.cc/213456yry.png"  class="slide-image"/>
             </view>
         </view>
-    </view>
-
-    &lt;!&ndash;广告图&ndash;&gt;
-    <view class="gg-box-big" wx:if="{{indexData.Mini_HeadBottomAd}}">
-        <view class="img-item" data-src="{{item.link}}" wx:for="{{indexData.Mini_HeadBottomAd}}" bindtap="jumpImg">
-            <navigator target="miniProgram" hover-class="none" wx:if="{{item.link == 'uto_miniprogram'}}"  app-id="wx009e0be72cbf5e80" class="item">
-                <image mode="widthFix" src="{{item.image}}" />
-            </navigator>
-            <image mode="widthFix" src="{{item.image}}" wx:else />
-        </view>
-    </view>
-
-    &lt;!&ndash;最佳销售单品&ndash;&gt;
-    <view class="best" wx:if="{{indexData.bestSalesGoods}}">
-        <view class="title">
-            最佳销售单品
-        </view>
-        <view class="SalesGoods-box">
-            <view class="SalesGoods-item" data-id="{{item.id}}" wx:for="{{indexData.bestSalesGoods}}" bindtap="jumpToDetail">
-                <view class="item">
-                    <image mode="widthFix" class="slider-image" src="{{item.img}}" :alt="item.image" />
-                    <view class="goods-name">{{item.name}}</view>
-                    <view class="money-box">
-                        <view class="money-now">￥{{item.sell_price}}</view>
-                    </view>
-                </view>
-            </view>
-        </view>
-        <view class="button-box" data-src="/pages/store/list/list" bindtap="jumpImg">
-            查看全部商品
-        </view>
-    </view>
-
-    &lt;!&ndash;商品组合&ndash;&gt;
-    <view class="excellent-box" wx:if="{{indexData.H5GoodsRecommend}}">
-        <view class="m-lead">
-            <ul>
-                <li bindtap="changeGoodsItem" data-index="{{index}}"  wx:for="{{indexData.H5GoodsRecommend}}"><span class="{{goodsIndex == index ? 'hover' : ''}}">{{item.name}}</span></li>
-            </ul>
-        </view>
-        <view class="m-content">
-            <view class="goods-box" data-index="{{index}}" wx:for="{{indexData.H5GoodsRecommend[goodsIndex].items}}" bindtap="showPreview">
-                <view class="goods_image">
-                    <image mode="widthFix" src="{{item.image}}"></image>
-                </view>
-            </view>
-        </view>
-    </view>
-
-    &lt;!&ndash;底部广告&ndash;&gt;
-    <view class="bottom-banner" wx:if="{{indexData.Mini_Bottom_Banner}}">
-        <view wx:for="{{indexData.Mini_Bottom_Banner}}">
-            <view class="goods-box" data-src="{{item.link}}" wx:if="{{item.type == 'goods'}}" bindtap="jumpImg">
-                <image mode="widthFix" src="{{item.image}}"></image>
-                <view class="name">
-                    {{item.goods_name}}
-                </view>
-                <view class="price">
-                    ￥{{item.goods_sell_price}}
-                </view>
-            </view>
-            <view class="image-box" data-src="{{item.link}}" bindtap="jumpImg" wx:else>
-                <image mode="widthFix" src="{{item.image}}"></image>
-            </view>
-        </view>
-    </view>
-    <view class="ibrand-author" wx:if="{{author}}" bindtap="jumpAuthor">
-        <i class="iconfont icon-dibu"></i>
-    </view>
-
-    &lt;!&ndash;    <view class="author" wx:if="{{author}}">
-            <image mode="widthFix" src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/mier.png"></image>
+        <view class="my-order">
             <view>
-                湘ICP备17006292号
+                我的订单
             </view>
-            <view>
-                ©️ 湖南米尔版权所有
-            </view>
-            &lt;!&ndash;iBrand社交新零售 · 提供技术支持&ndash;&gt;
-        </view>&ndash;&gt;
-    &lt;!&ndash;新人礼小图标&ndash;&gt;
-    <view class="new-gift" bindtap="showModal" wx:if="{{!isLogin && noLoginGift}}">
-        <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/new-gift.png" />
+            <image src="https://cdn.ibrand.cc/janitou-0718.png">
+
+            </image>
+        </view>
     </view>
 
-    <view class="index-gift-box" wx:if="{{showNoGift}}">
+    <!--<block>
         <view class="mask">
 
         </view>
-        <view class="box">
-            <view class="title">
-                &lt;!&ndash;这是优惠券头头&ndash;&gt;
-                <view class="title-info">
-                    &lt;!&ndash;领取成功状态&ndash;&gt;
-                    <view class="new-success">
-                        <view class="text">
-                            {{noLoginGift.title}}
-                        </view>
-                        <div class="tips">
-                            数量有限，先到先得
-                        </div>
-                    </view>
-                </view>
-                <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/X.png" bindtap="close"/>
-                &lt;!&ndash;<i class="iconfont icon-cha-"></i>&ndash;&gt;
-            </view>
-            <view class="coupon-list">
-                &lt;!&ndash;积分&ndash;&gt;
-                <view class="item point" wx:if="{{noLoginGift.point}}">
-                    <view class="left">
-                        <view class="lable">
-                            赠送积分
-                        </view>
-                    </view>
-                    <view class="right">
-                        {{noLoginGift.point}}
-                    </view>
-                </view>
+        <view class="popup-box">
+            <image mode="widthFix" src="https://cdn.ibrand.cc/shitangiii.png">
 
-                &lt;!&ndash;优惠券&ndash;&gt;
-                <view class="item" wx:for="{{noLoginGift.gift}}">
-                    <view class="left">
-                        <view class="lable">
-                            {{item.coupon.title}}
-                        </view>
-                        <view class="time">
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </view>
-                    </view>
-                    <view class="right">
-                        {{item.coupon.label}}
-                    </view>
-                </view>
-            </view>
-            &lt;!&ndash;@click="login"&ndash;&gt;
-            <view class="buttom" bindtap="login">
-                <span>立即领取</span>
-            </view>
+            </image>
         </view>
-    </view>
-
-    <view class="index-gift-box" wx:if="{{showGift}}">
-        <view class="mask">
-
+        &lt;!&ndash;用户是否登录&ndash;&gt;
+        <view class="get-user" wx:if="{{!token}}">
+            &lt;!&ndash;获取用户头像&ndash;&gt;
+            <button wx:if="{{!userInfo}}" class="user" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+            &lt;!&ndash;获取手机号&ndash;&gt;
+            <button class="phone" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
         </view>
-        <view class="box">
-            <view class="title">
-                &lt;!&ndash;这是优惠券头头&ndash;&gt;
-                <view class="title-info">
-                    &lt;!&ndash;老用户&ndash;&gt;
-                    &lt;!&ndash;v-if="!loginGift.activity.is_new_user"&ndash;&gt;
-                    <view class="new-success" wx:if="{{!loginGift.activity.is_new_user}}">
-                        <view class="text">
-                            仅限新人领取
-                        </view>
-                        <view class="tips">
-                            你可是老朋友哦
-                        </view>
-                    </view>
-
-                    &lt;!&ndash;抢光了&ndash;&gt;
-                    &lt;!&ndash;v-if="loginGift.activity.is_new_user && !loginGift.activity.receive_coupon_num && !loginGift.activity.point_status"&ndash;&gt;
-                    <view class="new-success" wx:if="{{(loginGift.activity.is_new_user)&&(!loginGift.activity.receive_coupon_num)&&(!loginGift.activity.point_status)}}">
-                        <view class="text">
-                            抢光了
-                        </view>
-                        <view class="tips">
-                            祝你下次好运，加油哦
-                        </view>
-                    </view>
-
-
-                    &lt;!&ndash;领取成功&ndash;&gt;
-                    &lt;!&ndash;v-if="(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)"&ndash;&gt;
-                    <view class="new-success" wx:if="{{(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)}}" >
-                        <view class="text">
-                            领取成功
-                        </view>
-                        <view class="tips">
-                            &lt;!&ndash;已放入你的账户&ndash;&gt;
-                            已放入你的账户 {{loginGift.user.mobile}}
-                        </view>
-                    </view>
-
-                </view>
-                <image src="https://ibrand-miniprogram.oss-cn-hangzhou.aliyuncs.com/%E5%B0%8F%E7%A8%8B%E5%BA%8F/X.png" bindtap="closeGift"/>
-                &lt;!&ndash;@click="closeGift"&ndash;&gt;
-                &lt;!&ndash;<i class="iconfont icon-cha-" ></i>&ndash;&gt;
-            </view>
-
-            &lt;!&ndash;老用户&ndash;&gt;
-            &lt;!&ndash;v-if="!loginGift.activity.is_new_user"&ndash;&gt;
-            <view class="coupon-list" wx:if="{{!loginGift.activity.is_new_user}}">
-
-                &lt;!&ndash;积分&ndash;&gt;
-                &lt;!&ndash;v-if="loginGift.activity.point_status"&ndash;&gt;
-                <view class="item old point" wx:if="{{loginGift.activity.point_status}}">
-                    <view class="left">
-                        <view class="lable">
-                            &lt;!&ndash;赠送积分&ndash;&gt;
-                            赠送 {{loginGift.activity.point}} 积分
-                        </view>
-                    </view>
-                    <view class="right">
-
-                    </view>
-                </view>
-
-                &lt;!&ndash;优惠券&ndash;&gt;
-                &lt;!&ndash;v-for="item in loginGift.activity.gift"&ndash;&gt;
-                <view class="item old" wx:for="{{loginGift.activity.gift}}">
-                    <div class="left">
-                        <div class="lable">
-                            &lt;!&ndash;111&ndash;&gt;
-                            {{item.coupon.title}}
-                        </div>
-                        <view class="time">
-                            &lt;!&ndash;222&ndash;&gt;
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </view>
-                    </div>
-                    <div class="right">
-                        &lt;!&ndash;333&ndash;&gt;
-                        {{item.coupon.label}}
-                    </div>
-                </view>
-            </view>
-
-            &lt;!&ndash;抢光了&ndash;&gt;
-            &lt;!&ndash;v-if="loginGift.activity.is_new_user && !loginGift.activity.receive_coupon_num && !loginGift.activity.point_status"&ndash;&gt;
-            <view class="coupon-list" wx:if="{{(loginGift.activity.is_new_user) && (!loginGift.activity.receive_coupon_num) && (!loginGift.activity.point_status)}}">
-                &lt;!&ndash;积分&ndash;&gt;
-                &lt;!&ndash;v-if="loginGift.activity.point_status"&ndash;&gt;
-                <view class="item point old" wx:if="{{loginGift.activity.point_status}}">
-                    <view class="left">
-                        <view class="lable">
-                            &lt;!&ndash;赠送积分&ndash;&gt;
-                            赠送 {{loginGift.activity.point}} 积分
-                        </view>
-                    </view>
-                    <view class="right">
-
-                    </view>
-                </view>
-
-                &lt;!&ndash;优惠券&ndash;&gt;
-                &lt;!&ndash;v-for="item in loginGift.activity.gift"&ndash;&gt;
-                <view class="item old" wx:for="{{loginGift.activity.gift}}">
-                    <view class="left">
-                        <view class="lable">
-                            &lt;!&ndash;111&ndash;&gt;
-                            {{item.coupon.title}}
-                        </view>
-                        <div class="time">
-                            &lt;!&ndash;222&ndash;&gt;
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </div>
-                    </view>
-                    <div class="right">
-                        &lt;!&ndash;333&ndash;&gt;
-                        {{item.coupon.label}}
-                    </div>
-                </view>
-            </view>
-
-            &lt;!&ndash;领取成功&ndash;&gt;
-            &lt;!&ndash;v-if="(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)"&ndash;&gt;
-            <view class="coupon-list" wx:if="{{(loginGift.activity.is_new_user && loginGift.activity.receive_coupon_num) || (loginGift.activity.is_new_user && loginGift.activity.point_status)}}">
-
-                &lt;!&ndash;积分&ndash;&gt;
-                &lt;!&ndash;v-if="loginGift.activity.point_status"&ndash;&gt;
-                <view class="item point" wx:if="{{loginGift.activity.point_status}}">
-                    <view class="left">
-                        <view class="lable">
-                            &lt;!&ndash;2331&ndash;&gt;
-                            赠送 {{loginGift.activity.point}} 积分
-                        </view>
-                    </view>
-                    <view class="right">
-
-                    </view>
-                </view>
-
-                &lt;!&ndash;优惠券&ndash;&gt;
-                &lt;!&ndash;v-for="item in loginGift.activity.gift" v-show="item.is_receive_coupon"&ndash;&gt;
-                <view class="item" wx:for="{{loginGift.activity.gift}}" wx:if="{{item.is_receive_coupon}}">
-                    <view class="left">
-                        <view class="lable">
-                            &lt;!&ndash;222&ndash;&gt;
-                            {{item.coupon.title}}
-                        </view>
-
-                        <view class="time">
-                            &lt;!&ndash;333&ndash;&gt;
-                            {{item.coupon.usestart_at}} - {{item.coupon.useend_at}}
-                        </view>
-                    </view>
-                    <view class="right">
-                        &lt;!&ndash;444&ndash;&gt;
-                        {{item.coupon.label}}
-                    </view>
-                </view>
-            </view>
-            &lt;!&ndash;@click="closeGift" &ndash;&gt;
-            <view class="buttom" bindtap="closeGift">
-                <span>我知道了</span>
-            </view>
-        </view>
-    </view>
-
-    &lt;!&ndash;商品组合弹窗&ndash;&gt;
-    <preview show="{{isShow}}" list="{{goodsList}}" bind:clone="isClone"></preview>
-
-</view>-->
-
-
-
-<import src="../../../component/birthday/birthday.wxml" />
-<template is="birthdayToast" data="{{...birthdayToast}}"></template>
+    </block>-->
+</View>
