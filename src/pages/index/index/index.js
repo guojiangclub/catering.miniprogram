@@ -3,31 +3,37 @@
  */
 var app = getApp();
 
-import {config,pageLogin,sandBox,getUrl,cookieStorage} from '../../../lib/myapp.js';
+import {
+    config,
+    pageLogin,
+    sandBox,
+    getUrl,
+    cookieStorage
+} from '../../../lib/myapp.js';
 
 
 // 微页面
 Page({
     data: {
-        banner:[],
-        indexData:{},
-        goods_arr:[],
+        banner: [],
+        indexData: {},
+        goods_arr: [],
         topImage: [],
         bestSalesGoods: [],
-        suit:[],
+        suit: [],
         imgHeight: '',
         screenWidth: 0,
-        currentDesc:'news',
-        is_newGiftLogin:false,
-        isLogin:'',
-        noLoginGift: '',   // 未登录状态下的新人礼信息
-        loginGift: '',    // 登录状态下的新人礼信息
+        currentDesc: 'news',
+        is_newGiftLogin: false,
+        isLogin: '',
+        noLoginGift: '', // 未登录状态下的新人礼信息
+        loginGift: '', // 登录状态下的新人礼信息
         showNoGift: false, // 用户是否关闭弹窗
-        showGift: false,  // 登录状态下是否弹窗
+        showGift: false, // 登录状态下是否弹窗
         tapIndex: 0,
-	    isShow: false,
+        isShow: false,
         goodsIndex: 0,
-	    goodsList: [],
+        goodsList: [],
         author: '',
         scroll: true,
         config: '',
@@ -35,10 +41,10 @@ Page({
         wyBanner: '',
         wyGoodsList: '',
         userInfo: '',
-        microData:''
+        microData: ''
 
     },
-    onShareAppMessage(res){
+    onShareAppMessage(res) {
         var info = cookieStorage.get('init_info');
         let path = this.data.userInfo && this.data.userInfo.agent_code ? `/${this.route}?agent_code=${this.data.userInfo.agent_code}` : `${this.route}`;
         console.log('这个是分享出去的链接', path);
@@ -52,14 +58,14 @@ Page({
         wx.showLoading();
         this.queryMicroData();
     },
-    onLoad(e){
+    onLoad(e) {
         // 第三方平台配置颜色
         var gbConfig = cookieStorage.get('globalConfig') || '';
         this.setData({
             config: gbConfig,
         })
         if (!gbConfig) {
-            let extConfig = wx.getExtConfigSync ? wx.getExtConfigSync(): {};
+            let extConfig = wx.getExtConfigSync ? wx.getExtConfigSync() : {};
             if (extConfig) {
                 this.setData({
                     config: extConfig,
@@ -112,7 +118,7 @@ Page({
                     cookieStorage.set('distribution_valid_time', res.data.distribution_valid_time);
                     cookieStorage.set('init', res.data);
                     this.setCode(e);
-                    if (agent_code && res.data.mini_program_login_type == 'default' && !token){
+                    if (agent_code && res.data.mini_program_login_type == 'default' && !token) {
                         wx.showLoading({
                             title: '正在自动登录',
                             mask: true
@@ -142,7 +148,7 @@ Page({
                                 } else {
                                     wx.showToast({
                                         title: '获取code失败',
-                                        icon:'none'
+                                        icon: 'none'
                                     })
                                 }
                             }
@@ -171,7 +177,7 @@ Page({
         var valid_time = "";
         var clerk_id = e.clerk_id || "";
         var shop_id = e.shop_id || "";
-        var agent_code = e.agent_code||  '';
+        var agent_code = e.agent_code || '';
         if (e.scene) {
             var scene = decodeURIComponent(e.scene);
             var sceneArr = scene.split(',');
@@ -247,13 +253,13 @@ Page({
     getUserInfo() {
         sandBox.get({
             api: 'api/me',
-            header:{
-                Authorization:cookieStorage.get('user_token')
+            header: {
+                Authorization: cookieStorage.get('user_token')
             },
-        }).then(res =>{
-            if(res.data.status){
+        }).then(res => {
+            if (res.data.status) {
                 this.setData({
-                    userInfo:res.data.data,
+                    userInfo: res.data.data,
                 }, () => {
                     if (res.data.data.agent_code) {
                         wx.updateShareMenu();
@@ -264,84 +270,84 @@ Page({
     },
     jumpAuthor() {
         wx.navigateTo({
-            url:'/pages/index/author/author'
+            url: '/pages/index/author/author'
         });
     },
-	imgLoad(e) {
-		var height = e.detail.height
-		var width = e.detail.width;
-		var ratio = width / height;
-		var screenWidth = this.data.screenWidth;
-		this.setData({
-			imgHeight: screenWidth / ratio
-		})
-	},
-    changeItem(e){
+    imgLoad(e) {
+        var height = e.detail.height
+        var width = e.detail.width;
+        var ratio = width / height;
+        var screenWidth = this.data.screenWidth;
+        this.setData({
+            imgHeight: screenWidth / ratio
+        })
+    },
+    changeItem(e) {
         var index = e.currentTarget.dataset.index
-        if (index == this.data.currentDesc ) return;
+        if (index == this.data.currentDesc) return;
         this.setData({
-            goods_arr:this.data.indexData.Mini_H5TabData[index],
-	        tapIndex:index
+            goods_arr: this.data.indexData.Mini_H5TabData[index],
+            tapIndex: index
         })
     },
-	changeGoodsItem(e) {
-		var index = e.currentTarget.dataset.index
-		if (index == this.data.currentDesc ) return;
-		this.setData({
-			goodsIndex: index
-        })
-    },
-    closeGift(){
-        cookieStorage.set('gift_info',true);
+    changeGoodsItem(e) {
+        var index = e.currentTarget.dataset.index
+        if (index == this.data.currentDesc) return;
         this.setData({
-            showGift:false
+            goodsIndex: index
         })
     },
-    showModal(){
+    closeGift() {
+        cookieStorage.set('gift_info', true);
         this.setData({
-            showNoGift:true
+            showGift: false
         })
     },
-	showPreview(e) {
+    showModal() {
+        this.setData({
+            showNoGift: true
+        })
+    },
+    showPreview(e) {
         var items = this.data.indexData.H5GoodsRecommend[this.data.goodsIndex].items;
         var index = e.currentTarget.dataset.index;
         this.setData({
-	        goodsList: items[index].items,
-	        isShow: true
+            goodsList: items[index].items,
+            isShow: true
         })
     },
-    jumpMeal(e){
+    jumpMeal(e) {
         // console.log(e);
         var id = e.currentTarget.dataset.suitid;
         wx.navigateTo({
-            url:`/pages/store/meal/meal?id=${id}`
+            url: `/pages/store/meal/meal?id=${id}`
         });
     },
     // 关闭弹窗
-	isClone() {
+    isClone() {
         this.setData({
-	        isShow: false
+            isShow: false
         })
     },
     // 新人进店有礼
-    newPeopleGift(){
+    newPeopleGift() {
         sandBox.get({
-            api:'api/home/gift_new_user'
-        }).then(res=>{
-            res=res.data;
-            if(res.status &&　res.data){
+            api: 'api/home/gift_new_user'
+        }).then(res => {
+            res = res.data;
+            if (res.status && res.data) {
                 var cache_no_gift = cookieStorage.get('new_gift');
                 console.log(res.data);
-                res.data.gift.forEach(function(val){
-                    val.coupon.usestart_at=val.coupon.usestart_at.replace(/\s.+$/, '')
-                    val.coupon.useend_at=val.coupon.useend_at.replace(/\s.+$/, '');
+                res.data.gift.forEach(function (val) {
+                    val.coupon.usestart_at = val.coupon.usestart_at.replace(/\s.+$/, '')
+                    val.coupon.useend_at = val.coupon.useend_at.replace(/\s.+$/, '');
                 });
                 this.setData({
-                    noLoginGift:res.data
+                    noLoginGift: res.data
                 });
-                if(!cache_no_gift){
+                if (!cache_no_gift) {
                     this.setData({
-                        showNoGift:true
+                        showNoGift: true
                     })
                 }
             }
@@ -359,54 +365,51 @@ Page({
         });
     },
     // 新人进店有礼(已登录)
-    getPeopleGift(){
+    getPeopleGift() {
         sandBox.post({
-            api:'api/home/gift_new_user',
-            header:{
-                Authorization:cookieStorage.get('user_token')
+            api: 'api/home/gift_new_user',
+            header: {
+                Authorization: cookieStorage.get('user_token')
             }
-        }).then(res=>{
-            res=res.data;
+        }).then(res => {
+            res = res.data;
             var cache_info = cookieStorage.get('gift_info');
-            if(res.status && res.data && !cache_info){
+            if (res.status && res.data && !cache_info) {
                 // 判断是不是老用户
-                if(!res.data.activity.is_new_user){
+                if (!res.data.activity.is_new_user) {
                     console.log(res.data);
-                      if(this.data.is_newGiftLogin){
-                          res.data.activity.gift.forEach(function(val){
-                              val.coupon.usestart_at=val.coupon.usestart_at.replace(/\s.+$/, '');
-                              val.coupon.useend_at=val.coupon.useend_at.replace(/\s.+$/, '');
-                          });
-                          this.setData({
-                              showGift:true,
-                              loginGift:res.data
-                          });
-                      }else{
-                          this.closeGift();
-                      }
-                }
-                else{
-                    res.data.activity.gift.forEach(function(val){
-                        val.coupon.usestart_at=val.coupon.usestart_at.replace(/\s.+$/, '');
-                        val.coupon.useend_at=val.coupon.useend_at.replace(/\s.+$/, '');
+                    if (this.data.is_newGiftLogin) {
+                        res.data.activity.gift.forEach(function (val) {
+                            val.coupon.usestart_at = val.coupon.usestart_at.replace(/\s.+$/, '');
+                            val.coupon.useend_at = val.coupon.useend_at.replace(/\s.+$/, '');
+                        });
+                        this.setData({
+                            showGift: true,
+                            loginGift: res.data
+                        });
+                    } else {
+                        this.closeGift();
+                    }
+                } else {
+                    res.data.activity.gift.forEach(function (val) {
+                        val.coupon.usestart_at = val.coupon.usestart_at.replace(/\s.+$/, '');
+                        val.coupon.useend_at = val.coupon.useend_at.replace(/\s.+$/, '');
                     });
                     this.setData({
-                        showGift:true,
-                        loginGift:res.data
+                        showGift: true,
+                        loginGift: res.data
                     })
                 }
-            }
-            else{
-            }
+            } else {}
         })
     },
     // 秒杀开始
     isStarts(e) {
         var idx = e.detail.idx;
         var index = e.detail.index;
-        if(this.data.microData.pages[idx].value[index].associate.init_status != 1){
+        if (this.data.microData.pages[idx].value[index].associate.init_status != 1) {
             this.setData({
-                [`microData.pages[${idx}].value[${index}].associate.init_status`]:1
+                [`microData.pages[${idx}].value[${index}].associate.init_status`]: 1
             })
         }
     },
@@ -415,35 +418,35 @@ Page({
         var idx = e.detail.idx;
         var index = e.detail.index;
         var newData = this.data.microData;
-        newData.pages[idx].value.splice(index,1);
+        newData.pages[idx].value.splice(index, 1);
         this.setData({
-            microData:newData
-         })
+            microData: newData
+        })
     },
 
-    login(){
+    login() {
         pageLogin(getUrl());
         /*wx.redirectTo({
             url: '/pages/user/register/register?url='+getUrl()+encodeURIComponent('?giftLogin=true')
         })*/
     },
-    close(){
+    close() {
         this.setData({
-            showNoGift:false
+            showNoGift: false
         })
         // this.showNoGift = false;
-        var time = new Date(new Date().setHours(0,0,0,0)).getTime() + 86400000;
+        var time = new Date(new Date().setHours(0, 0, 0, 0)).getTime() + 86400000;
         cookieStorage.set('new_gift', true, time);
     },
-    jumpToSearch(){
+    jumpToSearch() {
         wx.navigateTo({
-            url:'/pages/store/search/search'
+            url: '/pages/store/search/search'
         })
     },
-    jumpToDetail(e){
+    jumpToDetail(e) {
         var id = e.currentTarget.dataset.id
         wx.navigateTo({
-            url:`/pages/store/detail/detail?id=${id}`
+            url: `/pages/store/detail/detail?id=${id}`
         })
     },
     jumpCall(e) {
@@ -466,7 +469,7 @@ Page({
         }
 
     },
-	jumpImg(e) {
+    jumpImg(e) {
         /*wx.scanCode({
             success: res => {
                 console.log(res);
@@ -482,12 +485,12 @@ Page({
         })
     },
     //跳到搜索页面
-    jumpSearch(){
+    jumpSearch() {
         wx.navigateTo({
-            url:'/pages/store/search/search'
+            url: '/pages/store/search/search'
         })
     },
-	jumpMenu(e) {
+    jumpMenu(e) {
         if (config.PACKAGES.isTab) {
             wx.switchTab({
                 url: '/pages/index/classification/classification'
@@ -505,47 +508,47 @@ Page({
             url: '/pages/store/detail/detail?id=' + id
         })
     },
-    queryData (){
+    queryData() {
         sandBox.get({
             api: 'api/home/getHomeModulesData',
             data: {
-	            includes: 'Mini_TopShuffling,Mini_Bottom_Banner,Mini_H5TabData,suit,seckill,FreeEvent,Mini_HeadBottomAd,bestSalesGoods,H5GoodsRecommend,Mini_coupons,Mini_TH_banner,groupon'
+                includes: 'Mini_TopShuffling,Mini_Bottom_Banner,Mini_H5TabData,suit,seckill,FreeEvent,Mini_HeadBottomAd,bestSalesGoods,H5GoodsRecommend,Mini_coupons,Mini_TH_banner,groupon'
             }
 
         }).then(res => {
             res = res.data;
             this.setData({
-                indexData:res.data,
+                indexData: res.data,
 
             });
-	        if (res.data && res.data.Mini_TopShuffling) {
+            if (res.data && res.data.Mini_TopShuffling) {
                 this.setData({
-	                banner:res.data.Mini_TopShuffling
+                    banner: res.data.Mini_TopShuffling
                 })
-	        };
-	        if (res.data && res.data.Mini_H5TabData) {
-		        this.setData({
-			        goods_arr:res.data.Mini_H5TabData[0]
-		        })
-	        }
-	        if (res.data && res.data.suit) {
-		        this.setData({
-			        suit:res.data.suit.items
-		        })
-	        };
+            };
+            if (res.data && res.data.Mini_H5TabData) {
+                this.setData({
+                    goods_arr: res.data.Mini_H5TabData[0]
+                })
+            }
+            if (res.data && res.data.suit) {
+                this.setData({
+                    suit: res.data.suit.items
+                })
+            };
             wx.stopPullDownRefresh();
             wx.hideLoading();
         }).catch(() => {
             wx.stopPullDownRefresh();
             wx.hideLoading();
             wx.showModal({
-                content:'请求失败',
-	            showCancel:false
+                content: '请求失败',
+                showCancel: false
             })
         })
     },
     //请求新数据
-    queryMicroData (){
+    queryMicroData() {
         sandBox.get({
             api: 'api/micro/page/index'
         }).then(res => {
@@ -556,8 +559,8 @@ Page({
                         microData: ''
                     }, () => {
                         this.setData({
-                            microData:res.data,
-                        });  
+                            microData: res.data,
+                        });
                     })
 
                     if (res.data && res.data.micro_page) {
@@ -567,14 +570,14 @@ Page({
                     }
                 } else {
                     wx.showModal({
-                        content:res.message || '请下拉页面刷新重试',
-                        showCancel:false
+                        content: res.message || '请下拉页面刷新重试',
+                        showCancel: false
                     })
                 }
             } else {
                 wx.showModal({
-                    content:'请下拉页面刷新重试',
-                    showCancel:false
+                    content: '请下拉页面刷新重试',
+                    showCancel: false
                 })
             }
             wx.stopPullDownRefresh();
@@ -583,8 +586,8 @@ Page({
             wx.stopPullDownRefresh();
             wx.hideLoading();
             wx.showModal({
-                content:'请求失败',
-                showCancel:false
+                content: '请求失败',
+                showCancel: false
             })
         })
     },
@@ -634,21 +637,21 @@ Page({
                 Authorization: token
             },
             data: {
-                coupon_code:code
+                coupon_code: code
             }
         }).then(res => {
             wx.hideLoading();
             if (res.statusCode == 200) {
                 res = res.data;
                 if (res.status) {
-                   var pages = this.data.microData.pages;
-                   pages.forEach((val,idx)=>{
-                       if(val.name == 'micro_page_componet_coupon'){
-                           this.setData({
-                               [`microData.pages[${idx}].value[${index}].associate.has_get`]:true
-                           })
-                       }
-                   })
+                    var pages = this.data.microData.pages;
+                    pages.forEach((val, idx) => {
+                        if (val.name == 'micro_page_componet_coupon') {
+                            this.setData({
+                                [`microData.pages[${idx}].value[${index}].associate.has_get`]: true
+                            })
+                        }
+                    })
                     wx.showToast({
                         title: '领取成功',
                     });
@@ -681,21 +684,21 @@ Page({
 
     },
     //请求万有商城首页数据
-    getStoreData(){
+    getStoreData() {
         wx.showLoading({
-            title:"加载中",
-            mask:true
+            title: "加载中",
+            mask: true
         })
         sandBox.get({
-            api:'api/market/store/index'
-        }).then(res=>{
-            if (res.statusCode == 200){
+            api: 'api/market/store/index'
+        }).then(res => {
+            if (res.statusCode == 200) {
                 res = res.data;
-                if (res.status){
+                if (res.status) {
                     if (res.data) {
                         this.setData({
-                            wyBanner:res.data.Mini_TopShuffling,
-                            wyGoodsList:res.data.goods
+                            wyBanner: res.data.Mini_TopShuffling,
+                            wyGoodsList: res.data.goods
                         })
                     }
                 } else {
@@ -711,9 +714,9 @@ Page({
                 })
             }
             wx.hideLoading()
-        }).catch(()=>{
+        }).catch(() => {
             wx.showModal({
-                content:'请求失败',
+                content: '请求失败',
                 showCancel: false
             })
             wx.hideLoading()

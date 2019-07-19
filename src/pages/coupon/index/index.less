@@ -1,5 +1,7 @@
 @import "../../../assets/css/global";
-#coupon-index{
+
+#coupon-index {
+
   /*.coupon-box{
     padding: 12px;
 
@@ -126,9 +128,10 @@
       text-align: center;
 
       &.activity {
-        color:@globalColor;
+        color: @globalColor;
       }
     }
+
     .navbar-slider {
 
       position: absolute;
@@ -141,14 +144,15 @@
       transition: transform .3s;
     }
   }
-  .tab-panel{
+
+  .tab-panel {
     padding: 10px 15px 50px 15px;
 
-    .tab-content{
-
+    .tab-content {
       .coupon {
         display: flex;
         margin-bottom: 10px;
+
         &.shasow {
           box-shadow: 0px 7px 10px 0px rgba(6, 0, 0, 0.2);
         }
@@ -160,6 +164,7 @@
           background-size: cover;
           background: @globalColor;
           position: relative;
+
           &.discount {
             background: #F8B62D;
           }
@@ -171,10 +176,12 @@
             align-items: center;
             height: 100%;
             font-size: 12px;
+
             .text-box {
               text-align: center;
               width: 100%;
-              .text{
+
+              .text {
                 display: block;
                 padding: 0 10px;
                 overflow: hidden;
@@ -182,11 +189,13 @@
                 text-overflow: ellipsis;
                 font-size: 20px;
                 font-weight: 600;
-                &.label{
+
+                &.label {
                   font-size: 12px;
                   font-weight: 100;
                 }
-                .money{
+
+                .money {
                   font-size: 14px;
                   font-weight: 100;
                 }
@@ -198,9 +207,11 @@
               }
             }
           }
+
           .dot-wrap {
             position: absolute;
             top: -12px;
+
             .dot-item {
               width: 5px;
               height: 5px;
@@ -214,6 +225,7 @@
             }
           }
         }
+
         .coupon-right {
           flex: 1;
           background: #fff;
@@ -232,6 +244,7 @@
             text-overflow: ellipsis;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
+
             .type {
               color: #333333;
               border: 1px solid #333333;
@@ -249,6 +262,7 @@
               justify-content: space-between;
               font-size: 12px;
               margin: 7px 0;
+
               .tiem-box {
                 color: #9E9E9F;
                 flex: 1;
@@ -258,16 +272,19 @@
                 white-space: nowrap;
                 margin-top: 5px;
               }
+
               .btn {
                 text-align: center;
                 border-radius: 3px;
                 padding: 3px 12px;
               }
+
               .use {
                 color: #fff;
                 border: 1px solid @globalColor;
                 background: @globalColor;
               }
+
               .already {
                 color: @globalColor;
                 background: #fff;
@@ -279,19 +296,21 @@
         }
       }
 
-      .no-list{
+      .no-list {
         text-align: center;
         font-size: 14px;
         color: #888888;
         margin-top: 10px;
-        i{
+
+        i {
           font-size: 80px;
           margin-bottom: 15px;
         }
       }
     }
   }
-  .see-over{
+
+  .see-over {
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -304,7 +323,7 @@
 }
 
 
-#transfer{
+#transfer {
   /*.panel{
     position: fixed;
     width: 100%;
@@ -357,8 +376,9 @@
       right: 0;
       top: 0;
       bottom: 0;
-      background-color: rgba(0,0,0,.7);
+      background-color: rgba(0, 0, 0, .7);
     }
+
     .coupon-body {
       position: fixed;
       width: 90%;
@@ -368,21 +388,24 @@
       top: 50%;
       left: 50%;
       padding: 0 25px;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
       box-sizing: border-box;
       z-index: 99;
+
       .title {
         text-align: center;
         color: #FFFFFF;
         font-size: 22px;
         margin-top: 25px;
       }
+
       .tips {
         margin-top: 35px;
         line-height: 20px;
         color: #FFFFFF;
         font-size: 13px;
       }
+
       .coupon {
         display: flex;
         align-items: center;
@@ -399,6 +422,7 @@
           display: flex;
           overflow: hidden;
           flex: 1;
+
           .icon {
             background: @globalColor;
             width: 40px;
@@ -412,10 +436,12 @@
               font-size: 25px;
             }
           }
+
           .text-box {
             margin-left: 10px;
             overflow: hidden;
             flex: 1;
+
             .title {
               text-align: left;
               font-size: 16px;
@@ -426,33 +452,38 @@
               white-space: nowrap;
               /*margin-bottom: 10px;*/
             }
+
             .info {
               font-size: 10px;
               color: #909090;
             }
           }
         }
+
         .right {
           color: @globalColor;
-          font-size:20px;
-          font-weight:600;
+          font-size: 20px;
+          font-weight: 600;
+
           .money {
             font-size: 14px;
             font-weight: 100;
           }
         }
       }
+
       .user-tips {
         color: #ffffff;
         font-size: 10px;
       }
+
       .btn {
         margin: 40px 0 35px 0;
         width: 100%;
         height: 50px;
         line-height: 50px;
-        box-shadow:0px 4px 8px 2px rgba(0,0,0,0.2);
-        border-radius:4px;
+        box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 4px;
         background: #FFFFFF;
         color: #B24B4B;
         text-align: center;

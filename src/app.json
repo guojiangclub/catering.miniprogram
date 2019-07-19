@@ -1,6 +1,13 @@
 {
   "pages": [
+    "pages/member/myMoney/myMoney",
     "pages/index/index/index",
+    "pages/user/usersetting/usersetting",
+    "pages/order/detail/detail",
+    "pages/coupon/index/index",
+    "pages/order/index/index",
+    "pages/user/personal/personal",
+    "pages/user/svip/svip",
     "pages/address/add/add",
     "pages/address/list/list",
     "pages/pointStore/index/index",
@@ -9,25 +16,19 @@
     "pages/pointStore/order/order",
     "pages/pointStore/success/success",
     "pages/pointStore/orderdetail/orderdetail",
-    "pages/user/personal/personal",
     "pages/user/phone/phone",
-    "pages/user/svip/svip",
     "pages/user/bindingphone/bindingphone",
     "pages/user/register/register",
     "pages/user/loginType/loginType",
     "pages/user/gidList/gidList",
-    "pages/user/usersetting/usersetting",
     "pages/point/index/index",
     "pages/pay/payBill/payBill",
     "pages/pay/transfer/transfer",
     "pages/pay/recharge/recharge",
     "pages/pay/success/success",
-    "pages/coupon/index/index",
     "pages/coupon/over/over",
     "pages/coupon/onDetail/onDetail",
-    "pages/recharge/index/index",
-    "pages/order/index/index",
-    "pages/order/detail/detail"
+    "pages/recharge/index/index"
   ],
   "permission": {
     "scope.userLocation": {
