@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/index/index/index",
     "pages/user/userset/userset",
     "pages/coupon/onDetail/onDetail",
     "pages/point/index/index",
     "pages/member/myMoney/myMoney",
     "pages/coupon/index/index",
     "pages/user/usersetting/usersetting",
-    "pages/index/index/index",
     "pages/order/detail/detail",
     "pages/order/index/index",
     "pages/user/personal/personal",

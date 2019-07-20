@@ -58,7 +58,7 @@
 		</view>
 	</view>
 </view>
-<view class="mask">
+<view class="mask" wx-if="{{false}}">
 	<view class="pop-content">
 		<view class="pop-title">
 			恭喜您！
@@ -75,4 +75,3 @@
 		</button>
 	</view>
 </view>
-
