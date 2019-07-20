@@ -1,0 +1,78 @@
+<view class="user-container">
+	<view class="user-list">
+		<view class="user-item">
+			<view class="user-classify">
+				头像
+			</view>
+			<image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
+
+		</view>
+		<view class="user-item">
+			<view class="user-classify">
+				昵称
+			</view>
+			<view class="user-value">
+				傻大个
+			</view>
+		</view>
+		<view class="user-item">
+			<view class="user-classify">
+				性别
+			</view>
+			<view class="user-value">
+				女
+			</view>
+		</view>
+		<view class="user-item">
+			<view class="user-classify">
+				生日
+			</view>
+			<view>
+				<picker mode="date" end="{{end}}" bindchange="changeDate">
+					<input
+					 type="text"
+					 placeholder="请输入出生日期>"
+					 disabled
+					 value="{{birthdaydate}}"
+					 class="birthday"
+					/>
+				</picker>
+			</view>
+
+		</view>
+		<view class="user-item">
+			<view class="user-classify">
+				城市
+			</view>
+			<view class="user-value">
+				安徽
+			</view>
+		</view>
+		<view class="user-item">
+			<view class="user-classify">
+				手机
+			</view>
+			<view class="user-phone">
+				18289008766
+			</view>
+		</view>
+	</view>
+</view>
+<view class="mask">
+	<view class="pop-content">
+		<view class="pop-title">
+			恭喜您！
+		</view>
+		<view class="pop-text">
+			您将于2019年08月23日收到专属的 生日礼券，请确认生日填写正确哦， 只支持一次修改机会。
+
+		</view>
+		<button class="btn sure">
+			确认
+		</button>
+		<button class="btn again">
+			请重新填写
+		</button>
+	</view>
+</view>
+

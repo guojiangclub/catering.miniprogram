@@ -1,74 +1,111 @@
-<view id="point_index">
-    <!--point-top开始-->
-    <view class="point-top">
-        <view class="point-current">
-            <view>当前可用积分</view>
-            <view class="point-num">{{point.pointValid || 0}}</view>
+<view class="moneyContainer">
+    <image mode="widthFix" class="money-bg" src="https://cdn.ibrand.cc/shitang949394.png">
+    </image>
+    <view class="content">
+        <view class="card-box">
+            <view class="user-info">
+                <view class="name-box">
+                    <view class="tag">
+                        当前积分
+                    </view>
+                </view>
+                <view class="charge">
+                   去兑换
+                </view>
+            </view>
+            <view class="money">
+               436
+            </view>
         </view>
-        <!--<view class="point-frozen">
-            <view>冻结积分 {{point.pointFrozen}}</view>
-            <view class="point-mall" bindtap="jump">积分商城</view>
-        </view>-->
-    </view>
+        <view class="privilege-box ">
+            <view class="title-box">
+                <view class="title-line">
 
-    <!--point-top结束-->
-
-    <!--point-content开始-->
-    <view class="point-content">
-        <view class="navbar mx-1px-bottom">
-            <block wx:for="{{tabList}}" wx:key="*this">
-                <view id="{{index}}" class="navbar-item activity" hidden="{{activeIndex != index}}" style="color: {{config.mainColor}}" bindtap="tabClick">
-                    <view class="navbar-title">{{item.title}}</view>
                 </view>
-
-                <view id="{{index}}" hidden="{{activeIndex == index}}" class="navbar-item" bindtap="tabClick">
-                    <view class="navbar-title">{{item.title}}</view>
+                <view class="title">
+                    赚积分
                 </view>
-            </block>
-            <view class="navbar-slider" style="width: {{width}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px); background: {{config.mainColor}}"></view>
+            </view>
+            <view class="charge-list">
+                <view class="point-left">
+                   <image class="charge-icon" src="../../../assets/image/charge.png">
+                    </image>
+                   <view class="point-title">充值赚积分</view>
+                </view>
+                <image class="point-arrow" src="https://cdn.ibrand.cc/janitou-0718.png">
+
+                </image>
+            </view>
+             <view class="charge-list">
+                <view class="point-left">
+                   <image class="charge-icon" src="../../../assets/image/comsume.png">
+                    </image>
+                   <view class="point-title">消费赚积分</view>
+                </view>
+                <image class="point-arrow" src="https://cdn.ibrand.cc/janitou-0718.png">
+                </image>
+            </view>
+             <view class="charge-list">
+                <view class="point-left">
+                   <image class="charge-icon" src="../../../assets/image/person.png">
+                    </image>
+                   <view class="point-title">完善个人资料</view>
+                </view>
+                <image class="point-arrow" src="https://cdn.ibrand.cc/janitou-0718.png">
+
+                </image>
+            </view>
+
         </view>
-        <view class="tab-panel">
-            <view class="tab-content" hidden="{{activeIndex != 0}}">
-                <view class="no-data" wx:if="{{!dataList[0][0].length && tabList[0].init}}">
-                    暂无数据
+        <view class="point-goods-box">
+            <view class="title-box">
+                <view class="title-line">
+
                 </view>
-                <view class="point-item">
-                    <view wx:for="{{dataList[0]}}" wx:for-index="idx">
-                        <view class="point-info mx-1px-bottom" wx:for="{{dataList[0][idx]}}" wx:for-item="point">
-                            <view class="info-left">
-                                <view class="store-title">{{point.note}}</view>
-                                <view class="up-time">{{point.updated_at}}</view>
+                <view class="title">
+                    积分商城
+                </view>
+            </view>
+            <view class="commodity-bottom">
+                <view class="commodity-out">
+                    <view class="commodity-box">
+                        <view class="commodity-img">
+                            <image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
+                        </view>
+                        <view class="commodity-name">
+                            66666
+                        </view>
+                        <view class="commodity-money">
+                            <view class="point">
+                                <image src="https://cdn.ibrand.cc/point-58353.png"></image>
+                                555
                             </view>
-
-                            <view class="info-right">
-                                <view class="up-money">{{point.value}}</view>
-                                <view class="point-status">{{point.status_text}}</view>
+                            <view class="money">
+                                原价￥77
                             </view>
                         </view>
                     </view>
-
                 </view>
-            </view>
-
-            <view class="tab-content" hidden="{{activeIndex != 1}}">
-                <view class="no-data" wx:if="{{!dataList[1][0].length && tabList[1].init}}">
-                    暂无数据
-                </view>
-                <view class="point-item">
-                    <view wx:for="{{dataList[1]}}" wx:for-index="idx">
-                        <view class="point-info mx-1px-bottom" wx:for="{{dataList[1][idx]}}" wx:for-item="point">
-                            <view class="info-left">
-                                <view class="store-title">{{point.note}}</view>
-                                <view class="up-time">{{point.updated_at}}</view>
+                <view class="commodity-out">
+                    <view class="commodity-box">
+                        <view class="commodity-img">
+                            <image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
+                        </view>
+                        <view class="commodity-name">
+                            66666
+                        </view>
+                        <view class="commodity-money">
+                            <view class="point">
+                                <image src="https://cdn.ibrand.cc/point-58353.png"></image>
+                                555
                             </view>
-                            <view class="slow-money">{{point.value}}</view>
+                            <view class="money">
+                                原价￥77
+                            </view>
                         </view>
                     </view>
-
                 </view>
             </view>
         </view>
     </view>
-    <!--point-content结束-->
-
 </view>

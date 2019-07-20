@@ -1,0 +1,21 @@
+<view id="certificate">
+    <image mode="widthFix" class="index-bg" src="https://cdn.ibrand.cc/shitang949394.png">
+
+    </image>
+    <view class="content">
+        <view class="qr-box">
+            <image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg">
+
+            </image>
+            <view class="tag">
+                仕堂黄金会员
+            </view>
+            <image src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" class="qr-code">
+
+            </image>
+            <view class="tips">
+                30S后自动刷新二维码
+            </view>
+        </view>
+    </view>
+</view>

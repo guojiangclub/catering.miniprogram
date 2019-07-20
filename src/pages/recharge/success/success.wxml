@@ -1,0 +1,45 @@
+<view id="recharge-success">
+    <view class="img-box">
+        <image src="https://cdn.ibrand.cc/success-bgt7837.png"></image>
+        <view class="text">
+            订单已完成
+        </view>
+        <view class="money">
+            实付 ¥ 21.3
+        </view>
+    </view>
+    <view class="num-box">
+        <view class="item">
+            <view class="name">
+                可用余额
+            </view>
+            <view class="num">
+                ￥999
+            </view>
+        </view>
+        <view class="item">
+            <view class="name">
+                期初余额
+            </view>
+            <view class="num">
+                ￥999
+            </view>
+        </view>
+        <view class="item">
+            <view class="name">
+                支付时间
+            </view>
+            <view class="num">
+                2019-09-07  21:00
+            </view>
+        </view>
+    </view>
+    <view class="btn-box">
+        <view class="item">
+            去买单
+        </view>
+        <view class="item">
+            返回首页
+        </view>
+    </view>
+</view>

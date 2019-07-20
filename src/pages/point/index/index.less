@@ -1,120 +1,231 @@
 @import "../../../assets/css/global";
-#point_index{
-  .no-data {
-    text-align: center;
-  }
-.point-top{
-  background-color: @globalColor;
-  color: #ffffff;
-  padding: 19px 15px 15px 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  .point-current{
-    text-align: center;
-    .point-num{
-      font-size:35px;
-      line-height: 49px;
-    }
-  }
-  .point-frozen{
-    .point-mall{
-      text-align: center;
-      width: 63px;
-      line-height: 20px;
-      margin: auto;
-      font-size: 12px;
-      margin-top:15px ;
-      border:1px solid #ffffff ;
-      border-radius: 2px;
-    }
-  }
-}
-  .point-content{
-    margin-top: 15px;
 
-    .navbar {
+.moneyContainer {
+  .money-bg {
+    width: 100%;
+  }
+
+  .content {
+    position: absolute;
+    width: 100%;
+    top: 35px;
+    padding: 0 20px;
+
+    .card-box {
       width: 100%;
+      height: 165px;
+      background: url("https://cdn.ibrand.cc/shitang94939rr.png") no-repeat center;
+      background-size: cover;
+      padding: 22px 0;
       display: flex;
-      z-index: 20;
-      height: 50px;
-      line-height: 50px;
-      background: #FFFFFF;
-      font-size: 14px;
-      color: #9B9B9B;
+      flex-direction: column;
+      justify-content: space-between;
 
-      .navbar-item {
-        flex: 1;
-        width: 0%;
-        text-align: center;
-
-        &.activity {
-          color: @globalColor;
-        }
-      }
-      .navbar-slider {
-        position: absolute;
-        content: " ";
-        left: 0;
-        bottom: 0;
-        width: 4em;
-        height: 3px;
-        background-color: @globalColor;
-        transition: transform .3s;
-      }
-    }
-    .tab-panel{
-      padding-top: 15px;
-    }
-
-    .point-list{
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-      margin-bottom:10px ;
-      view{
-        width: 50%;
-        text-align: center;
-        padding: 10px 0;
-      }
-    }
-    .point-item{
-      .point-info{
-        background-color: #ffffff;
-        color: #888888;
-        font-size: 12px;
-        padding: 10px 15px;
+      .user-info {
+        position: relative;
         display: flex;
         align-items: center;
+        padding-left: 14px;
+        color: #ffffff;
+
+        .name-box {
+          padding-left: 20px;
+
+          .tag {
+            font-size: 17px;
+          }
+        }
+
+        .charge {
+          width: 64px;
+          height: 20px;
+          border-radius: 10px;
+          background: rgba(255, 255, 255, 0.3);
+          font-size: 12px;
+          text-align: center;
+          margin-left: 152px;
+        }
+
+      }
+
+      .money {
+        font-size: 40px;
+        margin-left: 34px;
+        color: #fff;
+      }
+    }
+
+    .title-box {
+      text-align: center;
+      margin-top: 13px;
+
+      .title-line {
+        height: 1px;
+        width: 100%;
+        background: #CCCCCC;
+      }
+
+      .title {
+        position: relative;
+        display: inline-block;
+        top: -13px;
+        font-size: 16px;
+        color: #666666;
+        background: #FFFFFF;
+        padding: 0px 10px;
+      }
+    }
+
+    .privilege-box {
+      padding: 20px 10px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.5);
+      position: relative;
+
+      .charge-list {
+        width: 100%;
+        height: 50px;
+        border-bottom: 1px solid #E8E9E8;
+        display: flex;
+        flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
 
-        .info-left{
-          flex: 1;
-        }
-        .info-right{
+        .point-left {
           display: flex;
-          flex-direction: column;
-          text-align: right;
+          align-items: center;
 
+          .charge-icon {
+            width: 18px;
+            height: 18px;
+          }
+
+          .point-title {
+            color: #5B5B5B;
+            font-size: 17px;
+            margin-left: 12px;
+          }
         }
-        .store-title{
-          font-size: 16px;
-          color: #666666;
-          line-height: 25px;
+
+        .point-arrow {
+          width: 10px;
+          height: 30px;
         }
-        .up-time{
-          line-height:16px ;
+
+      }
+
+    }
+
+    .point-goods-box {
+      padding: 12px 10px;
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.5);
+      margin: 10px 0;
+
+      .commodity-bottom {
+        //height: 100%;
+        font-size: 0;
+        box-sizing: border-box;
+
+        //padding-top: 15px;
+        .commodity-out {
+          width: 50%;
+          display: inline-block;
+          font-size: 12px;
+          box-sizing: border-box;
+          padding: 0 3px 7px 3px;
+
+          &:nth-of-type(odd) {
+            padding-left: 0;
+          }
+
+          &:nth-of-type(even) {
+            padding-right: 0;
+          }
+
+          .commodity-box {
+            background: #ffffff;
+            overflow: hidden;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 14px;
+
+            .commodity-img {
+              overflow: hidden;
+
+              image {
+                width: 290rpx;
+                border-radius: 5px;
+                //height: 310rpx;
+              }
+            }
+
+            .commodity-name {
+              padding: 0 5px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+
+            .commodity-money {
+              display: flex;
+              align-items: center;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              height: 25px;
+
+              .point {
+                display: flex;
+                align-items: center;
+                flex: 1;
+                font-size: 16px;
+                color: #FF8D00;
+
+                image {
+                  width: 15px;
+                  height: 15px;
+                  margin-right: 5px;
+                  margin-bottom: 2px;
+                }
+              }
+
+              .money {
+                font-size: 10px;
+                color: #CCCCCC;
+                margin-top: 2px;
+              }
+
+              .discount-tags {
+                font-size: 0;
+                overflow: hidden;
+
+                .tags-item {
+                  display: block;
+                  float: left;
+                  color: #ffffff;
+                  background: #C9171D;
+                  border-radius: 2px;
+                  padding: 2px;
+                  font-size: 12px;
+                  margin: 0 0 5px 5px;
+                }
+              }
+            }
+          }
         }
-        .up-money{
-          color:#14C532;
-          font-size: 15px;
-        }
-        .slow-money{
-          color:#E73237 ;
-          font-size: 15px;
+
+        .loadingbox {
+          margin-top: 10px;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          font-size: 14px;
         }
       }
     }
+
   }
+
 }

@@ -1,61 +1,57 @@
 <view id="recharge-balance">
     <view class="content">
-        <view class="balance-top" style="background: {{config.mainColor}}">
-            <view class="title">
-                账户余额（元）
+        <view class="recharge-type">
+            <view class="type-item">
+                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
+
+                </image>
             </view>
-            <view class="recharge-box">
-                <view class="money">
-                    {{num/100 || 0}}
-                </view>
-                <view class="recharge" bindtap="jump">
-                    充值 >
-                </view>
+            <view class="type-item">
+                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
+
+                </image>
+            </view>
+            <view class="type-item">
+                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
+
+                </image>
+            </view>
+            <view class="type-item">
+                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
+
+                </image>
             </view>
         </view>
-        <view class="tab-panel">
-            <block wx:for="{{tabList}}">
-                <view id="{{index}}" hidden="{{activeIndex != index}}" style="color: {{config.mainColor}}; border-color: {{config.mainColor}} " class="tab-title active" bindtap="tabClick">{{item.name}}</view>
-                <view id="{{index}}" hidden="{{activeIndex == index}}" class="tab-title" bindtap="tabClick">{{item.name}}</view>
-            </block>
+        <view class="money-box">
+            共计：<span>4000元</span>
         </view>
-        <view class="tab-content">
-            <view class="tab-item" hidden="{{activeIndex!=0}}">
-                <view class="no-data" wx:if="{{!dataList[0][0].length && tabList[0].init}}">
-                    暂无数据
+        <view class="submit">
+            确认支付
+        </view>
+
+
+        <view class="tips-box">
+            <view class="title-box">
+                <view class="title-line">
+
                 </view>
-                <block wx:for="{{dataList[0]}}" wx:for-index="idx">
-                    <view class="tab-item-content mx-1px-bottom" wx:for="{{dataList[0][idx]}}">
-                        <view class="text">
-                            <view style="font-size: 14px; text-overflow:ellipsis;overflow:hidden;">{{item.note}}</view>
-                            <view style="font-size: 10px;color: #A3A3A3">{{item.updated_at}}</view>
-                        </view>
-                        <view class="num">
-                            +{{item.value/100}}
-                        </view>
-                    </view>
-                </block>
-                <view class="loadingbox" hidden="{{!tabList[0].show}}">
-                    {{showText}}
+                <view class="title">
+                    充值须知
                 </view>
             </view>
-            <view class="tab-item" hidden="{{activeIndex!=1}}">
-                <view class="no-data" wx:if="{{!dataList[1][0].length && tabList[1].init}}">
-                    暂无数据
+            <view class="tips">
+                <view>
+                    1. 电子储蓄卡的有效期为永久有效
                 </view>
-                <block wx:for="{{dataList[1]}}" wx:for-index="idx">
-                    <view class="tab-item-content mx-1px-bottom" wx:for="{{dataList[1][idx]}}">
-                        <view class="text">
-                            <view style="font-size: 14px; text-overflow:ellipsis;overflow:hidden;">{{item.note}}</view>
-                            <view style="font-size: 10px;color: #A3A3A3">{{item.updated_at}}</view>
-                        </view>
-                        <view class="num">
-                            {{item.value/100}}
-                        </view>
-                    </view>
-                </block>
-                <view class="loadingbox" hidden="{{!tabList[1].show}}">
-                    {{showText}}
+
+                <view>
+                    2. 您可以在仕堂火锅店购买任意商品时使用
+                </view>
+                <view>
+                    3. 电子储蓄卡可以多次使用，不可兑换现金，不找零
+                </view>
+                <view>
+                    4. 充值电子储蓄卡按实际支付金额积分，赠送部分不积分
                 </view>
             </view>
         </view>

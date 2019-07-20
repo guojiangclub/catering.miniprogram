@@ -1,7 +1,58 @@
 <view class="moneyContainer">
-    <view class="imgBox">
-        <image src="../../../assets/image/bgd1.png"  class="img"/>
-    </view>
-    <view>
+    <image mode="widthFix" class="money-bg" src="https://cdn.ibrand.cc/shitang949394.png">
+    </image>
+    <view class="content">
+        <view class="card-box">
+            <view class="user-info">
+                <view class="name-box">
+                    <view class="tag">
+                        当前余额
+                    </view>
+                </view>
+                <view class="charge">
+                   去充值
+                </view>
+            </view>
+            <view class="money">
+               999999.99
+            </view>
+        </view>
+        <view class="privilege-box">
+            <view class="title-box">
+                <view class="title-line">
+
+                </view>
+                <view class="title">
+                    消费记录
+                </view>
+            </view>
+            <view class="charge-list">
+                <view>
+                    <view class="charge-type">收款交易</view>
+                    <view class="charge-date">2018-02-03 11:20:37</view>
+                </view>
+                <view class="charge-num">
+                    +3000.00
+                </view>
+            </view>
+            <view class="charge-list">
+                <view>
+                    <view class="charge-type">收款交易</view>
+                    <view class="charge-date">2018-02-03 11:20:37</view>
+                </view>
+                <view class="charge-num">
+                    +3000.00
+                </view>
+            </view>
+            <view class="charge-list">
+                <view>
+                    <view class="charge-type">收款交易</view>
+                    <view class="charge-date">2018-02-03 11:20:37</view>
+                </view>
+                <view class="charge-num">
+                    +3000.00
+                </view>
+            </view>
+        </view>
     </view>
 </view>
