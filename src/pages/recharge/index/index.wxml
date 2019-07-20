@@ -3,7 +3,9 @@
         <view class="recharge-type">
             <view class="type-item">
                 <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
+                    <image class="checked" src="https://cdn.ibrand.cc/535rer.png">
 
+                    </image>
                 </image>
             </view>
             <view class="type-item">

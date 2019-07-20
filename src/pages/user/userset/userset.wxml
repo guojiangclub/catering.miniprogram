@@ -58,7 +58,7 @@
 		</view>
 	</view>
 </view>
-<view class="mask" wx-if="{{false}}">
+<view class="mask" wx-if="{{true}}">
 	<view class="pop-content">
 		<view class="pop-title">
 			恭喜您！

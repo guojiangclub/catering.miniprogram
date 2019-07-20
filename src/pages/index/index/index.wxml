@@ -44,10 +44,11 @@
 		</view>
 		<view class="privilege-box ">
 			<view class="title-box">
-				<view class="title-line" />
+				<!--<view class="title-line" />
 				<view class="title">
 					我的特权
-				</view>
+				</view>-->
+				<image mode="widthFix" src="https://cdn.ibrand.cc/7yyy.png"></image>
 			</view>
 			<view class="img-box">
 				<view class="img-item">
@@ -111,10 +112,12 @@
 		</view>
 		<view class="recharge-box">
 			<view class="title-box">
-				<view class="title-line" />
+				<!--<view class="title-line" />
 				<view class="title">
 					充值奖励
-				</view>
+				</view>-->
+				<image mode="widthFix" src="https://cdn.ibrand.cc/545rr.png"></image>
+
 			</view>
 			<view class="img-box">
 				<image src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
@@ -124,10 +127,12 @@
 		</view>
 		<view class="point-goods-box">
 			<view class="title-box">
-				<view class="title-line" />
+				<!--<view class="title-line" />
 				<view class="title">
 					积分商城
-				</view>
+				</view>-->
+				<image mode="widthFix" src="https://cdn.ibrand.cc/45343ee.png"></image>
+
 			</view>
 			<view class="commodity-bottom">
 				<view class="commodity-out">
@@ -172,10 +177,12 @@
 		</view>
 		<view class="birthday-box">
 			<view class="title-box">
-				<view class="title-line" />
+				<!--<view class="title-line" />
 				<view class="title">
 					生日礼物
-				</view>
+				</view>-->
+				<image mode="widthFix" src="https://cdn.ibrand.cc/55t.png"></image>
+
 			</view>
 			<view class="img-box">
 				<image mode="widthFix" src="https://cdn.ibrand.cc/213456yry.png" class="slide-image" />
