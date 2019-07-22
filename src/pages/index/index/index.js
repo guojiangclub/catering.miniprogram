@@ -14,7 +14,9 @@ Page({
         token: '',
         userInfo: '',
         pointGoods: '',
-        initInfo: ''
+        initInfo: '',
+        discountInfo:'',
+        schemesList:''
 
     },
     onShareAppMessage(res) {
@@ -50,8 +52,15 @@ Page({
             }
         });
         this.getPointGoods();
-        this.getUserInfo();
         this.init(e);
+    },
+    onShow(){
+      let token = cookieStorage.get('user_token');
+      if(token){
+          this.getUserInfo();
+          this.getUserDidcounts();
+          this.getBalanceSchemes();
+      }
     },
     // 获取初始化数据
     init(e) {
@@ -139,6 +148,12 @@ Page({
             url: link
         });
     },
+    jump(e){
+        let id = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url:'/pages/recharge/index/index?id='+id
+        });
+    },
     // 获取积分列表
     getPointGoods() {
         wx.showLoading({
@@ -173,14 +188,71 @@ Page({
     // 获取用户信息
     getUserInfo() {
         sandBox.get({
-            api: 'api/me',
+            api: 'api/shitang/me',
             header:{
                 Authorization:cookieStorage.get('user_token')
             },
+            data:{
+                includes:'group'
+            }
         }).then(res =>{
             if(res.data.status){
                 this.setData({
                     userInfo:res.data.data
+                })
+            } else {
+                wx.showModal({
+                    content: res.message || "获取数据失败",
+                    showCancel: false,
+                })
+            }
+        })
+    },
+    // 获取优惠券积分信息
+    getUserDidcounts() {
+        sandBox.get({
+            api: 'api/shitang/user/discounts/info',
+            header:{
+                Authorization:cookieStorage.get('user_token')
+            }
+        }).then(res =>{
+            if(res.data.status){
+                this.setData({
+                    discountInfo:res.data.data
+                })
+            } else {
+                wx.showModal({
+                    content: res.message || "获取数据失败",
+                    showCancel: false,
+                })
+
+            }
+        })
+    },
+    // 获取储值数据
+    getBalanceSchemes() {
+        sandBox.get({
+            api: 'api/users/balance/schemes',
+           header:{
+                Authorization:cookieStorage.get('user_token')
+           }
+        }).then(res => {
+            if (res.statusCode == 200) {
+                res = res.data;
+                if (res.status) {
+                    this.setData({
+                        schemesList: res.data
+                    })
+                } else {
+                    wx.showModal({
+                        content: res.message || "获取储值数据失败",
+                        showCancel: false,
+                    })
+                }
+            } else {
+                wx.showModal({
+                    content: "获取储值数据失败",
+                    showCancel: false,
                 })
             }
         })

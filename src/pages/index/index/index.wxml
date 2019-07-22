@@ -1,16 +1,16 @@
 <View id="index">
-	<image mode="widthFix" class="index-bg" src="https://cdn.ibrand.cc/shitang949394.png" />
+	<image mode="widthFix" class="index-bg" src="{{initInfo.mini_program_bg_img}}" />
 
 	<view class="content">
-		<view class="card-box">
+		<view class="card-box" wx:if="{{userInfo}}" style="background: url({{userInfo.group.pic}})">
 			<view class="user-info">
 				<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
 				<view class="name-box">
 					<view class="tag">
-						{{token ? userInfo.nick_name : '登录查看'}}
+						{{token ? userInfo.group.name : '登录查看'}}
 					</view>
 					<view class="num">
-						{{token ? userInfo.nick_name : '登录查看'}}
+						{{token ? userInfo.card_no : '登录查看'}}
 					</view>
 				</view>
 				<image src="https://cdn.ibrand.cc/user-0718.png" class="ticket-box" />
@@ -18,7 +18,7 @@
 			<view class="num-box">
 				<view class="num-item">
 					<view class="num">
-						999
+						{{discountInfo.balance}}
 					</view>
 					<view class="name">
 						余额
@@ -26,7 +26,7 @@
 				</view>
 				<view class="num-item point">
 					<view class="num">
-						999
+						{{discountInfo.point.point}}
 					</view>
 					<view class="name">
 						积分
@@ -34,7 +34,7 @@
 				</view>
 				<view class="num-item">
 					<view class="num">
-						9 张
+						{{discountInfo.coupons}} 张
 					</view>
 					<view class="name">
 						优惠券
@@ -42,7 +42,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="privilege-box ">
+		<view class="privilege-box " wx:if="{{userInfo.rights.length}}">
 			<view class="title-box">
 				<!--<view class="title-line" />
 				<view class="title">
@@ -51,45 +51,9 @@
 				<image mode="widthFix" src="https://cdn.ibrand.cc/7yyy.png"></image>
 			</view>
 			<view class="img-box">
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
-				</view>
-				<view class="img-item">
-					<image src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
-					<view>会员价</view>
+				<view class="img-item" wx:for="{{userInfo.rights}}" wx:key="{{index}}">
+					<image src="{{item.img}}" class="{{item.have_right ? '' :'gray'}}" />
+					<view>{{item.name}}</view>
 				</view>
 			</view>
 		</view>
@@ -110,7 +74,7 @@
 				</swiper-item>
 			</swiper>
 		</view>
-		<view class="recharge-box">
+		<view class="recharge-box" wx:if="{{schemesList.length}}">
 			<view class="title-box">
 				<!--<view class="title-line" />
 				<view class="title">
@@ -120,9 +84,9 @@
 
 			</view>
 			<view class="img-box">
-				<image src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
-				<image src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
-				<image src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
+				<block wx:for="{{schemesList}}" wx:key="{{index}}" >
+					<image src="{{item.img}}" class="slide-image" bindtap="jump" data-id="{{item.id}}"/>
+				</block>
 			</view>
 		</view>
 		<view class="point-goods-box" wx:if="{{pointGoods && pointGoods.length}}">
