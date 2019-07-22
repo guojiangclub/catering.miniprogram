@@ -44,7 +44,7 @@
             请选择充值金额
         </view>
         <view class="recharge-item-box">
-            <image wx:for="{{schemes}}" wx:key="{{index}}" data-id="{{item.id}}" data-item="{{item}}" bindtap="afterRecharge" src="https://cdn.ibrand.cc/rrer-bg55.png"></image>
+            <image wx:for="{{schemes}}" wx:key="{{index}}" data-id="{{item.id}}" data-item="{{item}}" bindtap="afterRecharge" src="{{item.img}}"></image>
 
             <!--<view class="item" >
                 <view class="box">

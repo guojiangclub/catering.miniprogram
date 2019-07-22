@@ -471,7 +471,10 @@ Page({
         var token = cookieStorage.get('user_token');
 
         sandBox.get({
-            api: 'api/me',
+            api: 'api/shitang/me',
+            data: {
+                includes: 'group'
+            },
             header:{
                 Authorization: token
             }

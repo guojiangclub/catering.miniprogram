@@ -2,7 +2,7 @@
     <form class="content" bindsubmit="submitRecharge" wx:if="{{schemes && schemes.length}}" report-submit="{{report}}">
         <view class="recharge-type">
             <view class="type-item" wx:for="{{schemes}}" data-item="{{item}}" bindtap="changeItem">
-                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
+                <image mode="widthFix" class="type-bg" src="{{item.img}}">
                     <image class="checked" src="https://cdn.ibrand.cc/535rer.png" wx:if="{{rechargeItem.id == item.id}}">
 
                     </image>
