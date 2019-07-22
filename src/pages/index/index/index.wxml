@@ -4,13 +4,13 @@
 	<view class="content">
 		<view class="card-box">
 			<view class="user-info">
-				<image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
+				<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
 				<view class="name-box">
 					<view class="tag">
-						仕堂黄金会员
+						{{token ? userInfo.nick_name : '登录查看'}}
 					</view>
 					<view class="num">
-						1003833203984
+						{{token ? userInfo.nick_name : '登录查看'}}
 					</view>
 				</view>
 				<image src="https://cdn.ibrand.cc/user-0718.png" class="ticket-box" />
@@ -125,7 +125,7 @@
 				<image src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
 			</view>
 		</view>
-		<view class="point-goods-box">
+		<view class="point-goods-box" wx:if="{{pointGoods && pointGoods.length}}">
 			<view class="title-box">
 				<!--<view class="title-line" />
 				<view class="title">
@@ -135,40 +135,21 @@
 
 			</view>
 			<view class="commodity-bottom">
-				<view class="commodity-out">
+				<view class="commodity-out" wx:for="{{pointGoods}}" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
 					<view class="commodity-box">
 						<view class="commodity-img">
-							<image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
+							<image mode="widthFix" src="{{item.img}}" />
 						</view>
 						<view class="commodity-name">
-							66666
+							{{item.name}}
 						</view>
 						<view class="commodity-money">
 							<view class="point">
 								<image src="https://cdn.ibrand.cc/point-58353.png" />
-								555
+								{{item.redeem_point}}
 							</view>
 							<view class="money">
-								原价￥77
-							</view>
-						</view>
-					</view>
-				</view>
-				<view class="commodity-out">
-					<view class="commodity-box">
-						<view class="commodity-img">
-							<image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
-						</view>
-						<view class="commodity-name">
-							66666
-						</view>
-						<view class="commodity-money">
-							<view class="point">
-								<image src="https://cdn.ibrand.cc/point-58353.png" />
-								555
-							</view>
-							<view class="money">
-								原价￥77
+								原价￥{{item.market_price}}
 							</view>
 						</view>
 					</view>
@@ -196,21 +177,14 @@
 		</view>
 	</view>
 
-	<!--<block>
-        <view class="mask">
+	<block wx:if="{{!token}}">
+        <view class="mask" data-link="/pages/user/register/register" bindtap="jumpLink">
 
         </view>
-        <view class="popup-box">
+        <view class="popup-box" data-link="/pages/user/register/register" bindtap="jumpLink">
             <image mode="widthFix" src="https://cdn.ibrand.cc/shitangiii.png">
 
             </image>
         </view>
-        &lt;!&ndash;用户是否登录&ndash;&gt;
-        <view class="get-user" wx:if="{{!token}}">
-            &lt;!&ndash;获取用户头像&ndash;&gt;
-            <button wx:if="{{!userInfo}}" class="user" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
-            &lt;!&ndash;获取手机号&ndash;&gt;
-            <button class="phone" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
-        </view>
-    </block>-->
+    </block>
 </View>

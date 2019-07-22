@@ -1,14 +1,51 @@
-<view id="login-type">
-    <view class="phone__warning">
-        <image src="{{logo}}"></image>
-        <!--<i class="iconfont icon-anquanjinggao"></i>-->
+<view id="register">
+    <view class="item">
+        <view class="img-box">
+            <image src="{{logo}}" class="logo"></image>
+        </view>
+        <view class="text-box">
+            <view>
+                为了更好的体验
+            </view>
+            <view>
+                小程序需要获得您的基本信息
+            </view>
+        </view>
+        <view class="btn-box">
+            <button class="btn active" hover-class="none" open-type="getUserInfo" bindgetuserinfo="getUserInfo" wx:if="{{!userInfo}}">授权登录</button>
+            <view  class="btn" wx:else>
+                授权登录
+            </view>
+        </view>
     </view>
-    <button class="wechat-phoneBtn phone__btn" style="background: {{config.mainColor}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-        <i class="iconfont icon-hudong"></i>
-        <view class="btn__text">微信登录</view>
-    </button>
-    <view class="again-phoneBtn phone__btn" style="color: {{config.mainColor}}; border-color: {{config.mainColor}}" bindtap="jumpLogin">
-        <i class="iconfont icon--dianhua"></i>
-        <view class="btn__text">手机号登录</view>
+
+    <view class="item phone">
+        <view class="img-box">
+            <image src="https://cdn.ibrand.cc/6464ytktu.png"></image>
+        </view>
+        <view class="text-box">
+            手机号
+        </view>
+        <view class="btn-box">
+            <button class="btn active" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:if="{{!phone && userInfo}}">快捷授权手机</button>
+            <view  class="btn" wx:else>
+                快捷授权手机
+            </view>
+        </view>
+    </view>
+
+
+    <view class="login-box">
+        <view class="btn {{isChecked ? 'active' : ''}}" bindtap="submit">
+            登录
+        </view>
+
+        <view class="info-box" bindtap="changeCheck">
+            <image class="check" wx:if="{{!isChecked}}" src="https://cdn.ibrand.cc/ooyynng643.png"></image>
+            <image class="checked" wx:else src="https://cdn.ibrand.cc/kkkft5.png"></image>
+            <view class="text">
+                我已阅读并同意 <span catchtap="jumpLink">会员章程</span>
+            </view>
+        </view>
     </view>
 </view>

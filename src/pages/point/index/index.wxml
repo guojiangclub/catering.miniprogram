@@ -19,12 +19,14 @@
         </view>
         <view class="privilege-box ">
             <view class="title-box">
-                <view class="title-line">
+                <!--<view class="title-line">
 
                 </view>
                 <view class="title">
                     赚积分
-                </view>
+                </view>-->
+                <image mode="widthFix" src="https://cdn.ibrand.cc/434ggg.png"></image>
+
             </view>
             <view class="charge-list">
                 <view class="point-left">

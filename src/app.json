@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index/index",
+    "pages/index/webView/webView",
     "pages/user/userset/userset",
     "pages/coupon/onDetail/onDetail",
     "pages/point/index/index",

@@ -5,7 +5,11 @@ Page({
         url: '',
         logo: '',
         author: config.PACKAGES.author,
-        config: ''
+        config: '',
+        userInfo: '',
+        phone: '',
+        isChecked: false,
+        userProtocol: ''
     },
     onLoad(e){
         // 第三方平台配置颜色
@@ -18,9 +22,7 @@ Page({
                 url: decodeURIComponent(e.url)
             })
         }
-        if (e.shop_id) {
-            cookieStorage.set('shop_id', e.shop_id);
-        }
+        this.gettingUserProtocol();
     },
     onShow() {
         var token=cookieStorage.get('user_token');
@@ -36,11 +38,38 @@ Page({
         }
 
         if(token){
-            wx.switchTab({
-                url: '/pages/user/personal/personal'
+            wx.redirectTo({
+                url: '/pages/index/index/index'
             })
         } else {
             this.wxLogin();
+        }
+    },
+    changeCheck() {
+      this.setData({
+          isChecked: !this.data.isChecked
+      })
+    },
+    jumpLink(e) {
+        let url = this.data.userProtocol;
+        if (!url) {
+            wx.showModal({
+                content: '地址为空',
+                showCancel: false
+            })
+        } else {
+            wx.navigateTo({
+                url: '/pages/index/webView/webView?url=' + encodeURIComponent(url)
+            })
+        }
+    },
+
+    // 获取用户信息
+    getUserInfo(e) {
+        if (e.detail.iv) {
+            this.setData({
+                userInfo: e.detail.userInfo
+            })
         }
     },
     wxLogin() {
@@ -61,18 +90,23 @@ Page({
             }
         })
     },
-    jumpLogin(){
-        if (this.data.url) {
-            wx.navigateTo({
-                url: '/pages/user/loginType/loginType?url=' + encodeURIComponent(this.data.url) + '&open_id=' + this.data.open_id
-            })
-        } else {
-            wx.navigateTo({
-                url: '/pages/user/loginType/loginType?open_id=' + this.data.open_id
-            })
-        }
-
+    getCode() {
+        /*wx.login({
+            success: res => {
+                if (res.code) {
+                    this.setData({
+                        code: res.code
+                    })
+                } else {
+                    wx.showModal({
+                        content: " 获取code失败",
+                        showCancel: false
+                    })
+                }
+            }
+        });*/
     },
+    // 获取手机号
     getPhoneNumber(e) {
         if (e.detail.encryptedData) {
             wx.login({
@@ -91,68 +125,33 @@ Page({
                     }
                 }
             });
-            console.log(this.data.code);
             return
-        } else {
-            this.jumpLogin();
         }
     },
-
+// 获取手机号
     phone(e) {
         wx.showLoading({
-            title: '正在登录',
+            title: '正在获取手机号',
             mask: true
         })
-        sandBox.post({
-            api: 'api/v2/oauth/miniprogram/mobile',
+        sandBox.get({
+            api: 'api/shitang/authorizationMobile',
             data: {
                 open_type:'miniprogram',
                 code: this.data.code,
                 encryptedData: e.detail.encryptedData,
                 iv: e.detail.iv,
                 open_id: this.data.open_id,
-                shop_id: cookieStorage.get('shop_id') || '',
                 agent_code: cookieStorage.get('coupon_agent_code') || cookieStorage.get('agent_code') || '',
-                clerk_id: cookieStorage.get('clerk_id') || '',
                 agent_code_time: cookieStorage.get('agent_code_time') || '',
-                shop_id_time: cookieStorage.get('shop_id_time') || '',
             }
         }).then(res => {
             if (res.statusCode == 200) {
                 res = res.data;
-
-                if (res.data.access_token) {
-                    var access_token = res.data.token_type + ' ' + res.data.access_token;
-                    var expires_in = res.data.expires_in || 315360000;
-                    // debugger;
-                    cookieStorage.set("user_token", access_token, expires_in);
-                    // cookieStorage.set("user_token",access_token,expires_in);
-                    // wx.setStorageSync("user_token",access_token);
-                    if (this.data.url) {
-                        var path = [
-                            'pages/entity/store/store',
-                            'pages/index/index/index',
-                            'pages/index/classification/classification',
-                            'pages/store/tabCart/tabCart',
-                            'pages/user/personal/personal',
-                            'pages/travels/index/index',
-                            'pages/user/collar/collar'
-                        ];
-                        var pathIndex = path.indexOf(this.data.url);
-                        if (pathIndex == -1) {
-                            wx.redirectTo({
-                                url:"/"+this.data.url
-                            })
-                        } else {
-                            wx.switchTab({
-                                url:"/"+this.data.url
-                            })
-                        }
-                    } else {
-                        wx.switchTab({
-                            url: '/pages/user/personal/personal'
-                        })
-                    }
+                if (res.status) {
+                    this.setData({
+                        phone: res.data.mobile
+                    })
                 } else {
                     wx.showModal({
                         content: res.message || '请求失败，请重试',
@@ -174,19 +173,15 @@ Page({
             })
         })
     },
-
-
+    // 自动登录
     autoLogin(code) {
         sandBox.post({
-            api: 'api/v2/oauth/miniprogram/login',
+            api: 'api/shitang/oauth/MiniProgramLogin',
             data: {
                 code: code,
                 open_type:'miniprogram',
-                shop_id: cookieStorage.get('shop_id') || '',
                 agent_code: cookieStorage.get('coupon_agent_code') || cookieStorage.get('agent_code') || '',
-                clerk_id: cookieStorage.get('clerk_id') || '',
                 agent_code_time: cookieStorage.get('agent_code_time') || '',
-                shop_id_time: cookieStorage.get('shop_id_time') || '',
             },
         }).then(res => {
             if (res.statusCode == 200) {
@@ -195,6 +190,8 @@ Page({
                     this.setData({
                         open_id: res.data.open_id
                     })
+
+
                 }
                 // 如果接口返回token就直接登录，如果没有则弹出授权
                 if (res.data.access_token) {
@@ -203,28 +200,12 @@ Page({
                     var expires_in = res.data.expires_in || 315360000;
                     cookieStorage.set("user_token", access_token, expires_in);
                     if (this.data.url) {
-                        var path = [
-                            'pages/entity/store/store',
-                            'pages/index/index/index',
-                            'pages/index/classification/classification',
-                            'pages/store/tabCart/tabCart',
-                            'pages/user/personal/personal',
-                            'pages/travels/index/index',
-                            'pages/user/collar/collar'
-                        ];
-                        var pathIndex = path.indexOf(this.data.url);
-                        if (pathIndex == -1) {
-                            wx.redirectTo({
-                                url:"/"+this.data.url
-                            })
-                        } else {
-                            wx.switchTab({
-                                url:"/"+this.data.url
-                            })
-                        }
+                        wx.redirectTo({
+                            url:"/"+this.data.url
+                        })
                     } else {
-                        wx.switchTab({
-                            url: '/pages/user/personal/personal'
+                        wx.redirectTo({
+                            url: '/pages/index/index/index'
                         })
                     }
                 } else {
@@ -255,5 +236,91 @@ Page({
                 }
             })
         })
+    },
+    // 获取会员章程
+    gettingUserProtocol() {
+      sandBox.get({
+          api: 'api/shitang/GettingUserProtocol'
+      }).then(res => {
+          if (res.statusCode) {
+              res = res.data;
+              if (res.status) {
+                  this.setData({
+                      userProtocol: res.data.protocol
+                  })
+              } else {
+                  wx.showModal({
+                      content: res.message || '请求失败，请重试',
+                      showCancel: false
+                  })
+              }
+          } else {
+              wx.showModal({
+                  content: res.message || '请求失败，请重试',
+                  showCancel: false
+              })
+          }
+      })
+    },
+    // 登录
+    submit() {
+        let message = '';
+        if (!this.data.isChecked) {
+            message = '请同意会员章程'
+        } else if (!this.data.userInfo) {
+            message = '请授权用户信息'
+        } else if (!this.data.phone) {
+            message = '请授权手机号'
+        }
+        if (message) {
+            wx.showModal({
+                content:message,
+                showCancel: false,
+            })
+        } else {
+            wx.showLoading({
+                title: '正在登录',
+                mask: true
+            })
+            sandBox.post({
+                api: 'api/shitang/oauth/register',
+                data: {
+                    mobile: this.data.phone,
+                    open_id: this.data.open_id,
+                    userInfo: this.data.userInfo
+                }
+            }).then(res => {
+                if (res.statusCode == 200) {
+                    res = res.data;
+                    if (res.status) {
+                        var access_token = res.data.token_type + ' ' + res.data.access_token;
+                        var expires_in = res.data.expires_in || 315360000;
+                        cookieStorage.set("user_token", access_token, expires_in);
+                        if (this.data.url) {
+                            wx.redirectTo({
+                                url:"/"+this.data.url
+                            })
+                        } else {
+                            wx.redirectTo({
+                                url: '/pages/index/index/index'
+                            })
+                        }
+                    } else {
+                        wx.hideLoading();
+                        wx.showModal({
+                            content:res.message || '请求失败，请重试',
+                            showCancel: false,
+                        })
+                    }
+                    wx.hideLoading();
+                } else {
+                    wx.hideLoading();
+                    wx.showModal({
+                        content:'请求失败，请重试',
+                        showCancel: false,
+                    })
+                }
+            })
+        }
     }
 })

@@ -19,12 +19,14 @@
         </view>
         <view class="privilege-box">
             <view class="title-box">
-                <view class="title-line">
+                <!--<view class="title-line">
 
                 </view>
                 <view class="title">
                     消费记录
-                </view>
+                </view>-->
+                <image mode="widthFix" src="https://cdn.ibrand.cc/53yu.png"></image>
+
             </view>
             <view class="charge-list">
                 <view>
