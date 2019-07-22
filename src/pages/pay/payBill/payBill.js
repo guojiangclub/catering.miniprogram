@@ -146,15 +146,10 @@ Page({
     },
     // 底部充值
     afterRecharge(e) {
-      var item = e.currentTarget.dataset.item;
-      this.setData({
-          rechargeItem: item
-      }, () => {
-          this.setData({
-              show_sure: true,
-              show_cover: !this.data.show_cover
-          })
-      })
+        let id = e.currentTarget.dataset.id;
+        wx.navigateTo({
+            url: '/pages/recharge/index/index?id=' + id
+        })
     },
     // 余额选择框
     balanceSwitch(e) {
@@ -691,7 +686,7 @@ Page({
                         if (res.data && (res.data.type == 'balance' || res.data.type == 'point' || res.data.type == 'balance_point')) {
                             // 直接跳转到支付成功页面
                             wx.redirectTo({
-                                url: '/pages/coupon/success/success?order_no=' + res.data.order_no + '&formId=' + this.data.formId
+                                url: '/pages/pay/success/success?order_no=' + res.data.order_no + '&formId=' + this.data.formId
                             })
                         } else {
                             this.setData({
@@ -736,7 +731,7 @@ Page({
                         console.log('这个也是', this.data.formId);
                         wx.hideLoading();
                         wx.redirectTo({
-                            url: '/pages/coupon/success/success?order_no='+this.data.merOrderId + '&type=' + type + '&formId=' + this.data.formId
+                            url: '/pages/pay/success/success?order_no='+this.data.merOrderId + '&type=' + type + '&formId=' + this.data.formId
                         })
                     } else {
                         console.log(res);

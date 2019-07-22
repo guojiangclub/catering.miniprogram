@@ -14,20 +14,20 @@
             <div class="title">订单金额(元)</div>
             <input type="digit" placeholder="请询问服务员后输入" value="{{amount}}" placeholder-class="input-placeholder"  bindinput="tatolInput"/>
         </view>
-        <view class="item mx-1px-bottom recharge item-input" wx:if="{{balance == 0}}" bindtap="changeRecharge">
+        <!--<view class="item mx-1px-bottom recharge item-input" wx:if="{{balance == 0}}" bindtap="changeRecharge">
             <view class="title">可用余额0抵扣0元</view>
             <view class="vip-more">
                 <view class="txt">充值买单更优惠</view>
                 <span class="iconfont icon-jiantou"></span>
             </view>
-        </view>
-        <view class="item mx-1px-bottom" wx:else>
+        </view>-->
+        <view class="item mx-1px-bottom">
             <view class="title">可用{{form.balance.value / 100}}余额抵扣{{form.balance.money / 100}}元</view>
-            <switch checked="{{form.balance.status}}" color="#F02A4B" bindchange="balanceSwitch"></switch>
+            <switch checked="{{form.balance.status}}" color="#2AB229" bindchange="balanceSwitch"></switch>
         </view>
         <view class="item mx-1px-bottom">
             <view class="title">可用{{form.point.value}}积分抵扣{{form.point.money / 100}}元</view>
-            <switch checked="{{form.point.status}}" color="#F02A4B" bindchange="pointSwitch"></switch>
+            <switch checked="{{form.point.status}}" color="#2AB229" bindchange="pointSwitch"></switch>
         </view>
         <view class="item item-input" bindtap="showDis">
             <view class="title">优惠券</view>
@@ -44,7 +44,9 @@
             请选择充值金额
         </view>
         <view class="recharge-item-box">
-            <view class="item" wx:for="{{schemes}}" wx:key="{{index}}" data-item="{{item}}" bindtap="afterRecharge">
+            <image wx:for="{{schemes}}" wx:key="{{index}}" data-id="{{item.id}}" data-item="{{item}}" bindtap="afterRecharge" src="https://cdn.ibrand.cc/rrer-bg55.png"></image>
+
+            <!--<view class="item" >
                 <view class="box">
                     <view class="num nowrap">
                         {{item.payment_amount / 100}}元
@@ -53,7 +55,7 @@
                         赠送<span>{{(item.amount - item.payment_amount) / 100}}</span>元
                     </view>
                 </view>
-            </view>
+            </view>-->
         </view>
     </view>
 

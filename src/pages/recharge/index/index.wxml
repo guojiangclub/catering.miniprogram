@@ -1,35 +1,20 @@
 <view id="recharge-balance">
-    <view class="content">
+    <form class="content" bindsubmit="submitRecharge" wx:if="{{schemes && schemes.length}}" report-submit="{{report}}">
         <view class="recharge-type">
-            <view class="type-item">
+            <view class="type-item" wx:for="{{schemes}}" data-item="{{item}}" bindtap="changeItem">
                 <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
-                    <image class="checked" src="https://cdn.ibrand.cc/535rer.png">
+                    <image class="checked" src="https://cdn.ibrand.cc/535rer.png" wx:if="{{rechargeItem.id == item.id}}">
 
                     </image>
                 </image>
             </view>
-            <view class="type-item">
-                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
-
-                </image>
-            </view>
-            <view class="type-item">
-                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
-
-                </image>
-            </view>
-            <view class="type-item">
-                <image mode="widthFix" class="type-bg" src="https://cdn.ibrand.cc/rrer-bg55.png">
-
-                </image>
-            </view>
         </view>
         <view class="money-box">
-            共计：<span>4000元</span>
+            共计：<span>{{rechargeItem.payment_amount}}元</span>
         </view>
-        <view class="submit">
+        <button class="submit" form-type="submit">
             确认支付
-        </view>
+        </button>
 
 
         <view class="tips-box">
@@ -47,7 +32,7 @@
                 </view>
 
                 <view>
-                    2. 您可以在仕堂火锅店购买任意商品时使用
+                    2. 您可以在门店购买任意商品时使用
                 </view>
                 <view>
                     3. 电子储蓄卡可以多次使用，不可兑换现金，不找零
@@ -57,5 +42,5 @@
                 </view>
             </view>
         </view>
-    </view>
+    </form>
 </view>
