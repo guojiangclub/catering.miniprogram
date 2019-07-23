@@ -62,7 +62,7 @@ Page({
                 })
             }
             wx.hideLoading();
-        })
+    })
     },
     jumpBill(){
         wx.navigateTo({

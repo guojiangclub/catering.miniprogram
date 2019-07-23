@@ -10,11 +10,13 @@ import {
 
 Page({
     data:{
-        point:''
+        point:'',
+        pointGoods:''
 
     },
     onLoad(){
         this.queryUserPoint('default')
+        this.getPointGoods();
 
     },
     onShow(){
@@ -46,5 +48,42 @@ Page({
             }
         })
 
+    },
+    // 获取积分列表
+    getPointGoods() {
+        wx.showLoading({
+            mask: true,
+            content: '加载中'
+        });
+        sandBox.get({
+            api: 'api/shitang/getPointGoods'
+        }).then(res => {
+            if (res.statusCode == 200) {
+                res = res.data;
+                if (res.status) {
+                    this.setData({
+                        pointGoods: res.data.pointGoods
+                    })
+                } else {
+                    wx.showModal({
+                        content: res.message || "获取积分商品失败",
+                        showCancel: false,
+                    })
+                }
+                wx.hideLoading();
+            } else {
+                wx.showModal({
+                    content: "获取积分商品失败",
+                    showCancel: false,
+                })
+                wx.hideLoading();
+            }
+        })
+    },
+    jumpLink(e) {
+        let link = e.currentTarget.dataset.link;
+        wx.navigateTo({
+            url: link
+        });
     },
 })

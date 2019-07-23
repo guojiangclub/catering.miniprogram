@@ -4,7 +4,7 @@
 			<view class="user-classify">
 				头像
 			</view>
-			<image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
+			<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
 
 		</view>
 		<view class="user-item">
@@ -12,7 +12,7 @@
 				昵称
 			</view>
 			<view class="user-value">
-				傻大个
+				{{userInfo.nick_name || userInfo.mobile}}
 			</view>
 		</view>
 		<view class="user-item">
@@ -20,14 +20,15 @@
 				性别
 			</view>
 			<view class="user-value">
-				女
+				{{userInfo.sex}}
 			</view>
 		</view>
 		<view class="user-item">
 			<view class="user-classify">
 				生日
 			</view>
-			<view>
+			<view wx:if="{{userInfo.birthday}}">{{userInfo.birthday}}</view>
+			<view wx:else>
 				<picker mode="date" end="{{end}}" bindchange="changeDate">
 					<input
 					 type="text"
@@ -45,7 +46,7 @@
 				城市
 			</view>
 			<view class="user-value">
-				安徽
+				{{userInfo.city || '暂未填写城市'}}
 			</view>
 		</view>
 		<view class="user-item">
@@ -53,12 +54,12 @@
 				手机
 			</view>
 			<view class="user-phone">
-				18289008766
+				{{userInfo.mobile}}
 			</view>
 		</view>
 	</view>
 </view>
-<view class="mask" wx-if="{{true}}">
+<view class="mask" wx-if="{{false}}">
 	<view class="pop-content">
 		<view class="pop-title">
 			恭喜您！

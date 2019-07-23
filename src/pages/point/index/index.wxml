@@ -71,40 +71,21 @@
 
             </view>
             <view class="commodity-bottom">
-                <view class="commodity-out">
+                <view class="commodity-out" wx:for="{{pointGoods}}" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
                     <view class="commodity-box">
                         <view class="commodity-img">
-                            <image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
+                            <image mode="widthFix" src="{{item.img}}" />
                         </view>
                         <view class="commodity-name">
-                            66666
+                            {{item.name}}
                         </view>
                         <view class="commodity-money">
                             <view class="point">
-                                <image src="https://cdn.ibrand.cc/point-58353.png"></image>
-                                555
+                                <image src="https://cdn.ibrand.cc/point-58353.png" />
+                                {{item.redeem_point}}
                             </view>
                             <view class="money">
-                                原价￥77
-                            </view>
-                        </view>
-                    </view>
-                </view>
-                <view class="commodity-out">
-                    <view class="commodity-box">
-                        <view class="commodity-img">
-                            <image mode="widthFix" src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" />
-                        </view>
-                        <view class="commodity-name">
-                            66666
-                        </view>
-                        <view class="commodity-money">
-                            <view class="point">
-                                <image src="https://cdn.ibrand.cc/point-58353.png"></image>
-                                555
-                            </view>
-                            <view class="money">
-                                原价￥77
+                                原价￥{{item.market_price}}
                             </view>
                         </view>
                     </view>
