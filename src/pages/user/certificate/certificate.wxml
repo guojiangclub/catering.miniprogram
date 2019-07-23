@@ -1,16 +1,16 @@
 <view id="certificate">
-    <image mode="widthFix" class="index-bg" src="https://cdn.ibrand.cc/shitang949394.png">
+    <image mode="widthFix" class="index-bg" src="{{initInfo.mini_program_bg_img}}">
 
     </image>
     <view class="content">
-        <view class="qr-box">
-            <image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg">
+        <view class="qr-box" wx:if="{{userInfo}}" style="background: url({{userInfo.group.pic}})">
+            <image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}">
 
             </image>
             <view class="tag">
-                仕堂黄金会员
+                {{token ? userInfo.group.name : '登录查看'}}
             </view>
-            <image src="https://uto-admin-cdn.ibrand.cc/storage/images/20190627/FLdyUY8QPi.jpeg" class="qr-code">
+            <image src="{{userInfo.qr_code_url}}" class="qr-code">
 
             </image>
             <view class="tips">

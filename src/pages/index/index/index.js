@@ -16,8 +16,9 @@ Page({
         pointGoods: '',
         initInfo: '',
         discountInfo:'',
-        schemesList:''
-
+        schemesList:'',
+        bannerList:'',
+        homepage:''
     },
     onShareAppMessage(res) {
         var info = cookieStorage.get('init_info');
@@ -51,8 +52,8 @@ Page({
                 })
             }
         });
-        this.getPointGoods();
         this.init(e);
+        this.getHomePage();
     },
     onShow(){
       let token = cookieStorage.get('user_token');
@@ -60,6 +61,8 @@ Page({
           this.getUserInfo();
           this.getUserDidcounts();
           this.getBalanceSchemes();
+          this.getPointGoods();
+          this.getBannerList();
       }
     },
     // 获取初始化数据
@@ -257,4 +260,59 @@ Page({
             }
         })
     },
+//  获取banner图
+    getBannerList() {
+        sandBox.get({
+            api: 'api/shitang/banners/list',
+        }).then(res => {
+            if (res.statusCode == 200) {
+                res = res.data;
+                if (res.status) {
+                    this.setData({
+                        bannerList: res.data
+                    })
+                } else {
+                    wx.showModal({
+                        content: res.message || "获取数据失败",
+                        showCancel: false,
+                    })
+                }
+            } else {
+                wx.showModal({
+                    content: "请求失败",
+                    showCancel: false,
+                })
+            }
+        })
+    },
+    //  获取banner图
+    getHomePage() {
+        sandBox.get({
+            api: 'api/shitang/homepage/popup',
+        }).then(res => {
+            if (res.statusCode == 200) {
+                res = res.data;
+                if (res.status) {
+                    this.setData({
+                        homepage: res.data
+                    })
+                } else {
+                    wx.showModal({
+                        content: res.message || "获取数据失败",
+                        showCancel: false,
+                    })
+                }
+            } else {
+                wx.showModal({
+                    content: "请求失败",
+                    showCancel: false,
+                })
+            }
+        })
+    },
+    jumpCode(){
+        wx.navigateTo({
+            url:'/pages/user/certificate/certificate'
+        })
+    }
 });

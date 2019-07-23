@@ -9,15 +9,15 @@
                         当前余额
                     </view>
                 </view>
-                <view class="charge">
+                <view class="charge" bindtap="jumpBill">
                    去充值
                 </view>
             </view>
             <view class="money">
-               999999.99
+               {{balance/100}}
             </view>
         </view>
-        <view class="privilege-box">
+        <view class="privilege-box" wx:if="{{dataList[0].length}}">
             <view class="title-box">
                 <!--<view class="title-line">
 
@@ -28,33 +28,17 @@
                 <image mode="widthFix" src="https://cdn.ibrand.cc/53yu.png"></image>
 
             </view>
-            <view class="charge-list">
-                <view>
-                    <view class="charge-type">收款交易</view>
-                    <view class="charge-date">2018-02-03 11:20:37</view>
+            <block wx:for="{{dataList}}" wx:for-item="items" wx:for-index="idx" wx:key="{{idx}}">
+                <view class="charge-list" wx:for="{{items}}" wx:key="{{index}}">
+                    <view>
+                        <view class="charge-type">收款交易</view>
+                        <view class="charge-date">{{item.created_at}}</view>
+                    </view>
+                    <view class="charge-num">
+                        {{item.value/100}}
+                    </view>
                 </view>
-                <view class="charge-num">
-                    +3000.00
-                </view>
-            </view>
-            <view class="charge-list">
-                <view>
-                    <view class="charge-type">收款交易</view>
-                    <view class="charge-date">2018-02-03 11:20:37</view>
-                </view>
-                <view class="charge-num">
-                    +3000.00
-                </view>
-            </view>
-            <view class="charge-list">
-                <view>
-                    <view class="charge-type">收款交易</view>
-                    <view class="charge-date">2018-02-03 11:20:37</view>
-                </view>
-                <view class="charge-num">
-                    +3000.00
-                </view>
-            </view>
+            </block>
         </view>
     </view>
 </view>

@@ -14,7 +14,7 @@
                 </view>
             </view>
             <view class="money">
-               436
+                {{point.pointValid || 0}}
             </view>
         </view>
         <view class="privilege-box ">
