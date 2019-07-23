@@ -24,7 +24,8 @@ Page({
         emailSet: "",
         config: '',
         userInfo:'',
-        token:''
+        token:'',
+        is_showBirthday:false
     },
     onLoad(e){
         let token = cookieStorage.get('user_token');
@@ -41,7 +42,8 @@ Page({
     },
     changeDate(e) {
         this.setData({
-            birthdaydate: e.detail.value
+            birthdaydate: e.detail.value,
+            is_showBirthday:true
         })
     },
     // 获取初始化数据
@@ -152,5 +154,58 @@ Page({
             wx.hideLoading();
         })
     },
+//    请求更新生日的接口
+    updateBirthday(birthday){
+        wx.showLoading({
+            title: "更新中",
+            mask: true
+        });
+        let token = cookieStorage.get('user_token');
+        sandBox.post({
+            api:'api/shitang/update/birthday',
+            data:{
+                birthday:birthday
+            },
+            header:{
+                Authorization:token
+            }
+        }).then(res=>{
+            if(res.statusCode == 200){
+                res = res.data;
+                if(res.status){
+                    wx.reLaunch({
+                        url:'/pages/index/index/index'
+                    })
+
+                } else {
+                    wx.showModal({
+                        content: res.message || '请求失败',
+                        showCancel: false
+                    })
+
+                }
+            } else {
+                wx.showModal({
+                    content: '请求失败',
+                    showCancel: false
+                })
+            }
+            wx.hideLoading();
+        }).catch(rej=>{
+            wx.hideLoading();
+            wx.showModal({
+                content: '请求失败',
+                showCancel: false
+            })
+        })
+    },
+    confirm(){
+        this.updateBirthday(this.data.birthdaydate)
+    },
+    reset(){
+        this.setData({
+            is_showBirthday:false
+        })
+    }
 
 })

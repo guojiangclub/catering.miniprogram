@@ -1,18 +1,20 @@
 <view class="detail-container">
 	<view class="code-content">
 		<view class="code-top">
-			<image class="avatar" src="https://admin.viperky.com/storage/uploads/VLOUbZppcr.jpg" />
+			<image class="avatar" src="{{userInfo.avatar}}" />
 			<view class="detail-title">
-				仕堂火锅
+				{{initInfo.shop_name}}
 			</view>
 		</view>
-		<view class="code-img" />
+		<view class="code-img">
+			<image mode="widthFix" src="{{userInfo.qr_code_url}}"></image>
+		</view>
 		<view class="code-bottom">
 			<view class="detail-one">
-				【立减20元】
+				【{{detail.label}}】
 			</view>
 			<view class="detail-date">
-				有效期:2019.08.23-2019.09.23
+				有效期: {{detail.use_start_time}}-{{detail.use_end_time}}
 			</view>
 		</view>
 	</view>

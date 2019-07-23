@@ -11,61 +11,44 @@
 	</view>
 	<view class="coupon-list-container">
 		<view class="coupon-list" wx:if="{{type==0}}">
-			<view class="coupon-item coupon-bgd1">
-				<view>
-					<view class="font-one">
-						仕堂火锅
-						<text class="font-three color-three left15">限中餐使用</text>
+			<view wx:if="{{!dataList[0][0].length && tabList[0].init}}"  class="no-data">暂无数据</view>
+			<view wx:else>
+				<view wx:for="{{dataList[0]}}" wx:for-item="items" wx:for-index="idx" wx:key="{{idx}}">
+					<view class="coupon-item coupon-bgd1" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
+						<view>
+							<view class="font-one">
+								{{initInfo.shop_name}}
+								<text class="font-three color-three left15">{{item.discount.title}}</text>
+							</view>
+							<view class="font-two">
+								【{{item.discount.label}}】
+							</view>
+						</view>
+						<view class="font-three color-three">
+							有效期: {{item.discount.use_start_time}}-{{item.discount.use_end_time}}
+						</view>
 					</view>
-					<view class="font-two">
-						【立减20元】
-					</view>
-				</view>
-				<view class="font-three color-three">
-					有效期: 2019.08.24-2019.08.30
-				</view>
-			</view>
-			<view class="coupon-item coupon-bgd1">
-				<view>
-					<view class="font-one">
-						仕堂火锅
-						<text class="font-three left15 color-three">限中餐使用</text>
-					</view>
-					<view class="font-two">
-						【立减20元】
-					</view>
-				</view>
-				<view class="font-three color-three">
-					有效期: 2019.08.24-2019.08.30
 				</view>
 			</view>
 		</view>
 
 		<view class="coupon-list" wx:if="{{type==1}}">
-			<view class="coupon-item coupon-bgd2">
-				<view>
-					<view class="font-one expire-color1">
-						仕堂火锅
+			<view wx:if="{{!dataList[1][0].length && tabList[1].init}}" class="no-data">暂无数据</view>
+			<view wx:else>
+				<view wx:for="{{dataList[1]}}" wx:for-item="items" wx:for-index="idx" wx:key="{{idx}}">
+					<view class="coupon-item coupon-bgd2" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
+						<view>
+							<view class="font-one expire-color1">
+								{{initInfo.shop_name}}
+							</view>
+							<view class="font-two expire-color2">
+								【{{item.discount.label}}】
+							</view>
+						</view>
+						<view class="font-three expire-color3">
+							有效期: {{item.discount.use_start_time}}-{{item.discount.use_end_time}}
+						</view>
 					</view>
-					<view class="font-two expire-color2">
-						【立减20元】
-					</view>
-				</view>
-				<view class="font-three expire-color3">
-					有效期: 2019.08.24-2019.08.30
-				</view>
-			</view>
-			<view class="coupon-item coupon-bgd2">
-				<view>
-					<view class="font-one expire-color1">
-						仕堂火锅
-					</view>
-					<view class="font-two expire-color2">
-						【立减20元】
-					</view>
-				</view>
-				<view class="font-three expire-color3">
-					有效期: 2019.08.24-2019.08.30
 				</view>
 			</view>
 		</view>

@@ -54,16 +54,16 @@ Page({
         });
         this.init(e);
         this.getHomePage();
+        if(token){
+            this.getUserInfo();
+            this.getUserDidcounts();
+            this.getBalanceSchemes();
+            this.getPointGoods();
+            this.getBannerList();
+        }
     },
     onShow(){
-      let token = cookieStorage.get('user_token');
-      if(token){
-          this.getUserInfo();
-          this.getUserDidcounts();
-          this.getBalanceSchemes();
-          this.getPointGoods();
-          this.getBannerList();
-      }
+
     },
     // 获取初始化数据
     init(e) {
@@ -156,6 +156,22 @@ Page({
         wx.navigateTo({
             url:'/pages/recharge/index/index?id='+id
         });
+    },
+    jumpUrl(e){
+        let item = e.currentTarget.dataset.item;
+        if(item.blank_type == 'self'){
+            wx.navigateTo({
+                url:'/'+item.blank_url
+            })
+        } else if(item.blank_type == 'other_links'){
+            wx.navigateTo({
+                url:'/pages/index/webView/webView?url='+item.blank_url
+            })
+        } else if(item.blank_type == 'other_mini_program'){
+            wx.navigateToMiniProgram({
+                appId:item.blank_url
+            })
+        }
     },
     // 获取积分列表
     getPointGoods() {
