@@ -60,13 +60,15 @@
 
         </view>
         <view class="point-goods-box">
-            <view class="title-box">
-                <view class="title-line">
+            <view class="title-box point-title">
+               <!-- <view class="title-line">
 
                 </view>
                 <view class="title">
                     积分商城
-                </view>
+                </view>-->
+                <image mode="widthFix" src="https://cdn.ibrand.cc/45343ee.png"></image>
+
             </view>
             <view class="commodity-bottom">
                 <view class="commodity-out">

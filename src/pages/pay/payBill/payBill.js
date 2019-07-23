@@ -35,10 +35,18 @@ Page({
             coupon: {
                 value: 0,
                 money: 0,
-            }
+            },
+            initInfo: ''
         }
     },
     onLoad(e) {
+        setTimeout(() => {
+            let initInfo = cookieStorage.get('init');
+            this.setData({
+                initInfo: initInfo
+            })
+        }, 1000)
+
         this.getUserInfo();
       this.getCouponList();
       this.getSchemes();

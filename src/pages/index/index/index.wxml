@@ -2,7 +2,7 @@
 	<image mode="widthFix" class="index-bg" src="{{initInfo.mini_program_bg_img}}" />
 
 	<view class="content">
-		<view class="card-box" wx:if="{{userInfo}}" style="background: url({{userInfo.group.pic}})">
+		<view class="card-box" style="background: url({{userInfo.group.pic}})">
 			<view class="user-info">
 				<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
 				<view class="name-box">
@@ -18,7 +18,7 @@
 			<view class="num-box">
 				<view class="num-item">
 					<view class="num">
-						{{discountInfo.balance}}
+						{{discountInfo.balance || 0}}
 					</view>
 					<view class="name">
 						余额
@@ -26,7 +26,7 @@
 				</view>
 				<view class="num-item point">
 					<view class="num">
-						{{discountInfo.point.point}}
+						{{discountInfo.point.point || 0}}
 					</view>
 					<view class="name">
 						积分
@@ -34,7 +34,7 @@
 				</view>
 				<view class="num-item">
 					<view class="num">
-						{{discountInfo.coupons}} 张
+						{{discountInfo.coupons || 0}} 张
 					</view>
 					<view class="name">
 						优惠券

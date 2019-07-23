@@ -6,9 +6,14 @@ Page({
         orderList:[],
         page:0,
         hasMore:true,
+        initInfo: ''
     },
     onLoad(e) {
         this.getList();
+        let initInfo = cookieStorage.get('init');
+        this.setData({
+            initInfo: initInfo
+        })
     },
     onReachBottom() {
         var page = this.data.page+1
@@ -26,7 +31,7 @@ Page({
         console.log(order);
         if (order) {
             wx.navigateTo({
-                url: '/pages/coupon/detail/detail?order=' + order
+                url: '/pages/order/detail/detail?order=' + order
             })
         }
     },
