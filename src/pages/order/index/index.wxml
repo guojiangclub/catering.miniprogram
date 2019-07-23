@@ -15,17 +15,17 @@
             </view>
             <view class="content">
                 <view class="shop-logo">
-                    <image src="../../../assets/image/logo.png"></image>
+                    <image src="{{initInfo.shop_show_logo}}"></image>
                 </view>
                 <view class="order-info">
                     <view class="info">
                         <span class="iconfont icon-weizhi"></span>
-                        仕堂川味老火锅
+                        {{initInfo.shop_name}}
                     </view>
-                    <view class="info time">
+                    <!--<view class="info time">
                         <span class="iconfont icon-fujinjishi"></span>
                         仕堂餐饮
-                    </view>
+                    </view>-->
                     <view class="info">
                         {{item.pay_time}}
                     </view>

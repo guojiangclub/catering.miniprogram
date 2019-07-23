@@ -6,7 +6,7 @@
         </view>
         <view class="item">
             <span class="iconfont icon-weizhi1"></span>
-            <view class="txt">仕堂火锅总店</view>
+            <view class="txt">{{initInfo.shop_name}}</view>
         </view>
     </view>
     <view class="pay-content">

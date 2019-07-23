@@ -52,6 +52,7 @@ Page({
             }
         });
         this.getPointGoods();
+        this.getBalanceSchemes();
         this.init(e);
     },
     onShow(){
@@ -59,7 +60,6 @@ Page({
       if(token){
           this.getUserInfo();
           this.getUserDidcounts();
-          this.getBalanceSchemes();
       }
     },
     // 获取初始化数据
@@ -233,9 +233,6 @@ Page({
     getBalanceSchemes() {
         sandBox.get({
             api: 'api/users/balance/schemes',
-           header:{
-                Authorization:cookieStorage.get('user_token')
-           }
         }).then(res => {
             if (res.statusCode == 200) {
                 res = res.data;
