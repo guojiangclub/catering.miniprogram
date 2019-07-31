@@ -36,11 +36,32 @@
     border:1px solid #DBDBDB;
     background-color: #ffffff;
     border-radius: 5px;
+
+    .big-item {
+      padding: 13px 16px 13px 0;
+      margin-left: 8px;
+
+      .input-box {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        .tag {
+          font-size: 30px;
+          color: #111111;
+        }
+        input {
+          font-weight: bold;
+          font-size: 20px;
+          flex: 1;
+          padding-left: 10px;
+        }
+      }
+    }
     .item{
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 22px 16px 22px 0px;
+      padding: 13px 16px 13px 0px;
       margin-left: 8px;
 
       &.recharge {
@@ -53,7 +74,7 @@
       }
       .title{
         font-size: 14px;
-        color:#4A4A4A ;
+        color:#666666 ;
         line-height: 20px;
       }
       .vip-more{

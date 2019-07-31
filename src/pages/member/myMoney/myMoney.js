@@ -19,11 +19,46 @@ Page({
 
     },
     onLoad(e){
-        this.queryUserSum();
-        this.queryBalanceList(1)
-    },
-    onShow(){
+        setTimeout(() => {
+            let initInfo = cookieStorage.get('init');
+            this.setData({
+                initInfo: initInfo
+            })
+        }, 500)
+        let token = cookieStorage.get('user_token');
+        if(token){
+            this.queryUserSum();
+            this.queryBalanceList(1)
+            this.getUserInfo();
+        } else {
+            wx.navigateTo({
+                url:'/pages/user/register/register'
+            })
+        }
 
+    },
+    // 获取用户信息
+    getUserInfo() {
+        sandBox.get({
+            api: 'api/shitang/me',
+            header:{
+                Authorization:cookieStorage.get('user_token')
+            },
+            data:{
+                includes:'group'
+            }
+        }).then(res =>{
+            if(res.data.status){
+                this.setData({
+                    userInfo:res.data.data
+                })
+            } else {
+                wx.showModal({
+                    content: res.message || "获取数据失败",
+                    showCancel: false,
+                })
+            }
+        })
     },
     onReachBottom(){
       if(this.data.more){
@@ -66,7 +101,7 @@ Page({
     },
     jumpBill(){
         wx.navigateTo({
-            url:'/pages/pay/payBill/payBill'
+            url:'/pages/recharge/index/index'
         })
     },
     queryBalanceList(page){

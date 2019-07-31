@@ -27,7 +27,7 @@
     "pages/user/gidList/gidList",
     "pages/user/certificate/certificate",
     "pages/pay/payBill/payBill",
-    "pages/pay/transfer/transfer",
+    "pages/pay/transfer/main",
     "pages/pay/success/success",
     "pages/coupon/over/over",
     "pages/recharge/index/index",

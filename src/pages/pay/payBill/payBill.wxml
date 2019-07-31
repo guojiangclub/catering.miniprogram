@@ -10,9 +10,15 @@
         </view>
     </view>
     <view class="pay-content">
-        <view class="item mx-1px-bottom">
-            <div class="title">订单金额(元)</div>
-            <input type="digit" placeholder="请询问服务员后输入" value="{{amount}}" placeholder-class="input-placeholder"  bindinput="tatolInput"/>
+        <view class="big-item mx-1px-bottom">
+            <view class="title">订单金额(元)</view>
+            <view class="input-box">
+                <view class="tag">
+                    ￥
+                </view>
+                <input type="digit" focus="{{focus}}" placeholder="请询问服务员后输入" value="{{amount}}" placeholder-class="input-placeholder"  bindinput="tatolInput"/>
+
+            </view>
         </view>
         <!--<view class="item mx-1px-bottom recharge item-input" wx:if="{{balance == 0}}" bindtap="changeRecharge">
             <view class="title">可用余额0抵扣0元</view>

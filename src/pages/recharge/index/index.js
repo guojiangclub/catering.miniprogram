@@ -102,8 +102,6 @@ Page({
                     res = res.data;
                     if (res.status) {
                         this.setData({
-                            show_sure: false,
-                            rechargeItem: '',
                             merOrderId: res.data.merOrderId
                         })
                         this.newcharge(true, res.data.miniPayRequest, 'recharge')

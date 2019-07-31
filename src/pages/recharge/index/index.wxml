@@ -10,7 +10,7 @@
             </view>
         </view>
         <view class="money-box">
-            共计：<span>{{rechargeItem.payment_amount}}元</span>
+            共计：<span>{{rechargeItem.payment_amount/100}}元</span>
         </view>
         <button class="submit" form-type="submit">
             确认支付
@@ -19,12 +19,15 @@
 
         <view class="tips-box">
             <view class="title-box">
-                <view class="title-line">
+                <!--<view class="title-line">
 
                 </view>
                 <view class="title">
                     充值须知
-                </view>
+                </view>-->
+                <image mode="widthFix" src="https://cdn.ibrand.cc/8539uiu.png">
+
+                </image>
             </view>
             <view class="tips">
                 <view>

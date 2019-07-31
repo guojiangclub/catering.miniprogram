@@ -1,5 +1,5 @@
 <view id="transfer">
-    <view class="coupon-box" wx:if="{{coupon && coupon.dialog}}">
+    <!--<view class="coupon-box" wx:if="{{coupon && coupon.dialog}}">
         <view class="mask">
 
         </view>
@@ -45,5 +45,5 @@
                 领取新人礼
             </button>
         </view>
-    </view>
+    </view>-->
 </view>

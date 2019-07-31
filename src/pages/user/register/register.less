@@ -1,5 +1,10 @@
 @import "../../../assets/css/global";
 #register {
+  .login-img-box {
+    image {
+      width: 100%;
+    }
+  }
   .item {
     display: flex;
     align-items: center;
@@ -73,6 +78,9 @@
       color: #FFFFFF;
       margin: 60px auto 20px auto;
 
+      &:after {
+        border: none;
+      }
       &.active {
         background:linear-gradient(0deg,rgba(255,143,0,1),rgba(255,215,0,1));
         color: #222222;
@@ -95,9 +103,7 @@
         margin-left: 10px;
 
         span {
-          color: #FE8A1E;
           text-decoration: underline;
-          letter-spacing:3px;
         }
       }
     }

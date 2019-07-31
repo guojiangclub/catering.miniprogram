@@ -3,7 +3,7 @@
 
     </image>
     <view class="content">
-        <view class="qr-box" wx:if="{{userInfo}}" style="background: url({{userInfo.group.pic}})">
+        <view class="qr-box" wx:if="{{userInfo}}">
             <image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}">
 
             </image>

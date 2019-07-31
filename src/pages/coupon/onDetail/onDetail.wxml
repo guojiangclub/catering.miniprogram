@@ -7,30 +7,30 @@
 			</view>
 		</view>
 		<view class="code-img">
-			<image mode="widthFix" src="{{userInfo.qr_code_url}}"></image>
+			<image mode="widthFix" src="{{detail.coupon_info.coupon_use_code}}">
+
+			</image>
+			<image class="logo" src="{{initInfo.shop_show_logo}}"></image>
 		</view>
 		<view class="code-bottom">
 			<view class="detail-one">
 				【{{detail.label}}】
 			</view>
 			<view class="detail-date">
-				有效期: {{detail.use_start_time}}-{{detail.use_end_time}}
+				有效期: {{detail.use_start_time}}至{{detail.use_end_time}}
 			</view>
 		</view>
 	</view>
 	<view class="coupon-explain">
 		<view class="title-box">
-			<view class="title-line" />
+			<!--<view class="title-line" />
 			<view class="title">
 				消费记录
-			</view>
+			</view>-->
+			<image mode="widthFix" src="https://cdn.ibrand.cc/mmnn5655df.png"></image>
 		</view>
-		<view class="explain-detail">
-			<view>1、本券有限期自领取之日90天</view>
-			<view>2. 本券仅限中国大陆地区仕堂火锅直营店使用</view>
-			<view>3. 本券截屏、复制、拍照均无效</view>
-			<view>4. 本券不可与其他优惠券使用</view>
-			<view>5. 本券不可兑换现金</view>
+		<view class="explain-detail" wx:if="{{intro}}">
+			<wxparser rich-text="{{intro}}" />
 		</view>
 	</view>
 </view>

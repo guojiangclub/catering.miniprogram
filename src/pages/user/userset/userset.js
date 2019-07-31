@@ -28,23 +28,50 @@ Page({
         is_showBirthday:false
     },
     onLoad(e){
+        let time = new Date();
+        let year = time .getFullYear();
+        let month = time .getMonth() + 1; //获取当前月份(0-11,0代表1月)
+        let date = time.getDate();
         let token = cookieStorage.get('user_token');
         if(token){
             this.setData({
-                token:token
+                token:token,
+                currentTime: year + '-' + month + '-' + date
             })
             this.getUserInfo();
         }
+
         this.init(e);
     },
     onShow(){
 
     },
     changeDate(e) {
+        let birthdaydateArr = e.detail.value.split('-');
+        let time = new Date();
+        let year = time .getFullYear();
+        let month = time .getMonth() + 1;
+        let date = time.getDate();
+        let yearText = '';
+        // 如果选择月份小于当前月份则是明天发券
+        if (month > birthdaydateArr[1]) {
+            yearText = year + 1
+        } else if (month < birthdaydateArr[1]) {
+            yearText = year
+        } else {
+            if (date < birthdaydateArr[2]) {
+                yearText = year
+            } else {
+                yearText = year + 1
+            }
+        }
+        let birthdaydateText = yearText + '年' + birthdaydateArr[1] + '月' + birthdaydateArr[2] + '日'
         this.setData({
+            birthdaydateText: birthdaydateText,
             birthdaydate: e.detail.value,
             is_showBirthday:true
         })
+
     },
     // 获取初始化数据
     init(e) {

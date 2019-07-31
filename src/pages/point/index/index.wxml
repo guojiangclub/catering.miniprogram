@@ -1,15 +1,15 @@
 <view class="moneyContainer">
-    <image mode="widthFix" class="money-bg" src="https://cdn.ibrand.cc/shitang949394.png">
+    <image mode="widthFix" class="money-bg" src="{{initInfo.mini_program_bg_img}}">
     </image>
     <view class="content">
-        <view class="card-box">
+        <view class="card-box" style="background: url({{userInfo.group.pic}}); background-size: cover">
             <view class="user-info">
                 <view class="name-box">
                     <view class="tag">
                         当前积分
                     </view>
                 </view>
-                <view class="charge">
+                <view class="charge" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
                    去兑换
                 </view>
             </view>
@@ -28,7 +28,7 @@
                 <image mode="widthFix" src="https://cdn.ibrand.cc/434ggg.png"></image>
 
             </view>
-            <view class="charge-list">
+            <view class="charge-list" data-link="/pages/recharge/index/index" bindtap="jumpLink">
                 <view class="point-left">
                    <image class="charge-icon" src="../../../assets/image/charge.png">
                     </image>
@@ -38,7 +38,7 @@
 
                 </image>
             </view>
-             <view class="charge-list">
+             <view class="charge-list" data-link="/pages/pay/payBill/payBill" bindtap="jumpLink">
                 <view class="point-left">
                    <image class="charge-icon" src="../../../assets/image/comsume.png">
                     </image>
@@ -47,7 +47,17 @@
                 <image class="point-arrow" src="https://cdn.ibrand.cc/janitou-0718.png">
                 </image>
             </view>
-             <view class="charge-list">
+            <view class="charge-list" wx:if="{{userInfo.user_info_fill}}" data-link="/pages/user/userset/userset" bindtap="jumpLink">
+                <view class="point-left">
+                    <image class="charge-icon" src="../../../assets/image/person.png">
+                    </image>
+                    <view class="point-title">完善个人资料</view>
+                </view>
+                <image class="point-arrow" src="https://cdn.ibrand.cc/janitou-0718.png">
+
+                </image>
+            </view>
+             <view class="charge-list" wx:else>
                 <view class="point-left">
                    <image class="charge-icon" src="../../../assets/image/person.png">
                     </image>
@@ -56,6 +66,7 @@
                 <image class="point-arrow" src="https://cdn.ibrand.cc/janitou-0718.png">
 
                 </image>
+                 <button hover-class="none" open-type="getUserInfo" bindgetuserinfo="bindUserInfo"></button>
             </view>
 
         </view>

@@ -23,16 +23,30 @@ Page({
     onShareAppMessage(res) {
         var info = cookieStorage.get('init_info');
         let path = this.data.userInfo && this.data.userInfo.agent_code ? `/${this.route}?agent_code=${this.data.userInfo.agent_code}` : `${this.route}`;
+        console.log(path);
+
         return {
             title: info.title,
             path: path,
             imageUrl: info.imgUrl
         }
     },
-    onLoad(e) {
+    onShow() {
+        let token = cookieStorage.get('user_token');
+        if(token){
+            this.getUserInfo();
+            this.getUserDidcounts();
+            this.getBalanceSchemes();
+            this.getPointGoods();
+            this.getBannerList();
+        } else {
+            wx.navigateTo({
+                url:'/pages/user/register/register'
+            })
+        }
         // 第三方平台配置颜色
         var gbConfig = cookieStorage.get('globalConfig') || '';
-        let token = cookieStorage.get('user_token');
+
         this.setData({
             config: gbConfig,
             token: token
@@ -45,6 +59,8 @@ Page({
                 })
             }
         }
+    },
+    onLoad(e) {
         wx.getSystemInfo({
             success: res => {
                 this.setData({
@@ -53,16 +69,7 @@ Page({
             }
         });
         this.init(e);
-        this.getHomePage();
-        if(token){
-            this.getUserInfo();
-            this.getUserDidcounts();
-            this.getBalanceSchemes();
-            this.getPointGoods();
-            this.getBannerList();
-        }
-    },
-    onShow(){
+        // this.getHomePage();
 
     },
     // 获取初始化数据
@@ -86,6 +93,10 @@ Page({
             if (res.statusCode == 200) {
                 res = res.data;
                 if (res.status) {
+                    let title = res.data.shop_name;
+                    wx.setNavigationBarTitle({
+                        title: title
+                    })
                     this.setData({
                         initInfo: res.data
                     })
@@ -165,7 +176,7 @@ Page({
             })
         } else if(item.blank_type == 'other_links'){
             wx.navigateTo({
-                url:'/pages/index/webView/webView?url='+item.blank_url
+                url:'/pages/index/webView/webView?url='+ encodeURIComponent(item.blank_url)
             })
         } else if(item.blank_type == 'other_mini_program'){
             wx.navigateToMiniProgram({
@@ -204,6 +215,65 @@ Page({
             }
         })
     },
+    // 更新用户信息
+    bindUserInfo(e) {
+        if (e.detail.encryptedData) {
+            e.detail.code = this.data.code;
+            this.updateUserInfo(e.detail)
+        }
+    },
+    // 获取code
+    getCode() {
+        wx.login({
+            success: res => {
+                if (res.code) {
+                    this.setData({
+                        code: res.code
+                    })
+                }
+            }
+        })
+    },
+    // 更新用户信息
+    updateUserInfo(data) {
+        wx.showLoading({
+            title: '更新中',
+            mask: true
+        })
+        sandBox.get({
+            api: 'api/shitang/user/bindUserInfo',
+            data: data,
+            header:{
+                Authorization:cookieStorage.get('user_token')
+            }
+        }).then(res => {
+            if (res.statusCode == 200) {
+                res = res.data;
+                if (res.status) {
+                    this.getUserInfo();
+                    setTimeout(() => {
+                        wx.navigateTo({
+                            url: '/pages/user/userset/userset'
+                        });
+                    }, 500)
+                } else {
+                    wx.showModal({
+                        content: res.message || '请求失败',
+                        showCancel: false
+                    })
+                    this.getCode();
+                }
+                wx.hideLoading();
+            } else {
+                wx.showModal({
+                    content: '请求失败',
+                    showCancel: false
+                })
+                this.getCode();
+                wx.hideLoading();
+            }
+        })
+    },
     // 获取用户信息
     getUserInfo() {
         sandBox.get({
@@ -218,7 +288,10 @@ Page({
             if(res.data.status){
                 this.setData({
                     userInfo:res.data.data
-                })
+                });
+                if (!res.data.data.user_info_fill) {
+                    this.getCode();
+                }
             } else {
                 wx.showModal({
                     content: res.message || "获取数据失败",

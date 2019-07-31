@@ -1,5 +1,5 @@
 <view id="register">
-    <view class="item">
+   <!-- <view class="item">
         <view class="img-box">
             <image src="{{logo}}" class="logo"></image>
         </view>
@@ -32,13 +32,16 @@
                 快捷授权手机
             </view>
         </view>
+    </view>-->
+
+    <view class="login-img-box">
+        <image mode="widthFix" src="{{login_page_bg}}" alt=""></image>
     </view>
 
-
     <view class="login-box">
-        <view class="btn {{isChecked ? 'active' : ''}}" bindtap="submit">
+        <button class="btn {{isChecked ? 'active' : ''}}" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
             登录
-        </view>
+        </button>
 
         <view class="info-box" bindtap="changeCheck">
             <image class="check" wx:if="{{!isChecked}}" src="https://cdn.ibrand.cc/ooyynng643.png"></image>

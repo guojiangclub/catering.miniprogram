@@ -8,8 +8,9 @@ Page({
         config: '',
         userInfo: '',
         phone: '',
-        isChecked: false,
-        userProtocol: ''
+        isChecked: true,
+        userProtocol: '',
+        login_page_bg: ''
     },
     onLoad(e){
         // 第三方平台配置颜色
@@ -31,12 +32,18 @@ Page({
         });
 
         var initInfo = cookieStorage.get('init');
-        if (initInfo && initInfo.shop_show_logo) {
-            this.setData({
-                logo: initInfo.shop_show_logo
-            })
-        }
+        if (initInfo) {
+            let title = initInfo.shop_name;
 
+            wx.setNavigationBarTitle({
+                title: title
+            })
+            this.setData({
+                login_page_bg: initInfo.login_page_bg
+            })
+        } else {
+            this.init();
+        }
         if(token){
             wx.redirectTo({
                 url: '/pages/index/index/index'
@@ -49,6 +56,24 @@ Page({
       this.setData({
           isChecked: !this.data.isChecked
       })
+    },
+    init() {
+        sandBox.get({
+            api: 'api/system/init'
+        }).then(res => {
+            if (res.statusCode == 200) {
+                res = res.data;
+                if (res.status) {
+                    let title = res.data.shop_name;
+                    wx.setNavigationBarTitle({
+                        title: title
+                    })
+                    this.setData({
+                        login_page_bg: res.data.login_page_bg
+                    })
+                }
+            }
+        })
     },
     jumpLink(e) {
         let url = this.data.userProtocol;
@@ -151,6 +176,8 @@ Page({
                 if (res.status) {
                     this.setData({
                         phone: res.data.mobile
+                    }, () => {
+                        this.submit();
                     })
                 } else {
                     wx.showModal({
@@ -267,8 +294,6 @@ Page({
         let message = '';
         if (!this.data.isChecked) {
             message = '请同意会员章程'
-        } else if (!this.data.userInfo) {
-            message = '请授权用户信息'
         } else if (!this.data.phone) {
             message = '请授权手机号'
         }
@@ -287,7 +312,8 @@ Page({
                 data: {
                     mobile: this.data.phone,
                     open_id: this.data.open_id,
-                    userInfo: this.data.userInfo
+                    userInfo: '',
+                    agnet_code: cookieStorage.get('agent_code') || ''
                 }
             }).then(res => {
                 if (res.statusCode == 200) {

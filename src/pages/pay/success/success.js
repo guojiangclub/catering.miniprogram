@@ -30,7 +30,7 @@ Page({
 	},
 	jump() {
 		wx.redirectTo({
-			url: '/pages/user/index/main'
+			url: '/pages/index/index/index'
 		})
 	},
     queryRechargeStatus(order_no, formId) {

@@ -1,8 +1,8 @@
 <view class="moneyContainer">
-    <image mode="widthFix" class="money-bg" src="https://cdn.ibrand.cc/shitang949394.png">
+    <image mode="widthFix" class="money-bg" src="{{initInfo.mini_program_bg_img}}">
     </image>
     <view class="content">
-        <view class="card-box">
+        <view class="card-box" style="background: url({{userInfo.group.pic}}); background-size: cover">
             <view class="user-info">
                 <view class="name-box">
                     <view class="tag">
@@ -31,11 +31,14 @@
             <block wx:for="{{dataList}}" wx:for-item="items" wx:for-index="idx" wx:key="{{idx}}">
                 <view class="charge-list" wx:for="{{items}}" wx:key="{{index}}">
                     <view>
-                        <view class="charge-type">收款交易</view>
+                        <view class="charge-type">
+                            <block wx:if="{{item.value > 0}}">收入</block>
+                            <block wx:else>支出</block>
+                        </view>
                         <view class="charge-date">{{item.created_at}}</view>
                     </view>
                     <view class="charge-num">
-                        {{item.value/100}}
+                        <view wx:if="{{item.value > 0}}" class="type"> + </view>{{item.value/100}}
                     </view>
                 </view>
             </block>

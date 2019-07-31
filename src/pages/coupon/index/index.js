@@ -30,7 +30,14 @@ Page({
         initInfo:''
     },
     onLoad(e){
-        this.queryCouponList(0,1);
+        let token = cookieStorage.get('user_token');
+        if(token){
+            this.queryCouponList(0,1);
+        } else {
+            wx.navigateTo({
+                url:'/pages/user/register/register'
+            })
+        }
         this.init(e)
     },
     onShow(){

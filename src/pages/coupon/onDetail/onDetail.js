@@ -11,19 +11,16 @@ Page({
 		detail: '',
 		init: false,
 		initInfo:'',
-		userInfo:''
+		userInfo:'',
+        intro: ''
 	},
 	onLoad(e){
 		this.init(e)
 		let id = e.id;
-		if(id){
-			this.queryCouponDetail(id);
-			this.getUserInfo();
-		}
-
-	},
-	onShow(){
-
+		if(id) {
+            this.queryCouponDetail(id);
+            this.getUserInfo();
+        }
 	},
 	// 获取初始化数据
 	init(e) {
@@ -150,6 +147,17 @@ Page({
 						detail: res.data,
 						init: true
 					})
+                    if (res.data.intro) {
+                    	let intro = '';
+                        let arr = res.data.intro.split("\n")
+                        arr.forEach(item => {
+                            intro += '<view>' + item + '</view>'
+						})
+                        console.log(intro);
+                        this.setData({
+                            intro: intro
+						})
+                    }
 				} else {
 					wx.showModal({
 						content: res.message || '请求失败',

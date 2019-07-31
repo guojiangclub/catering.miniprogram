@@ -2,6 +2,24 @@
 
     <view class="contents">
         <view class="list">
+            <view class="top">
+                <view class="login" wx:if="{{!token}}" bindtap="jumpLogin">
+                    快速登录 / 注册
+                </view>
+                <view class="point-info" style="background: {{config.mainColor}}" wx:else>
+                    <view class="left">
+                        <view>
+                            当前积分
+                        </view>
+                        <view class="num">
+                            {{point.pointValid}}
+                        </view>
+                    </view>
+                    <view class="right" >
+                        <view class="record" bindtap="jumpRecord">兑换记录</view>
+                    </view>
+                </view>
+            </view>
             <view class="no-list" wx:if="{{init}}">暂无可兑换商品</view>
             <view class="commodity-bottom" wx:else>
                 <view wx:for="{{storeList}}" wx:for-index="idx">

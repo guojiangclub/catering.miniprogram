@@ -37,7 +37,8 @@ Page({
                 money: 0,
             },
             initInfo: ''
-        }
+        },
+        focus: true
     },
     onLoad(e) {
         setTimeout(() => {
@@ -45,7 +46,7 @@ Page({
             this.setData({
                 initInfo: initInfo
             })
-        }, 1000)
+        }, 500)
 
         this.getUserInfo();
       this.getCouponList();

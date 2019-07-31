@@ -11,6 +11,7 @@ Page({
         type: ''
     },
     onLoad(e) {
+
         if (e.type) {
             this.setData({
                 type: 'recharge'
@@ -44,9 +45,15 @@ Page({
         }*/
         var token = cookieStorage.get('user_token');
         if (token) {
-            this.jump();
+            wx.redirectTo({
+                url:'/pages/pay/payBill/payBill'
+            })
+            // this.jump();
         } else {
-            this.wxLogin();
+            wx.redirectTo({
+                url:'/pages/user/register/register'
+            })
+            // this.wxLogin();
         }
 
     },
