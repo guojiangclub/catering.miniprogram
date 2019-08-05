@@ -14,7 +14,7 @@
 		</view>
 		<view class="code-bottom">
 			<view class="detail-one">
-				【{{detail.label}}】
+				【{{detail.title}}】
 			</view>
 			<view class="detail-date">
 				有效期: {{detail.use_start_time}}至{{detail.use_end_time}}

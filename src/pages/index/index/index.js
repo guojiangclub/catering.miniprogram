@@ -93,7 +93,7 @@ Page({
             if (res.statusCode == 200) {
                 res = res.data;
                 if (res.status) {
-                    let title = res.data.shop_name;
+                    let title = res.data.miniprogram_customer_title;
                     wx.setNavigationBarTitle({
                         title: title
                     })

@@ -18,13 +18,13 @@
 						<view>
 							<view class="font-one">
 								{{initInfo.shop_name}}
-								<text class="font-three color-three left15">{{item.discount.title}}</text>
+								<text class="font-three color-three left15">{{item.discount.label}}</text>
 							</view>
 							<view class="font-two">
-								【{{item.discount.label}}】
+								【{{item.discount.title}}】
 							</view>
 						</view>
-						<view class="font-three color-three">
+						<view class="font-three">
 							有效期: {{item.discount.use_start_time}}至{{item.discount.use_end_time}}
 						</view>
 					</view>
@@ -36,18 +36,20 @@
 			<view wx:if="{{!dataList[1][0].length && tabList[1].init}}" class="no-data">暂无数据</view>
 			<view wx:else>
 				<view wx:for="{{dataList[1]}}" wx:for-item="items" wx:for-index="idx" wx:key="{{idx}}">
-					<view class="coupon-item coupon-bgd2" style="background: url({{item.discount.discount_bg_img}}); background-size: cover; background-repeat: no-repeat" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
+					<view class="coupon-item coupon-bgd2 gray" style="background: url({{item.discount.discount_bg_img}}); background-size: cover; background-repeat: no-repeat" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
 						<view>
 							<view class="font-one expire-color1">
 								{{initInfo.shop_name}}
 							</view>
 							<view class="font-two expire-color2">
-								【{{item.discount.label}}】
+								【{{item.discount.title}}】
 							</view>
 						</view>
 						<view class="font-three expire-color3">
 							有效期: {{item.discount.use_start_time}}至{{item.discount.use_end_time}}
 						</view>
+						<image wx:if="{{item.used_at}}" src="https://cdn.ibrand.cc/r535bnr.png"></image>
+						<image wx:else src="https://cdn.ibrand.cc/q3h4h.png"></image>
 					</view>
 				</view>
 			</view>
