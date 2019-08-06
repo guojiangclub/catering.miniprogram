@@ -307,46 +307,60 @@ Page({
                 title: '正在登录',
                 mask: true
             })
-            sandBox.post({
-                api: 'api/shitang/oauth/register',
-                data: {
-                    mobile: this.data.phone,
-                    open_id: this.data.open_id,
-                    userInfo: '',
-                    agnet_code: cookieStorage.get('agent_code') || ''
-                }
-            }).then(res => {
-                if (res.statusCode == 200) {
-                    res = res.data;
-                    if (res.status) {
-                        var access_token = res.data.token_type + ' ' + res.data.access_token;
-                        var expires_in = res.data.expires_in || 315360000;
-                        cookieStorage.set("user_token", access_token, expires_in);
-                        if (this.data.url) {
-                            wx.redirectTo({
-                                url:"/"+this.data.url
-                            })
-                        } else {
-                            wx.redirectTo({
-                                url: '/pages/index/index/index'
-                            })
-                        }
+            wx.login({
+                success: res => {
+                    if (res.code) {
+                        sandBox.post({
+                            api: 'api/shitang/oauth/register',
+                            data: {
+                                mobile: this.data.phone,
+                                open_id: this.data.open_id,
+                                userInfo: '',
+                                code: res.code,
+                                agnet_code: cookieStorage.get('agent_code') || ''
+                            }
+                        }).then(res => {
+                            if (res.statusCode == 200) {
+                                res = res.data;
+                                if (res.status) {
+                                    var access_token = res.data.token_type + ' ' + res.data.access_token;
+                                    var expires_in = res.data.expires_in || 315360000;
+                                    cookieStorage.set("user_token", access_token, expires_in);
+                                    if (this.data.url) {
+                                        wx.redirectTo({
+                                            url:"/"+this.data.url
+                                        })
+                                    } else {
+                                        wx.redirectTo({
+                                            url: '/pages/index/index/index'
+                                        })
+                                    }
+                                } else {
+                                    wx.hideLoading();
+                                    wx.showModal({
+                                        content:res.message || '请求失败，请重试',
+                                        showCancel: false,
+                                    })
+                                }
+                                wx.hideLoading();
+                            } else {
+                                wx.hideLoading();
+                                wx.showModal({
+                                    content:'请求失败，请重试',
+                                    showCancel: false,
+                                })
+                            }
+                        })
                     } else {
                         wx.hideLoading();
-                        wx.showModal({
-                            content:res.message || '请求失败，请重试',
-                            showCancel: false,
+                        wx.showToast({
+                            title: '获取code失败',
+                            image: '../../../assets/image/error.png'
                         })
                     }
-                    wx.hideLoading();
-                } else {
-                    wx.hideLoading();
-                    wx.showModal({
-                        content:'请求失败，请重试',
-                        showCancel: false,
-                    })
                 }
             })
+
         }
     }
 })
