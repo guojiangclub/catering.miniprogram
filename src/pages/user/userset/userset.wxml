@@ -65,7 +65,7 @@
 			恭喜您！
 		</view>
 		<view class="pop-text">
-			您将于{{birthdaydateText}}收到专属的 生日礼券，请确认生日填写正确哦， 只支持一次修改机会。
+			您将于{{birthdaydateText}}收到专属的生日礼券，请确认生日填写正确哦，只支持一次修改机会。
 
 		</view>
 		<button class="btn sure" bindtap="confirm">
