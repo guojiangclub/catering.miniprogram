@@ -16,7 +16,7 @@
                 <view class="tag">
                     ￥
                 </view>
-                <input type="digit" focus="{{focus}}" placeholder="请询问服务员后输入" value="{{amount}}" placeholder-class="input-placeholder"  bindinput="tatolInput"/>
+                <input type="digit" focus="{{focus}}" placeholder-class="input-placeholder" placeholder="请询问服务员后输入" value="{{amount}}" placeholder-class="input-placeholder"  bindinput="tatolInput"/>
 
             </view>
         </view>
