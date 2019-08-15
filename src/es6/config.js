@@ -24,7 +24,7 @@ export default  {
         // https://jiangnanriji.kelai.tech/江南 wxf6db5f485b4e465e
         // https://crm.kelai.tech/ 氪来 wx05d920c93768c7d8
         // https://shitang-admin.ibrand.cc/  仕堂 wxc960b965c21385f7
-        baseUrl: process.env.NODE_ENV === 'development' ? 'https://admin-dev.ibrand.cc/' : 'https://shitang-admin.ibrand.cc/', // 运行时自动替换变量
+        baseUrl: process.env.NODE_ENV === 'development' ? 'https://jiangnanriji.kelai.tech/' : 'https://shitang-admin.ibrand.cc/', // 运行时自动替换变量
         client_id: '2',
         client_secret: 'sL8ybYt3DpoxfilP5I45goZ0bsLHEcKFHF9bbnVY',
     },
