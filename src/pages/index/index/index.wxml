@@ -1,152 +1,215 @@
 <View id="index">
-	<image mode="widthFix" class="index-bg" src="{{initInfo.mini_program_bg_img}}" />
+	<block wx:if="init">
+		<image mode="widthFix" class="index-bg" src="{{initInfo.mini_program_bg_img}}" />
 
-	<view class="content">
-		<view class="card-box" style="background: url({{userInfo.group.pic}}); background-size: cover">
-			<view class="user-info">
-				<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
-				<view class="name-box">
-					<view class="tag">
-						{{token ? userInfo.group.name : '登录查看'}}
-					</view>
-					<view class="num">
-						{{token ? userInfo.card_no : '登录查看'}}
-					</view>
-				</view>
-				<image src="https://cdn.ibrand.cc/user-0718.png" class="ticket-box" bindtap="jumpCode"/>
-			</view>
-			<view class="num-box">
-				<view class="num-item" data-link="/pages/member/myMoney/myMoney" bindtap="jumpLink">
-					<view class="num">
-						{{discountInfo.balance / 100 || 0}}
-					</view>
-					<view class="name">
-						余额
-					</view>
-				</view>
-				<view class="num-item point" data-link="/pages/point/index/index" bindtap="jumpLink">
-					<view class="num">
-						{{discountInfo.point.point || 0}}
-					</view>
-					<view class="name">
-						积分
-					</view>
-				</view>
-				<view class="num-item" data-link="/pages/coupon/index/index" bindtap="jumpLink">
-					<view class="num">
-						{{discountInfo.coupons || 0}} 张
-					</view>
-					<view class="name">
-						优惠券
-					</view>
-				</view>
-			</view>
-		</view>
-		<view class="privilege-box " wx:if="{{userInfo.rights.length}}">
-			<view class="title-box">
-				<!--<view class="title-line" />
-				<view class="title">
-					我的特权
-				</view>-->
-				<image mode="widthFix" src="https://cdn.ibrand.cc/7yyy.png"></image>
-			</view>
-			<view class="img-box">
-				<view class="img-item" wx:for="{{userInfo.rights}}" wx:key="{{index}}">
-					<image src="{{item.img}}" class="{{item.have_right ? '' :'gray'}}" />
-					<view>{{item.name}}</view>
-				</view>
-			</view>
-		</view>
-		<view class="swiper-box" wx:if="{{bannerList && bannerList.length}}">
-			<swiper
-			 indicator-dots="true"
-			 indicator-color="#C4C4C4"
-			 autoplay="true"
-			 circular="true"
-			>
-				<swiper-item wx:for="{{bannerList}}" wx:key="{{index}}">
-					<block wx:if="{{item.blank_type == 'share'}}">
-						<button open-type="share">
-							<image mode="widthFix" src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
-						</button>
-					</block>
-					<block wx:else>
-						<image mode="widthFix" src="{{item.img}}" class="slide-image"  bindtap="jumpUrl" data-item="{{item}}"/>
-					</block>
-				</swiper-item>
-			</swiper>
-		</view>
-		<view class="recharge-box" wx:if="{{schemesList.length}}">
-			<view class="title-box">
-				<!--<view class="title-line" />
-				<view class="title">
-					充值奖励
-				</view>-->
-				<image mode="widthFix" src="https://cdn.ibrand.cc/545rr.png"></image>
-
-			</view>
-			<view class="img-box">
-				<block wx:for="{{schemesList}}" wx:key="{{index}}" >
-					<image src="{{item.img}}" class="slide-image" bindtap="jump" data-id="{{item.id}}"/>
-				</block>
-			</view>
-		</view>
-		<view class="point-goods-box" wx:if="{{pointGoods && pointGoods.length}}">
-			<view class="title-box">
-				<!--<view class="title-line" />
-				<view class="title">
-					积分商城
-				</view>-->
-				<image mode="widthFix" src="https://cdn.ibrand.cc/45343ee.png"></image>
-
-			</view>
-			<view class="commodity-bottom">
-				<view class="commodity-out" wx:for="{{pointGoods}}" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
-					<view class="commodity-box">
-						<view class="commodity-img">
-							<image mode="widthFix" src="{{item.img}}" />
-						</view>
-						<view class="commodity-name">
-							{{item.name}}
-						</view>
-						<view class="commodity-money">
-							<view class="point">
-								<image src="https://cdn.ibrand.cc/point-58353.png" />
-								{{item.redeem_point}}
+		<view class="content">
+			<block wx:if="{{!token}}">
+				<view class="card-box" data-link="/pages/user/register/register" bindtap="jumpLink">
+					<view class="user-info">
+						<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
+						<view class="name-box">
+							<view class="tag">
+								点击登录
 							</view>
-							<view class="money">
-								原价￥{{item.market_price}}
+							<!--<view class="num">
+								{{登录查看}}
+							</view>-->
+						</view>
+						<image src="https://cdn.ibrand.cc/user-0718.png" class="ticket-box" bindtap="jumpCode"/>
+					</view>
+					<view class="num-box">
+						<view class="num-item">
+							<view class="num">
+								0
+							</view>
+							<view class="name">
+								余额
+							</view>
+						</view>
+						<view class="num-item point">
+							<view class="num">
+								0
+							</view>
+							<view class="name">
+								积分
+							</view>
+						</view>
+						<view class="num-item">
+							<view class="num">
+								0 张
+							</view>
+							<view class="name">
+								优惠券
+							</view>
+						</view>
+					</view>
+				</view >
+				<view class="privilege-box" data-link="/pages/user/register/register" bindtap="jumpLink">
+					<view class="title-box">
+						<!--<view class="title-line" />
+                        <view class="title">
+                            我的特权
+                        </view>-->
+						<image mode="widthFix" src="https://cdn.ibrand.cc/7yyy.png"></image>
+					</view>
+					<view class="img-box">
+						<view class="img-item" wx:for="{{vipList}}" wx:key="{{index}}">
+							<image src="{{item.image}}" />
+							<view>{{item.name}}</view>
+						</view>
+					</view>
+				</view>
+			</block>
+			<view wx:if="{{token}}">
+				<view class="card-box" style="background: url({{userInfo.group.pic}}); background-size: cover">
+					<view class="user-info">
+						<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
+						<view class="name-box">
+							<view class="tag">
+								{{token ? userInfo.group.name : '登录查看'}}
+							</view>
+							<view class="num">
+								{{token ? userInfo.card_no : '登录查看'}}
+							</view>
+						</view>
+						<image src="https://cdn.ibrand.cc/user-0718.png" class="ticket-box" bindtap="jumpCode"/>
+					</view>
+					<view class="num-box">
+						<view class="num-item" data-link="/pages/member/myMoney/myMoney" bindtap="jumpLink">
+							<view class="num">
+								{{discountInfo.balance / 100 || 0}}
+							</view>
+							<view class="name">
+								余额
+							</view>
+						</view>
+						<view class="num-item point" data-link="/pages/point/index/index" bindtap="jumpLink">
+							<view class="num">
+								{{discountInfo.point.point || 0}}
+							</view>
+							<view class="name">
+								积分
+							</view>
+						</view>
+						<view class="num-item" data-link="/pages/coupon/index/index" bindtap="jumpLink">
+							<view class="num">
+								{{discountInfo.coupons || 0}} 张
+							</view>
+							<view class="name">
+								优惠券
 							</view>
 						</view>
 					</view>
 				</view>
-			</view>
-		</view>
-		<view class="birthday-box" wx:if="{{initInfo.personal_info_img}}">
-			<view class="title-box">
-				<!--<view class="title-line" />
-				<view class="title">
-					生日礼物
-				</view>-->
-				<image mode="widthFix" src="https://cdn.ibrand.cc/55t.png"></image>
-
-			</view>
-			<view class="img-box" wx:if="{{userInfo.user_info_fill}}" data-link="/pages/user/userset/userset" bindtap="jumpLink">
-				<image mode="widthFix" src="{{initInfo.personal_info_img}}" class="slide-image" />
-			</view>
-			<view class="img-box"  wx:else>
-				<image mode="widthFix" src="{{initInfo.personal_info_img}}" class="slide-image" />
-				<button hover-class="none" open-type="getUserInfo" bindgetuserinfo="bindUserInfo"></button>
+				<view class="privilege-box " wx:if="{{userInfo.rights.length}}">
+					<view class="title-box">
+						<!--<view class="title-line" />
+                        <view class="title">
+                            我的特权
+                        </view>-->
+						<image mode="widthFix" src="https://cdn.ibrand.cc/7yyy.png"></image>
+					</view>
+					<view class="img-box">
+						<view class="img-item" wx:for="{{userInfo.rights}}" wx:key="{{index}}">
+							<image src="{{item.img}}" class="{{item.have_right ? '' :'gray'}}" />
+							<view>{{item.name}}</view>
+						</view>
+					</view>
+				</view>
 			</view>
 
-		</view>
-		<view class="my-order" data-link="/pages/order/index/index" bindtap="jumpLink">
-			<view>
-				我的订单
+			<view class="swiper-box" wx:if="{{bannerList && bannerList.length}}">
+				<swiper
+						indicator-dots="true"
+						indicator-color="#C4C4C4"
+						autoplay="true"
+						circular="true"
+				>
+					<swiper-item wx:for="{{bannerList}}" wx:key="{{index}}">
+						<block wx:if="{{item.blank_type == 'share'}}">
+							<button open-type="share">
+								<image mode="widthFix" src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
+							</button>
+						</block>
+						<block wx:else>
+							<image mode="widthFix" src="{{item.img}}" class="slide-image"  bindtap="jumpUrl" data-item="{{item}}"/>
+						</block>
+					</swiper-item>
+				</swiper>
 			</view>
-			<image src="https://cdn.ibrand.cc/janitou-0718.png" />
+			<view class="recharge-box" wx:if="{{schemesList.length}}">
+				<view class="title-box">
+					<!--<view class="title-line" />
+                    <view class="title">
+                        充值奖励
+                    </view>-->
+					<image mode="widthFix" src="https://cdn.ibrand.cc/545rr.png"></image>
+
+				</view>
+				<view class="img-box">
+					<block wx:for="{{schemesList}}" wx:key="{{index}}" >
+						<image src="{{item.img}}" class="slide-image" bindtap="jump" data-id="{{item.id}}"/>
+					</block>
+				</view>
+			</view>
+			<view class="point-goods-box" wx:if="{{pointGoods && pointGoods.length}}">
+				<view class="title-box">
+					<!--<view class="title-line" />
+                    <view class="title">
+                        积分商城
+                    </view>-->
+					<image mode="widthFix" src="https://cdn.ibrand.cc/45343ee.png"></image>
+
+				</view>
+				<view class="commodity-bottom">
+					<view class="commodity-out" wx:for="{{pointGoods}}" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
+						<view class="commodity-box">
+							<view class="commodity-img">
+								<image mode="widthFix" src="{{item.img}}" />
+							</view>
+							<view class="commodity-name">
+								{{item.name}}
+							</view>
+							<view class="commodity-money">
+								<view class="point">
+									<image src="https://cdn.ibrand.cc/point-58353.png" />
+									{{item.redeem_point}}
+								</view>
+								<view class="money">
+									原价￥{{item.market_price}}
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<view class="birthday-box" wx:if="{{initInfo.personal_info_img && token}}">
+				<view class="title-box">
+					<!--<view class="title-line" />
+                    <view class="title">
+                        生日礼物
+                    </view>-->
+					<image mode="widthFix" src="https://cdn.ibrand.cc/55t.png"></image>
+
+				</view>
+				<view class="img-box" wx:if="{{userInfo.user_info_fill}}" data-link="/pages/user/userset/userset" bindtap="jumpLink">
+					<image mode="widthFix" src="{{initInfo.personal_info_img}}" class="slide-image" />
+				</view>
+				<view class="img-box"  wx:else>
+					<image mode="widthFix" src="{{initInfo.personal_info_img}}" class="slide-image" />
+					<button hover-class="none" open-type="getUserInfo" bindgetuserinfo="bindUserInfo"></button>
+				</view>
+
+			</view>
+			<view wx:if="{{token}}" class="my-order" data-link="/pages/order/index/index" bindtap="jumpLink">
+				<view>
+					我的订单
+				</view>
+				<image src="https://cdn.ibrand.cc/janitou-0718.png" />
+			</view>
 		</view>
-	</view>
+	</block>
+
 
 	<!--<block wx:if="{{!token}}">
         <view class="mask" data-link="/pages/user/register/register" bindtap="jumpLink">

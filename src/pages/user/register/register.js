@@ -317,7 +317,7 @@ Page({
                                 open_id: this.data.open_id,
                                 userInfo: '',
                                 code: res.code,
-                                agnet_code: cookieStorage.get('agent_code') || ''
+                                agent_code: cookieStorage.get('agent_code') || ''
                             }
                         }).then(res => {
                             if (res.statusCode == 200) {

@@ -18,7 +18,50 @@ Page({
         discountInfo:'',
         schemesList:'',
         bannerList:'',
-        homepage:''
+        homepage:'',
+        init: false,
+        vipList: [
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205.png',
+                name: '会员价'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%281%29.png',
+                name: '生日礼券'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%282%29.png',
+                name: '积分奖励'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%283%29.png',
+                name: '充值好礼'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%284%29.png',
+                name: '专属客服'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%285%29.png',
+                name: '折扣券'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%286%29.png',
+                name: '免排队'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%287%29.png',
+                name: '积分商城'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84%205%20%288%29.png',
+                name: '纪念礼品'
+            },
+            {
+                image: 'https://cdn.ibrand.cc/%E7%BB%84TT5.png',
+                name: '免单支持'
+            }
+        ]
     },
     onShareAppMessage(res) {
         var info = cookieStorage.get('init_info');
@@ -37,13 +80,9 @@ Page({
             this.getUserInfo();
             this.getUserDidcounts();
             this.getBalanceSchemes();
-            this.getPointGoods();
             this.getBannerList();
-        } else {
-            wx.navigateTo({
-                url:'/pages/user/register/register'
-            })
         }
+        this.getPointGoods();
         // 第三方平台配置颜色
         var gbConfig = cookieStorage.get('globalConfig') || '';
 
@@ -153,6 +192,14 @@ Page({
             if (cookieStorage.get('coupon_agent_code')) {
                 cookieStorage.clear('coupon_agent_code')
             }
+        }
+
+
+        let token = cookieStorage.get('user_token');
+        if (!token) {
+            /*wx.navigateTo({
+                url:'/pages/user/register/register'
+            })*/
         }
 
     },
@@ -287,7 +334,8 @@ Page({
         }).then(res =>{
             if(res.data.status){
                 this.setData({
-                    userInfo:res.data.data
+                    userInfo:res.data.data,
+                    init: true
                 });
                 if (!res.data.data.user_info_fill) {
                     this.getCode();
