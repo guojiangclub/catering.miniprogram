@@ -7,6 +7,7 @@
     "pages/point/index/index",
     "pages/member/myMoney/myMoney",
     "pages/coupon/index/index",
+    "pages/coupon/center/center",
     "pages/user/usersetting/usersetting",
     "pages/order/detail/detail",
     "pages/order/index/index",

@@ -1,0 +1,38 @@
+<view id="coupon_center">
+    <view class="img-box">
+        <image mode="widthFix" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=244295155,252772030&fm=26&gp=0.jpg"></image>
+    </view>
+    <view class="content">
+        <view class="li-item">
+            <view class="left-info">
+                <view class="title">
+                    肖战爱豆语录：热爱可抵漫长岁月
+                </view>
+                <view class="time">
+                    有效期：2019.09.01-2019.09.30
+                </view>
+            </view>
+            <view class="right-info">
+                <view class="btn-box">
+                    去使用
+                </view>
+            </view>
+        </view>
+        <view class="li-item">
+            <view class="left-info">
+                <view class="title">
+                    热爱可抵漫长岁月
+                </view>
+                <view class="time">
+                    有效期：2019.09.01-2019.09.30
+                </view>
+            </view>
+            <view class="right-info">
+                <view class="btn-box">
+                    领取
+                </view>
+            </view>
+        </view>
+    </view>
+
+</view>

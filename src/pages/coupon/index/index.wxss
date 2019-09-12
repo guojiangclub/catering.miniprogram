@@ -1,1 +1,161 @@
-.coupon-container .coupon-header{width:100%;height:50px;background:-webkit-linear-gradient(left top,gold,#FF8F00,#FF0040);display:flex;flex-direction:row;align-items:center;padding:0 40px;justify-content:space-around;font-size:17px;color:#fff}.coupon-container .coupon-header .coupon-title{position:relative}.coupon-container .coupon-header .coupon-title .active,.coupon-container .coupon-header .coupon-title :hover{font-weight:700}.coupon-container .coupon-header .coupon-title .coupon-bor{position:absolute;width:15px;height:3px;background:#fff;left:50%;margin-left:-8px;top:30px;border-radius:1px}.coupon-container .coupon-list-container{width:100%;padding:20px}.coupon-container .coupon-list-container .coupon-list{width:100%}.coupon-container .coupon-list-container .coupon-list .coupon-bgd1{background:url(https://cdn.ibrand.cc/coupon-bgd1.png) no-repeat}.coupon-container .coupon-list-container .coupon-list .coupon-bgd2{background:url(https://cdn.ibrand.cc/coupon-bgd2.png) no-repeat}.coupon-container .coupon-list-container .coupon-list .coupon-item{width:100%;height:100px;position:relative;background-size:cover;padding:0 18px;display:flex;flex-direction:column;justify-content:space-around;margin-bottom:10px}.coupon-container .coupon-list-container .coupon-list .coupon-item.gray{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%);filter:gray}.coupon-container .coupon-list-container .coupon-list .coupon-item image{width:68px;height:55px;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10}.coupon-container .coupon-list-container .coupon-list .coupon-item .font-one{font-size:12px}.coupon-container .coupon-list-container .coupon-list .coupon-item .color-one,.coupon-container .coupon-list-container .coupon-list .coupon-item .expire-color1{color:#8E8E8E}.coupon-container .coupon-list-container .coupon-list .coupon-item .expire-color2{color:#ABABAB}.coupon-container .coupon-list-container .coupon-list .coupon-item .expire-color3{color:#999}.coupon-container .coupon-list-container .coupon-list .coupon-item .font-two{font-size:15px;margin-left:-10px}.coupon-container .coupon-list-container .coupon-list .coupon-item .color-two{color:#333}.coupon-container .coupon-list-container .coupon-list .coupon-item .left15{margin-left:15px}.coupon-container .coupon-list-container .coupon-list .coupon-item .font-three{color:#000;font-size:10px}.coupon-container .coupon-list-container .coupon-list .coupon-item .color-three{color:#FE1852}.coupon-container .no-data{text-align:center}
+.coupon-container .coupon-header {
+  width: 100%;
+  height: 50px;
+  background: -webkit-linear-gradient(left top, #FFD700, #FF8F00, #FF0040);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 40px;
+  justify-content: space-around;
+  font-size: 17px;
+  color: #fff;
+}
+.coupon-container .coupon-header .coupon-title {
+  position: relative;
+}
+.coupon-container .coupon-header .coupon-title :hover {
+  font-weight: bold;
+}
+.coupon-container .coupon-header .coupon-title .active {
+  font-weight: bold;
+}
+.coupon-container .coupon-header .coupon-title .coupon-bor {
+  position: absolute;
+  width: 15px;
+  height: 3px;
+  background: #fff;
+  left: 50%;
+  margin-left: -8px;
+  top: 30px;
+  border-radius: 1px;
+}
+.coupon-container .coupon-list-container {
+  width: 100%;
+  padding: 20px;
+}
+.coupon-container .coupon-list-container .coupon-list {
+  width: 100%;
+  /*.coupon-item {
+        width: 100%;
+        height: 100px;
+        position: relative;
+        background-size: cover;
+        padding: 0 18px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 10px;
+
+        &.gray{
+          -webkit-filter: grayscale(100%);
+          -moz-filter: grayscale(100%);
+          -ms-filter: grayscale(100%);
+          -o-filter: grayscale(100%);
+          filter: grayscale(100%);
+          filter: gray;
+        }
+        image {
+          width: 68px;
+          height: 55px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 10;
+        }
+        .font-one {
+          //color: #8E8E8E;
+          font-size: 12px;
+        }
+
+        .color-one {
+          color: #8E8E8E;
+        }
+
+        .expire-color1 {
+          color: #8E8E8E;
+        }
+
+        .expire-color2 {
+          color: #ABABAB;
+        }
+
+        .expire-color3 {
+          color: #999999
+        }
+
+        .font-two {
+          font-size: 15px;
+          margin-left: -10px;
+        }
+
+        .color-two {
+          color: #333333;
+        }
+
+        .left15 {
+          margin-left: 15px;
+        }
+
+        .font-three {
+          color: #000000;
+          font-size: 10px;
+        }
+
+        .color-three {
+          color: #FE1852;
+        }
+      }*/
+}
+.coupon-container .coupon-list-container .coupon-list .coupon-bgd1 {
+  background: url('https://cdn.ibrand.cc/coupon-bgd1.png') no-repeat;
+}
+.coupon-container .coupon-list-container .coupon-list .coupon-bgd2 {
+  background: url('https://cdn.ibrand.cc/coupon-bgd2.png') no-repeat;
+}
+.coupon-container .coupon-list-container .coupon-list .li-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-image: url('https://cdn.ibrand.cc/%E7%BB%84%2035.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 10px;
+}
+.coupon-container .coupon-list-container .coupon-list .li-item .left-info {
+  flex: 2;
+  color: #fff;
+  overflow: hidden;
+}
+.coupon-container .coupon-list-container .coupon-list .li-item .left-info .title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  height: 40px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.coupon-container .coupon-list-container .coupon-list .li-item .left-info .time {
+  font-size: 12px;
+}
+.coupon-container .coupon-list-container .coupon-list .li-item .right-info {
+  flex: 1;
+}
+.coupon-container .coupon-list-container .coupon-list .li-item .right-info .btn-box {
+  margin: 0 auto;
+  width: 78px;
+  height: 29px;
+  line-height: 29px;
+  background: #ffffff;
+  box-shadow: 0px 5px 13px 0px rgba(252, 172, 40, 0.52);
+  border-radius: 15px;
+  text-align: center;
+  color: #FF8B00;
+  font-size: 12px;
+}
+.coupon-container .no-data {
+  text-align: center;
+}

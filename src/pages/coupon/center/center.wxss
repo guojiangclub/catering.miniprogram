@@ -1,0 +1,50 @@
+#coupon_center .img-box image {
+  width: 100%;
+  vertical-align: middle;
+}
+#coupon_center .content {
+  padding: 15px 20px;
+}
+#coupon_center .content .li-item {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-image: url('https://cdn.ibrand.cc/%E7%BB%84%2035.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin-bottom: 10px;
+}
+#coupon_center .content .li-item .left-info {
+  flex: 2;
+  color: #fff;
+  overflow: hidden;
+}
+#coupon_center .content .li-item .left-info .title {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  height: 40px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+#coupon_center .content .li-item .left-info .time {
+  font-size: 12px;
+}
+#coupon_center .content .li-item .right-info {
+  flex: 1;
+}
+#coupon_center .content .li-item .right-info .btn-box {
+  margin: 0 auto;
+  width: 78px;
+  height: 29px;
+  line-height: 29px;
+  background: #ffffff;
+  box-shadow: 0px 5px 13px 0px rgba(252, 172, 40, 0.52);
+  border-radius: 15px;
+  text-align: center;
+  color: #FF8B00;
+  font-size: 12px;
+}

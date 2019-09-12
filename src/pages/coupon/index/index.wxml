@@ -14,7 +14,7 @@
 			<view wx:if="{{!dataList[0][0].length && tabList[0].init}}"  class="no-data">暂无数据</view>
 			<view wx:else>
 				<view wx:for="{{dataList[0]}}" wx:for-item="items" wx:for-index="idx" wx:key="{{idx}}">
-					<view class="coupon-item coupon-bgd1" style="background: url({{item.discount.discount_bg_img}}); background-size: cover; background-repeat: no-repeat" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
+					<!--<view class="coupon-item coupon-bgd1" style="background: url({{item.discount.discount_bg_img}}); background-size: cover; background-repeat: no-repeat" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
 						<view>
 							<view class="font-one">
 								{{initInfo.shop_name}}
@@ -26,6 +26,21 @@
 						</view>
 						<view class="font-three">
 							有效期: {{item.use_start_time}}至{{item.use_end_time}}
+						</view>
+					</view>-->
+					<view class="li-item" wx:for="{{items}}" wx:key="{{index}}" bindtap="jump" data-id="{{item.discount.id}}">
+						<view class="left-info">
+							<view class="title">
+								{{item.discount.title}}
+							</view>
+							<view class="time">
+								有效期：{{item.use_start_time}}至{{item.use_end_time}}
+							</view>
+						</view>
+						<view class="right-info">
+							<view class="btn-box">
+								去使用
+							</view>
 						</view>
 					</view>
 				</view>
