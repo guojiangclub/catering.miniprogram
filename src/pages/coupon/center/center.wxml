@@ -1,35 +1,25 @@
 <view id="coupon_center">
     <view class="img-box">
-        <image mode="widthFix" src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=244295155,252772030&fm=26&gp=0.jpg"></image>
+        <image mode="widthFix" src="{{detail.activity.activity_banner}}"></image>
     </view>
     <view class="content">
-        <view class="li-item">
-            <view class="left-info">
-                <view class="title">
-                    肖战爱豆语录：热爱可抵漫长岁月
+        <view wx:for="{{detail.activity.items}}" wx:key="{{index}}">
+            <view class="li-item" style="background-image: url({{item.discount.discount_bg_img}})" wx:if="{{item.discount.has_get_status != 2}}">
+                <view class="left-info">
+                    <view class="title">
+                        {{item.discount.title}}
+                    </view>
+                    <view class="time">
+                        有效期: {{item.discount.use_start_time}}:{{item.discount.use_end_time}}
+                    </view>
                 </view>
-                <view class="time">
-                    有效期：2019.09.01-2019.09.30
-                </view>
-            </view>
-            <view class="right-info">
-                <view class="btn-box">
-                    去使用
-                </view>
-            </view>
-        </view>
-        <view class="li-item">
-            <view class="left-info">
-                <view class="title">
-                    热爱可抵漫长岁月
-                </view>
-                <view class="time">
-                    有效期：2019.09.01-2019.09.30
-                </view>
-            </view>
-            <view class="right-info">
-                <view class="btn-box">
-                    领取
+                <view class="right-info">
+                    <view class="btn-box" wx:if="{{item.discount.has_get_status == 1}}">
+                        去使用
+                    </view>
+                    <view class="btn-box" wx:if="{{item.discount.has_get_status == 0}}">
+                        领取
+                    </view>
                 </view>
             </view>
         </view>
