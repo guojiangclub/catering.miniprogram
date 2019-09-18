@@ -1,24 +1,26 @@
 <view id="coupon_center">
-    <view class="img-box">
-        <image mode="widthFix" src="{{detail.activity.activity_banner}}"></image>
-    </view>
-    <view class="content">
-        <view wx:for="{{detail.activity.items}}" wx:key="{{index}}">
-            <view class="li-item" style="background-image: url({{item.discount.discount_bg_img}})" wx:if="{{item.discount.has_get_status != 2}}">
-                <view class="left-info">
-                    <view class="title">
-                        {{item.discount.title}}
+    <view class="ul-content" wx:for="{{dataList}}" wx:for-item="list" wx:for-index="idx" wx:key="{{idx}}">
+        <view class="img-box">
+            <image mode="widthFix" src="{{list.activity_banner}}"></image>
+        </view>
+        <view class="content">
+            <view wx:for="{{list.items}}" wx:key="{{index}}">
+                <view class="li-item" style="background-image: url({{item.discount.discount_bg_img}})" wx:if="{{item.discount.has_get_status != 2}}">
+                    <view class="left-info">
+                        <view class="title">
+                            {{item.discount.title}}
+                        </view>
+                        <view class="time">
+                            有效期: {{item.discount.use_start_time}}:{{item.discount.use_end_time}}
+                        </view>
                     </view>
-                    <view class="time">
-                        有效期: {{item.discount.use_start_time}}:{{item.discount.use_end_time}}
-                    </view>
-                </view>
-                <view class="right-info">
-                    <view class="btn-box" wx:if="{{item.discount.has_get_status == 1}}">
-                        去使用
-                    </view>
-                    <view class="btn-box" wx:if="{{item.discount.has_get_status == 0}}">
-                        领取
+                    <view class="right-info">
+                        <view class="btn-box" wx:if="{{item.discount.has_get_status == 1}}" bindtap="jump" data-id="{{item.discount.id}}">
+                            去使用
+                        </view>
+                        <view class="btn-box" wx:if="{{item.discount.has_get_status == 0}}" bindtap="reciveCoupon" data-idx="{{idx}}" data-index="{{index}}" data-code="{{item.code}}">
+                            领取
+                        </view>
                     </view>
                 </view>
             </view>

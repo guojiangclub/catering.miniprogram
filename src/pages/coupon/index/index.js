@@ -43,7 +43,7 @@ Page({
     onShow(){
 
     },
-    onReachBottom() {
+    reachBottom(){
         let type = this.data.type
         let page = this.data.tabList[type].page + 1;
         if (this.data.tabList[type].more) {
@@ -209,4 +209,10 @@ Page({
           url:'/pages/coupon/onDetail/onDetail?id='+id
       })
     },
+    //进入买单页面
+    goPay(){
+        wx.navigateTo({
+            url:'/pages/pay/payBill/payBill'
+        })
+    }
 })

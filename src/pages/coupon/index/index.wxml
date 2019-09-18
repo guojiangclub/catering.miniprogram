@@ -1,4 +1,4 @@
-<view class="coupon-container">
+<view id="coupon-container">
 	<view class="coupon-header">
 		<view class="coupon-title" data-current="{{0}}" bindtap="selectCoupon">
 			我的优惠卷
@@ -9,7 +9,7 @@
 			<view class="coupon-bor" wx-if="{{type==1}}" />
 		</view>
 	</view>
-	<view class="coupon-list-container">
+	<scroll-view class="coupon-list-container" scroll-y="true" bindscrolltolower="reachBottom">
 		<view class="coupon-list" wx:if="{{type==0}}">
 			<view wx:if="{{!dataList[0][0].length && tabList[0].init}}"  class="no-data">暂无数据</view>
 			<view wx:else>
@@ -69,6 +69,9 @@
 				</view>
 			</view>
 		</view>
+	</scroll-view>
+	<view class="btn-bottom" bindtap="goPay">
+		自助核销
 	</view>
 </view>
 
