@@ -50,3 +50,8 @@
   color: #FF8B00;
   font-size: 12px;
 }
+#coupon_center .no-data {
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+}

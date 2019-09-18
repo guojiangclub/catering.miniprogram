@@ -70,7 +70,7 @@
 			</view>
 		</view>
 	</scroll-view>
-	<view class="btn-bottom" bindtap="goPay">
+	<view class="btn-bottom" bindtap="goPay" wx:if="{{type == 0}}">
 		自助核销
 	</view>
 </view>

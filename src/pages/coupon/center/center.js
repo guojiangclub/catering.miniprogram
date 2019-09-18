@@ -78,7 +78,7 @@ Page({
                 res = res.data;
                 if (res.status) {
                     this.setData({
-                        [`dataList[${idx}].items[${index}].discount.has_get_status`]:1
+                        [`dataList[${idx}].newItems[${index}].discount.has_get_status`]:1
                     })
                     wx.showToast({
                         title:'领取成功',
