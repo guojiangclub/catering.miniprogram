@@ -4,12 +4,12 @@
 
 		<view class="content">
 			<block wx:if="{{!token}}">
-				<view class="card-box" data-link="/pages/user/register/register" bindtap="jumpLink">
+				<view class="card-box">
 					<view class="user-info">
 						<image class="avatar" src="{{token ? userInfo.avatar : initInfo.shop_show_logo}}" />
 						<view class="name-box">
 							<view class="tag">
-								点击登录
+								请先登录
 							</view>
 							<!--<view class="num">
 								{{登录查看}}
@@ -44,7 +44,7 @@
 						</view>
 					</view>
 				</view >
-				<view class="privilege-box" data-link="/pages/user/register/register" bindtap="jumpLink">
+				<view class="privilege-box">
 					<view class="title-box">
 						<!--<view class="title-line" />
                         <view class="title">
@@ -56,6 +56,19 @@
 						<view class="img-item" wx:for="{{vipList}}" wx:key="{{index}}">
 							<image src="{{item.image}}" />
 							<view>{{item.name}}</view>
+						</view>
+					</view>
+				</view>
+				<view class="login-box">
+					<button class="btn {{isChecked ? 'active' : ''}}" hover-class="none" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+						登录
+					</button>
+
+					<view class="info-box" bindtap="changeCheck">
+						<image class="check" wx:if="{{!isChecked}}" src="https://cdn.ibrand.cc/ooyynng643.png"></image>
+						<image class="checked" wx:else src="https://cdn.ibrand.cc/kkkft5.png"></image>
+						<view class="text">
+							我已阅读并同意 <span catchtap="jumpAgreement">会员章程</span>
 						</view>
 					</view>
 				</view>
@@ -152,31 +165,33 @@
 					</block>
 				</view>
 			</view>
-			<view class="point-goods-box" wx:if="{{pointGoods && pointGoods.length}}">
-				<view class="title-box">
-					<!--<view class="title-line" />
-                    <view class="title">
-                        积分商城
-                    </view>-->
-					<image mode="widthFix" src="https://cdn.ibrand.cc/45343ee.png"></image>
+			<view wx:if="{{token}}">
+				<view class="point-goods-box" wx:if="{{pointGoods && pointGoods.length}}">
+					<view class="title-box">
+						<!--<view class="title-line" />
+                        <view class="title">
+                            积分商城
+                        </view>-->
+						<image mode="widthFix" src="https://cdn.ibrand.cc/45343ee.png"></image>
 
-				</view>
-				<view class="commodity-bottom">
-					<view class="commodity-out" wx:for="{{pointGoods}}" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
-						<view class="commodity-box">
-							<view class="commodity-img">
-								<image mode="widthFix" src="{{item.img}}" />
-							</view>
-							<view class="commodity-name">
-								{{item.name}}
-							</view>
-							<view class="commodity-money">
-								<view class="point">
-									<image src="https://cdn.ibrand.cc/point-58353.png" />
-									{{item.redeem_point}}
+					</view>
+					<view class="commodity-bottom">
+						<view class="commodity-out" wx:for="{{pointGoods}}" data-link="/pages/pointStore/index/index" bindtap="jumpLink">
+							<view class="commodity-box">
+								<view class="commodity-img">
+									<image mode="widthFix" src="{{item.img}}" />
 								</view>
-								<view class="money">
-									原价￥{{item.market_price}}
+								<view class="commodity-name">
+									{{item.name}}
+								</view>
+								<view class="commodity-money">
+									<view class="point">
+										<image src="https://cdn.ibrand.cc/point-58353.png" />
+										{{item.redeem_point}}
+									</view>
+									<view class="money">
+										原价￥{{item.market_price}}
+									</view>
 								</view>
 							</view>
 						</view>

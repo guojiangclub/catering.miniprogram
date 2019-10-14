@@ -1,1 +1,376 @@
-#index .content .birthday-box,#index .content .point-goods-box,#index .content .privilege-box,#index .content .recharge-box{box-shadow:0 0 18px 0 rgba(204,204,204,.5)}#index .index-bg{width:100%}#index .content{position:absolute;width:100%;top:35px;padding:0 20px}#index .content .card-box{width:100%;height:330rpx;background:url(https://cdn.ibrand.cc/shitang94939rr.png) center no-repeat;background-size:cover;padding:22px 0;display:flex;flex-direction:column;justify-content:space-between}#index .content .card-box .user-info{position:relative;display:flex;align-items:center;padding-left:14px;color:#fff}#index .content .card-box .user-info .avatar{width:58px;height:58px;overflow:hidden;border-radius:100%;border:2px solid #FFF}#index .content .card-box .user-info .name-box{padding-left:10px}#index .content .card-box .user-info .name-box .tag{font-size:19px;font-weight:700}#index .content .card-box .user-info .name-box .num{font-size:14px}#index .content .card-box .user-info .ticket-box{position:absolute;right:0;width:119px;height:42px}#index .content .card-box .num-box{display:flex;align-items:center;color:#FFF}#index .content .card-box .num-box .num-item{position:relative;flex:1;text-align:center;font-size:19px}#index .content .card-box .num-box .point:after,#index .content .card-box .num-box .point:before{position:absolute;top:10px;content:'';width:1px;height:30px;background:#FFF;opacity:.3}#index .content .card-box .num-box .num-item .num{font-weight:700}#index .content .card-box .num-box .num-item .name{font-size:10px}#index .content .card-box .num-box .point:before{right:0}#index .content .card-box .num-box .point:after{left:0}#index .content .birthday-box .img-box,#index .content .privilege-box,#index .content .privilege-box .img-box{position:relative}#index .content .title-box{text-align:center;margin-bottom:12px}#index .content .title-box image{width:100%}#index .content .title-box .title-line{height:1px;width:100%;background:#CCC}#index .content .title-box .title{position:relative;display:inline-block;top:-13px;font-size:16px;color:#666;background:#FFF;padding:0 10px}#index .content .privilege-box{padding:15px 10px;background:#fff}#index .content .privilege-box .title-box{margin-bottom:0}#index .content .privilege-box .img-box .img-item{display:inline-block;color:#666;font-size:10px;text-align:center;width:20%;margin:10px 0}#index .content .privilege-box .img-box .img-item image{width:84rpx;height:84rpx;border-radius:100%;overflow:hidden}#index .content .privilege-box .img-box .img-item image.gray{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:grayscale(100%);filter:gray}#index .content .swiper-box{margin:10px 0}#index .content .swiper-box swiper{height:90px}#index .content .swiper-box button{margin:0;padding:0;background:0 0;border-radius:0}#index .content .swiper-box button:after{border:none}#index .content .swiper-box .wx-swiper-dot-active{background:linear-gradient(180deg,#ffde00,#ffa018,#ff3350)}#index .content .swiper-box image{width:100%;height:100%}#index .content .recharge-box{padding:12px 10px;background:#fff}#index .content .recharge-box .img-box{overflow:auto;white-space:nowrap}#index .content .recharge-box .img-box image{margin-right:12px;display:inline-block;vertical-align:bottom;width:160px;height:100px}#index .content .point-goods-box{padding:12px 10px;background:#fff;margin:10px 0}#index .content .point-goods-box .commodity-bottom{font-size:0;box-sizing:border-box}#index .content .point-goods-box .commodity-bottom .commodity-out{width:50%;display:inline-block;font-size:12px;box-sizing:border-box;padding:0 3px 7px}#index .content .point-goods-box .commodity-bottom .commodity-out:nth-of-type(odd){padding-left:0}#index .content .point-goods-box .commodity-bottom .commodity-out:nth-of-type(even){padding-right:0}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box{background:#fff;overflow:hidden;width:100%;box-sizing:border-box;font-size:14px}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-img{overflow:hidden}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-img image{width:100%;border-radius:5px}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-name{padding:0 5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money{display:flex;align-items:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;height:25px}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .point{display:flex;align-items:center;flex:1;font-size:16px;color:#FF8D00}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .point image{width:15px;height:15px;margin-right:5px;margin-bottom:2px}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .money{font-size:10px;color:#CCC;margin-top:2px}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .discount-tags{font-size:0;overflow:hidden}#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .discount-tags .tags-item{display:block;float:left;color:#fff;background:#C9171D;border-radius:2px;padding:2px;font-size:12px;margin:0 0 5px 5px}#index .content .point-goods-box .commodity-bottom .loadingbox{margin-top:10px;height:40px;line-height:40px;text-align:center;font-size:14px}#index .content .birthday-box{padding:12px 10px;background:#fff;margin-bottom:10px}#index .content .birthday-box .img-box button{position:absolute;top:0;left:0;right:0;bottom:0;opacity:0}#index .content .birthday-box .img-box image{width:100%}#index .content .my-order{margin-bottom:30px;padding:15px 10px;background:#FFF;display:flex;align-items:center;justify-content:space-between;font-size:16px;color:#666}#index .content .my-order image{width:10px;height:30px}#index .mask{position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background-color:rgba(0,0,0,.8)}#index .popup-box{position:fixed;z-index:500;width:80%;top:47%;left:50%;transform:translate(-50%,-50%);overflow:auto;height:70%}#index .popup-box image{width:100%;vertical-align:bottom}#index .get-user button{position:fixed;top:0;left:0;right:0;bottom:0;opacity:0}#index .get-user button.user{z-index:502}#index .get-user button.phone{z-index:501}
+#index .index-bg {
+  width: 100%;
+}
+#index .content {
+  position: absolute;
+  width: 100%;
+  top: 35px;
+  padding: 0 20px;
+}
+#index .content .card-box {
+  width: 100%;
+  height: 330rpx;
+  background: url("https://cdn.ibrand.cc/shitang94939rr.png") no-repeat center;
+  background-size: cover;
+  padding: 22px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#index .content .card-box .user-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+  color: #ffffff;
+}
+#index .content .card-box .user-info .avatar {
+  width: 58px;
+  height: 58px;
+  overflow: hidden;
+  border-radius: 100%;
+  border: 2px solid #FFFFFF;
+}
+#index .content .card-box .user-info .name-box {
+  padding-left: 10px;
+}
+#index .content .card-box .user-info .name-box .tag {
+  font-size: 19px;
+  font-weight: bold;
+}
+#index .content .card-box .user-info .name-box .num {
+  font-size: 14px;
+}
+#index .content .card-box .user-info .ticket-box {
+  position: absolute;
+  right: 0;
+  width: 119px;
+  height: 42px;
+}
+#index .content .card-box .num-box {
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+}
+#index .content .card-box .num-box .num-item {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  font-size: 19px;
+}
+#index .content .card-box .num-box .num-item .num {
+  font-weight: bold;
+}
+#index .content .card-box .num-box .num-item .name {
+  font-size: 10px;
+}
+#index .content .card-box .num-box .point:before {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  content: '';
+  width: 1px;
+  height: 30px;
+  background: #FFFFFF;
+  opacity: .3;
+}
+#index .content .card-box .num-box .point:after {
+  position: absolute;
+  top: 10px;
+  content: '';
+  left: 0;
+  width: 1px;
+  height: 30px;
+  background: #FFFFFF;
+  opacity: .3;
+}
+#index .content .title-box {
+  text-align: center;
+  margin-bottom: 12px;
+}
+#index .content .title-box image {
+  width: 100%;
+}
+#index .content .title-box .title-line {
+  height: 1px;
+  width: 100%;
+  background: #CCCCCC;
+}
+#index .content .title-box .title {
+  position: relative;
+  display: inline-block;
+  top: -13px;
+  font-size: 16px;
+  color: #666666;
+  background: #FFFFFF;
+  padding: 0px 10px;
+}
+#index .content .login-box .btn {
+  color: #222222;
+  font-size: 16px;
+  width: 268px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  background: #D6D6D6;
+  border-radius: 19px;
+  color: #FFFFFF;
+  margin: 50px auto 20px auto;
+}
+#index .content .login-box .btn:after {
+  border: none;
+}
+#index .content .login-box .btn.active {
+  background: linear-gradient(0deg, #ff8f00, #ffd700);
+  color: #222222;
+}
+#index .content .login-box .info-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#index .content .login-box .info-box image {
+  width: 16px;
+  height: 16px;
+}
+#index .content .login-box .info-box .text {
+  color: #999999;
+  font-size: 12px;
+  margin-left: 10px;
+}
+#index .content .login-box .info-box .text span {
+  text-decoration: underline;
+}
+#index .content .privilege-box {
+  padding: 15px 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.5);
+  position: relative;
+}
+#index .content .privilege-box .title-box {
+  margin-bottom: 0;
+}
+#index .content .privilege-box .img-box {
+  position: relative;
+}
+#index .content .privilege-box .img-box .img-item {
+  display: inline-block;
+  color: #666666;
+  font-size: 10px;
+  text-align: center;
+  width: 20%;
+  margin: 10px 0;
+}
+#index .content .privilege-box .img-box .img-item image {
+  width: 84rpx;
+  height: 84rpx;
+  border-radius: 100%;
+  overflow: hidden;
+}
+#index .content .privilege-box .img-box .img-item image.gray {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+#index .content .swiper-box {
+  margin: 10px 0;
+}
+#index .content .swiper-box swiper {
+  height: 90px;
+}
+#index .content .swiper-box button {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-radius: 0;
+}
+#index .content .swiper-box button:after {
+  border: none;
+}
+#index .content .swiper-box .wx-swiper-dot-active {
+  background: linear-gradient(180deg, #ffde00, #ffa018, #ff3350);
+}
+#index .content .swiper-box image {
+  width: 100%;
+  height: 100%;
+}
+#index .content .recharge-box {
+  padding: 12px 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.5);
+}
+#index .content .recharge-box .img-box {
+  overflow: auto;
+  white-space: nowrap;
+}
+#index .content .recharge-box .img-box image {
+  margin-right: 12px;
+  display: inline-block;
+  vertical-align: bottom;
+  width: 160px;
+  height: 100px;
+}
+#index .content .point-goods-box {
+  padding: 12px 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.5);
+  margin: 10px 0;
+}
+#index .content .point-goods-box .commodity-bottom {
+  font-size: 0;
+  box-sizing: border-box;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out {
+  width: 50%;
+  display: inline-block;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 0 3px 7px 3px;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out:nth-of-type(odd) {
+  padding-left: 0;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out:nth-of-type(even) {
+  padding-right: 0;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box {
+  background: #ffffff;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-img {
+  overflow: hidden;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-img image {
+  width: 100%;
+  border-radius: 5px;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-name {
+  padding: 0 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 25px;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .point {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 16px;
+  color: #FF8D00;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .point image {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .money {
+  font-size: 10px;
+  color: #CCCCCC;
+  margin-top: 2px;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .discount-tags {
+  font-size: 0;
+  overflow: hidden;
+}
+#index .content .point-goods-box .commodity-bottom .commodity-out .commodity-box .commodity-money .discount-tags .tags-item {
+  display: block;
+  float: left;
+  color: #ffffff;
+  background: #C9171D;
+  border-radius: 2px;
+  padding: 2px;
+  font-size: 12px;
+  margin: 0 0 5px 5px;
+}
+#index .content .point-goods-box .commodity-bottom .loadingbox {
+  margin-top: 10px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 14px;
+}
+#index .content .birthday-box {
+  padding: 12px 10px;
+  background: #ffffff;
+  box-shadow: 0px 0px 18px 0px rgba(204, 204, 204, 0.5);
+  margin-bottom: 10px;
+}
+#index .content .birthday-box .img-box {
+  position: relative;
+}
+#index .content .birthday-box .img-box button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+#index .content .birthday-box .img-box image {
+  width: 100%;
+}
+#index .content .my-order {
+  margin-bottom: 30px;
+  padding: 15px 10px;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  color: #666666;
+}
+#index .content .my-order image {
+  width: 10px;
+  height: 30px;
+}
+#index .mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+#index .popup-box {
+  position: fixed;
+  z-index: 500;
+  width: 80%;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: auto;
+  height: 70%;
+}
+#index .popup-box image {
+  width: 100%;
+  vertical-align: bottom;
+}
+#index .get-user button {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+}
+#index .get-user button.user {
+  z-index: 502;
+}
+#index .get-user button.phone {
+  z-index: 501;
+}

@@ -127,7 +127,49 @@
         padding: 0px 10px;
       }
     }
+    .login-box {
+      .btn {
+        color: #222222;
+        font-size: 16px;
+        width: 268px;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        background: #D6D6D6;
+        border-radius: 19px;
+        color: #FFFFFF;
+        margin: 50px auto 20px auto;
 
+        &:after {
+          border: none;
+        }
+        &.active {
+          background:linear-gradient(0deg,rgba(255,143,0,1),rgba(255,215,0,1));
+          color: #222222;
+        }
+
+      }
+
+      .info-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        image {
+          width: 16px;
+          height: 16px;
+        }
+
+        .text {
+          color: #999999;
+          font-size: 12px;
+          margin-left: 10px;
+
+          span {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
     .privilege-box {
       padding:15px 10px;
       background: rgba(255, 255, 255, 1);

@@ -123,6 +123,7 @@ page {
   background: url('https://cdn.ibrand.cc/coupon-bgd2.png') no-repeat;
 }
 #coupon-container .coupon-list-container .coupon-list .li-item {
+  position: relative;
   display: flex;
   align-items: center;
   padding: 15px 20px;
@@ -130,6 +131,23 @@ page {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   margin-bottom: 10px;
+}
+#coupon-container .coupon-list-container .coupon-list .li-item.gray {
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: grayscale(100%);
+  filter: gray;
+}
+#coupon-container .coupon-list-container .coupon-list .li-item image {
+  width: 68px;
+  height: 55px;
+  /*position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);*/
+  z-index: 10;
 }
 #coupon-container .coupon-list-container .coupon-list .li-item .left-info {
   flex: 2;
@@ -152,6 +170,9 @@ page {
 }
 #coupon-container .coupon-list-container .coupon-list .li-item .right-info {
   flex: 1;
+}
+#coupon-container .coupon-list-container .coupon-list .li-item .right-info.center-box {
+  text-align: center;
 }
 #coupon-container .coupon-list-container .coupon-list .li-item .right-info .btn-box {
   margin: 0 auto;
