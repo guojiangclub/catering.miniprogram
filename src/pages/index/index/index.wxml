@@ -141,7 +141,7 @@
 					<swiper-item wx:for="{{bannerList}}" wx:key="{{index}}">
 						<block wx:if="{{item.blank_type == 'share'}}">
 							<button open-type="share">
-								<image mode="widthFix" src="https://cdn.ibrand.cc/35353uu.png" class="slide-image" />
+								<image mode="widthFix" src="{{item.img}}" class="slide-image" />
 							</button>
 						</block>
 						<block wx:else>

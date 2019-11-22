@@ -1,7 +1,7 @@
 <view id="coupon-container">
 	<view class="coupon-header">
 		<view class="coupon-title" data-current="{{0}}" bindtap="selectCoupon">
-			我的优惠卷
+			我的优惠券
 			<view class="coupon-bor" wx-if="{{type==0}}" />
 		</view>
 		<view class="coupon-title" data-current="{{1}}" bindtap="selectCoupon">
