@@ -26,7 +26,7 @@ export default  {
         // https://shitang-admin.ibrand.cc/  仕堂 wxc960b965c21385f7
         //https://longbai.kelai.tech/  龙柏 wx5f26954b7bb3b385
         //https://erlu.kelai.tech/admin/ 贰炉
-        baseUrl: process.env.NODE_ENV === 'development' ? 'https://1921.kelai.tech/' : 'https://miniprogram-proxy.ibrand.cc/', // 运行时自动替换变量
+        baseUrl: process.env.NODE_ENV === 'development' ? 'https://catering-admin-demo.guojiang.club/' : 'https://miniprogram-proxy.ibrand.cc/', // 运行时自动替换变量
         client_id: '2',
         client_secret: 'sL8ybYt3DpoxfilP5I45goZ0bsLHEcKFHF9bbnVY',
     },
