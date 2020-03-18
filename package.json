@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --watch --progress --colors --config webpack.dev.config.js",
@@ -23,6 +22,10 @@
     "regenerator": "^0.10.0",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.guojiang.club/guojiangclub/catering.miniprogram.git"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
