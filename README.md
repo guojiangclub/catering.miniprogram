@@ -27,7 +27,7 @@
 
 ## API
 
-API源码地址：[果酱餐饮API源码](https://gitee.com/guojiangclub/catering.api)
+API源码地址：[果酱餐饮API源码](https://github.com/guojiangclub/catering.api)
 
 ## 交流
 
